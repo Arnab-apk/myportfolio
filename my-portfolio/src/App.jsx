@@ -10,15 +10,57 @@ import AuroraBackground from "./components/AuroraBackground";
 import SectionHeader from "./components/SectionHeader";
 import EnhancedMagicBento from "./components/EnhancedMagicBento";
 import SplashCursor from "./components/SplashCursor";
-import PortfolioDock from "./components/PortfolioDock";
-import { useRef } from "react";
+import PillNav from "./components/PillNav";
+import { useRef, useState, useEffect } from "react";
 
 function App() {
   const highlightsRef = useRef(null);
+  const [activeSection, setActiveSection] = useState("#hero");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["#hero", "#about", "#tech-stack", "#skills", "#highlights", "#expertise", "#projects", "#contact"];
+      const scrollPosition = window.scrollY + 200;
+
+      for (const section of sections) {
+        const element = document.querySelector(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navItems = [
+    { label: "Home", href: "#hero" },
+    { label: "About", href: "#about" },
+    { label: "Tech Stack", href: "#tech-stack" },
+    { label: "Skills", href: "#skills" },
+    { label: "Projects", href: "#projects" },
+    { label: "Expertise", href: "#expertise" },
+    { label: "Contact", href: "#contact" },
+  ];
   
   return (
     <div className="min-h-screen bg-brand-dark text-white">
       <SplashCursor />
+      <PillNav
+        logo="/vite.svg"
+        logoAlt="Portfolio Logo"
+        items={navItems}
+        activeHref={activeSection}
+        baseColor="#facc15"
+        pillColor="#050816"
+        hoveredPillTextColor="#facc15"
+        pillTextColor="#ffffff"
+      />
       <AuroraBackground>
         <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Hero />
@@ -52,7 +94,6 @@ function App() {
           <Contact />
         </main>
         <Footer />
-        <PortfolioDock />
       </AuroraBackground>
     </div>
   );
