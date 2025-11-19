@@ -395,7 +395,7 @@
 .pc-details p {
   font-weight: 600;
   position: relative;
-  top: -22px;
+  top: -10px;
   white-space: nowrap;
   font-size: 18px;
   margin: 0 auto;
@@ -443,8 +443,8 @@
     font-size: min(4svh, 2.5em);
   }
   .pc-details p {
-    font-size: 14px;
-    top: -8px;
+    font-size: 16px;
+    top: -6px;
   }
   .pc-user-info {
     --ui-inset: 15px;
@@ -486,8 +486,8 @@
     font-size: min(3.5svh, 2em);
   }
   .pc-details p {
-    font-size: 12px;
-    top: -8px;
+    font-size: 16px;
+    top: -6px;
   }
   .pc-user-info {
     --ui-inset: 12px;
@@ -528,7 +528,7 @@
   }
   .pc-details p {
     font-size: 11px;
-    top: -8px;
+    top: -4px;
   }
   .pc-user-info {
     padding: 6px 8px;

@@ -1,15 +1,18 @@
 import SectionHeader from "./SectionHeader";
 import AnimatedSection from "./AnimatedSection";
+import VariableProximity from "./VariableProximity";
+import { useRef } from "react";
 
 function Contact() {
+  const containerRef = useRef(null);
+  
   return (
-    <section className="pt-14 sm:pt-20 pb-16" id="contact">
+    <section className="pt-14 sm:pt-20 pb-16" id="contact" ref={containerRef}>
       <AnimatedSection animation="fade-up">
         <SectionHeader
           id="contact"
-          emoji="📨"
           title="CONTACT"
-          subtitle="Have an idea, opportunity, or just want to say hi? Let's connect."
+          containerRef={containerRef}
         />
       </AnimatedSection>
 
@@ -72,18 +75,35 @@ function Contact() {
         <AnimatedSection animation="fade-left" delay={200}>
           <div className="bg-brand-card/70 border border-slate-800 rounded-3xl p-5 sm:p-6 flex flex-col justify-between hover:border-brand-yellow/30 transition-all duration-500 h-full">
             <div>
-              <p className="text-sm text-slate-300 mb-3">
-                I&apos;m always open to:
+              <p className="text-base font-semibold text-slate-100 mb-3">
+                <VariableProximity
+                  label="Let's Connect"
+                  fromFontVariationSettings="'wght' 600, 'wdth' 100"
+                  toFontVariationSettings="'wght' 900, 'wdth' 115"
+                  containerRef={containerRef}
+                  radius={80}
+                  falloff="gaussian"
+                  style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
+                />
               </p>
-              <ul className="text-sm text-slate-200 space-y-1">
-                <li>• Internships & freelance work</li>
-                <li>• Collaborations on AI / AR / web projects</li>
-                <li>• Tech discussions, mentoring & knowledge sharing</li>
+              <ul className="text-sm text-slate-200 space-y-2">
+                <li className="flex items-start">
+                  <span className="text-brand-yellow mr-2">•</span>
+                  <span>Open to internships & freelance opportunities</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-brand-yellow mr-2">•</span>
+                  <span>Collaborations on AI, AR, and web projects</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-brand-yellow mr-2">•</span>
+                  <span>Technical discussions & knowledge sharing</span>
+                </li>
               </ul>
             </div>
             <div className="mt-4 text-xs text-slate-400">
-              <p>Also find me here:</p>
-              <div className="flex flex-wrap gap-3 mt-2">
+              <p className="mb-2">Connect with me:</p>
+              <div className="flex flex-wrap gap-3">
                 <a
                   href="https://github.com/Arnab-apk"
                   className="underline hover:text-brand-yellow transition-colors duration-300"

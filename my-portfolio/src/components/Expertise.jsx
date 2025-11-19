@@ -1,15 +1,18 @@
 import SectionHeader from "./SectionHeader";
 import AnimatedSection from "./AnimatedSection";
 import ChromaGrid from "./ChromaGrid";
+import { useRef } from "react";
 
 function Expertise() {
+  const containerRef = useRef(null);
+  
   return (
-    <section className="pt-14 sm:pt-20" id="expertise">
+    <section className="pt-14 sm:pt-20" id="expertise" ref={containerRef}>
       <AnimatedSection animation="fade-up">
         <SectionHeader
           id="expertise"
-          emoji="✨"
           title="EXPERTISE"
+          containerRef={containerRef}
         />
       </AnimatedSection>
 
@@ -22,15 +25,6 @@ function Expertise() {
               fadeOut={0.7}
             />
           </div>
-        </div>
-      </AnimatedSection>
-
-      <AnimatedSection animation="fade-up" delay={200}>
-        <div className="mt-6 text-center">
-          <p className="text-base sm:text-lg text-slate-400">
-            💡 <span className="hidden md:inline">Hover over the cards to reveal them with the spotlight effect!</span>
-            <span className="md:hidden">Tap any card to explore more</span>
-          </p>
         </div>
       </AnimatedSection>
     </section>

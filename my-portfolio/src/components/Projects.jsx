@@ -3,6 +3,7 @@ import AnimatedSection from "./AnimatedSection";
 import FloatingCard from "./FloatingCard";
 import { GlowingEffect } from "./ui/glowing-effect";
 import { LinkPreview } from "./ui/link-preview";
+import { useRef } from "react";
 
 const projects = [
   {
@@ -50,14 +51,15 @@ const projects = [
 ];
 
 function Projects() {
+  const containerRef = useRef(null);
+  
   return (
-    <section className="pt-14 sm:pt-20" id="projects">
+    <section className="pt-14 sm:pt-20" id="projects" ref={containerRef}>
       <AnimatedSection animation="fade-up">
         <SectionHeader
           id="projects"
-          emoji="🚀"
           title="PROJECTS"
-          subtitle="Some highlights that reflect how I think and build."
+          containerRef={containerRef}
         />
       </AnimatedSection>
 

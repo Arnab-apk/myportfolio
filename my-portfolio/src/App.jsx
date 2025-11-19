@@ -11,8 +11,11 @@ import SectionHeader from "./components/SectionHeader";
 import EnhancedMagicBento from "./components/EnhancedMagicBento";
 import SplashCursor from "./components/SplashCursor";
 import PortfolioDock from "./components/PortfolioDock";
+import { useRef } from "react";
 
 function App() {
+  const highlightsRef = useRef(null);
+  
   return (
     <div className="min-h-screen bg-brand-dark text-white">
       <SplashCursor />
@@ -24,12 +27,11 @@ function App() {
           <Skills />
 
           {/* Highlights (Magic Bento) */}
-          <section className="pt-14 sm:pt-20" id="highlights">
+          <section className="pt-14 sm:pt-20" id="highlights" ref={highlightsRef}>
             <SectionHeader
               id="highlights"
-              emoji="🌟"
               title="HIGHLIGHTS"
-              subtitle="A quick glimpse of the things I love building."
+              containerRef={highlightsRef}
             />
             <div className="mt-8 rounded-3xl bg-brand-card/40 border border-slate-800 overflow-hidden">
               <EnhancedMagicBento 

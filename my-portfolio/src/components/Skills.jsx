@@ -1,16 +1,19 @@
 import { skillSections } from "../data/skills";
 import SectionHeader from "./SectionHeader";
 import AnimatedSection from "./AnimatedSection";
+import VariableProximity from "./VariableProximity";
+import { useRef } from "react";
 
 function Skills() {
+  const containerRef = useRef(null);
+  
   return (
-    <section className="pt-14 sm:pt-20" id="skills">
+    <section className="pt-14 sm:pt-20" id="skills" ref={containerRef}>
       <AnimatedSection animation="fade-up">
         <SectionHeader
           id="skills"
-          emoji="🧰"
           title="SKILLS"
-          subtitle="Tools & languages I know and love working with."
+          containerRef={containerRef}
         />
       </AnimatedSection>
 
@@ -21,9 +24,16 @@ function Skills() {
               <div className="absolute inset-0 bg-gradient-to-br from-brand-yellow/5 via-transparent to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative z-10">
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="text-xl sm:text-2xl group-hover:scale-110 transition-transform duration-300">{section.emoji}</span>
                   <h3 className="text-base sm:text-lg font-semibold tracking-wide text-slate-100">
-                    {section.label}
+                    <VariableProximity
+                      label={section.label}
+                      fromFontVariationSettings="'wght' 600, 'wdth' 100"
+                      toFontVariationSettings="'wght' 900, 'wdth' 115"
+                      containerRef={containerRef}
+                      radius={80}
+                      falloff="gaussian"
+                      style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
+                    />
                   </h3>
                 </div>
                 <div className="flex flex-wrap gap-2">

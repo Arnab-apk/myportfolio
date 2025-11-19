@@ -1,8 +1,12 @@
 import ProfileCard from "./ProfileCard";
 import TextType from "./TextType";
 import GlassSurface from "./GlassSurface";
+import VariableProximity from "./VariableProximity";
+import { useRef } from "react";
 
 function Hero() {
+  const heroRef = useRef(null);
+  
   const handleContactClick = () => {
     const el = document.getElementById("contact");
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -11,21 +15,40 @@ function Hero() {
   return (
     <section
       id="hero"
+      ref={heroRef}
       className="relative pt-12 pb-16 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28"
     >
       <div className="grid gap-8 lg:gap-10 lg:grid-cols-[1.6fr,1fr] items-center">
         <div className="space-y-4 sm:space-y-6">
           <p className="text-[10px] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.3em] text-brand-yellow mb-2 sm:mb-3">
-            CSE Undergrad · AI & AR Enthusiast
+            Computer Science Engineer · AI & AR Developer
           </p>
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-3 sm:mb-4">
-            <span className="block mb-1 sm:mb-2">Hi, I&apos;m</span>
-            <span className="gradient-text drop-shadow-lg">
-              Arnab Mandal
+            <span className="block mb-1 sm:mb-2">
+              <VariableProximity
+                label="Hi, I'm"
+                fromFontVariationSettings="'wght' 700, 'wdth' 100"
+                toFontVariationSettings="'wght' 900, 'wdth' 125"
+                containerRef={heroRef}
+                radius={100}
+                falloff="gaussian"
+                style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
+              />
+            </span>
+            <span className="gradient-text drop-shadow-lg block">
+              <VariableProximity
+                label="Arnab Mandal"
+                fromFontVariationSettings="'wght' 800, 'wdth' 100"
+                toFontVariationSettings="'wght' 900, 'wdth' 125"
+                containerRef={heroRef}
+                radius={120}
+                falloff="gaussian"
+                style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
+              />
             </span>
             <div className="block">
               <TextType
-                text={["I build intelligent, immersive & reliable experiences.", "AI, AR, and Full Stack Magic.", "Let’s create something amazing!"]}
+                text={["Building intelligent & immersive experiences.", "AI, AR, and Full Stack Development.", "Let's create something exceptional."]}
                 as="span"
                 typingSpeed={38}
                 deletingSpeed={22}
@@ -43,21 +66,21 @@ function Hero() {
           </h1>
 
           <p className="text-slate-300 max-w-xl mb-4 sm:mb-6 text-xs sm:text-sm md:text-base leading-relaxed animate-[fadeIn_1s_ease-out_0.4s_both]">
-            A passionate programmer from India, currently pursuing Computer
-            Science Engineering at <span className="font-semibold">
+            Currently pursuing Computer Science Engineering at{" "}
+            <span className="font-semibold">
               Academy of Technology
-            </span>. I love solving real-life problems with code — from
-            AI/ML and AR experiences to full-stack web projects.
+            </span>
+            . I specialize in developing AI/ML solutions, AR experiences, and scalable full-stack applications that solve real-world problems.
           </p>
 
           <div className="flex flex-wrap gap-2 sm:gap-3 animate-[fadeIn_1.2s_ease-out_0.6s_both]">
             <GlassSurface
               width="auto"
               height="auto"
-              borderRadius={25}
-              backgroundOpacity={0.15}
-              blur={12}
-              saturation={1.5}
+              borderRadius={30}
+              backgroundOpacity={0.12}
+              blur={16}
+              saturation={1.4}
               className="inline-flex"
             >
               <button
@@ -65,7 +88,7 @@ function Hero() {
                   const el = document.getElementById("projects");
                   if (el) el.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-white/10 text-white text-xs sm:text-sm font-semibold backdrop-blur-sm border border-white/20 hover:bg-white/20 hover:-translate-y-[2px] hover:scale-105 transition-all duration-300"
+                className="px-6 sm:px-8 py-3 sm:py-3.5 rounded-full bg-white/10 text-white text-xs sm:text-sm font-semibold backdrop-blur-sm border border-white/20 hover:bg-white/20 hover:-translate-y-[2px] hover:scale-105 transition-all duration-300"
               >
                 View Projects
               </button>
@@ -73,15 +96,15 @@ function Hero() {
             <GlassSurface
               width="auto"
               height="auto"
-              borderRadius={25}
-              backgroundOpacity={0.1}
-              blur={10}
-              saturation={1.3}
+              borderRadius={30}
+              backgroundOpacity={0.08}
+              blur={14}
+              saturation={1.2}
               className="inline-flex"
             >
               <button
                 onClick={handleContactClick}
-                className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm text-white/90 hover:text-white hover:-translate-y-[2px] transition-all duration-300"
+                className="px-6 sm:px-8 py-3 sm:py-3.5 rounded-full text-xs sm:text-sm text-white/90 hover:text-white hover:-translate-y-[2px] transition-all duration-300"
               >
                 Let&apos;s Collaborate
               </button>
