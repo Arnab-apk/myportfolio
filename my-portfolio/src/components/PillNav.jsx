@@ -229,15 +229,18 @@ const PillNav = ({
   };
 
   return (
-    <div className="fixed top-[1em] z-[1000] w-full left-1/2 -translate-x-1/2 md:w-auto">
+    <div
+      className="fixed z-[1000] w-full left-1/2 -translate-x-1/2 md:w-auto top-0"
+      style={{ top: 'calc(env(safe-area-inset-top, 0px) + 0.75rem)' }}
+    >
       <nav
-        className={`w-full md:w-max flex items-center justify-center box-border px-4 md:px-0 ${className}`}
+        className={`w-full md:w-max flex items-center justify-end md:justify-center box-border px-4 md:px-0 ${className}`}
         aria-label="Primary"
         style={cssVars}
       >
         <div
           ref={navItemsRef}
-          className="relative items-center rounded-full flex backdrop-blur-xl border border-white/20 shadow-lg"
+          className="relative items-center rounded-full hidden md:flex backdrop-blur-xl border border-white/20 shadow-lg"
           style={{
             height: 'var(--nav-h)',
             background: 'rgba(250, 204, 21, 0.1)'
@@ -348,10 +351,11 @@ const PillNav = ({
 
       <div
         ref={mobileMenuRef}
-        className="md:hidden absolute top-[3em] left-4 right-4 rounded-[27px] shadow-[0_8px_32px_rgba(0,0,0,0.3)] z-[998] origin-top backdrop-blur-xl border border-white/20"
+        className="md:hidden absolute left-4 right-4 rounded-[27px] shadow-[0_8px_32px_rgba(0,0,0,0.3)] z-[998] origin-top backdrop-blur-xl border border-white/20"
         style={{
           ...cssVars,
-          background: 'rgba(250, 204, 21, 0.15)'
+          background: 'rgba(250, 204, 21, 0.15)',
+          top: 'calc(env(safe-area-inset-top, 0px) + var(--nav-h) + 0.75rem)'
         }}
       >
         <ul className="list-none m-0 p-[3px] flex flex-col gap-[3px]">
