@@ -9,7 +9,6 @@ import Footer from "./components/Footer";
 import AuroraBackground from "./components/AuroraBackground";
 import SectionHeader from "./components/SectionHeader";
 import EnhancedMagicBento from "./components/EnhancedMagicBento";
-import SplashCursor from "./components/SplashCursor";
 import PillNav from "./components/PillNav";
 import { useRef, useState, useEffect } from "react";
 
@@ -50,7 +49,6 @@ function App() {
   
   return (
     <div className="min-h-screen bg-brand-dark text-white">
-      <SplashCursor />
       <PillNav
         logo="/arnab.jpg"
         logoAlt="Portfolio Logo"
