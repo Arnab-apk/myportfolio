@@ -1,5 +1,6 @@
 import ProfileCard from "./ProfileCard";
 import TextType from "./TextType";
+import GlassSurface from "./GlassSurface";
 
 function Hero() {
   const handleContactClick = () => {
@@ -50,15 +51,25 @@ function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-2 sm:gap-3 animate-[fadeIn_1.2s_ease-out_0.6s_both]">
-            <button
-              onClick={() => {
-                const el = document.getElementById("projects");
-                if (el) el.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-brand-yellow text-black text-xs sm:text-sm font-semibold shadow-soft hover:shadow-lg hover:-translate-y-[2px] hover:scale-105 transition-all duration-300"
+            <GlassSurface
+              width="auto"
+              height="auto"
+              borderRadius={25}
+              backgroundOpacity={0.15}
+              blur={12}
+              saturation={1.5}
+              className="inline-flex"
             >
-              View Projects
-            </button>
+              <button
+                onClick={() => {
+                  const el = document.getElementById("projects");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-white/10 text-white text-xs sm:text-sm font-semibold backdrop-blur-sm border border-white/20 hover:bg-white/20 hover:-translate-y-[2px] hover:scale-105 transition-all duration-300"
+              >
+                View Projects
+              </button>
+            </GlassSurface>
             <button
               onClick={handleContactClick}
               className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border border-slate-600 text-xs sm:text-sm text-slate-200 hover:border-brand-yellow hover:text-brand-yellow hover:-translate-y-[2px] transition-all duration-300"
