@@ -52,7 +52,7 @@ function App() {
     <div className="min-h-screen bg-brand-dark text-white">
       <SplashCursor />
       <PillNav
-        logo="/vite.svg"
+        logo="/arnab.jpg"
         logoAlt="Portfolio Logo"
         items={navItems}
         activeHref={activeSection}

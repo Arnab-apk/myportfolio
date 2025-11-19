@@ -231,29 +231,13 @@ const PillNav = ({
   return (
     <div className="fixed top-[1em] z-[1000] w-full left-1/2 -translate-x-1/2 md:w-auto">
       <nav
-        className={`w-full md:w-max flex items-center justify-between md:justify-start box-border px-4 md:px-0 ${className}`}
+        className={`w-full md:w-max flex items-center justify-center box-border px-4 md:px-0 ${className}`}
         aria-label="Primary"
         style={cssVars}
       >
-        <a
-          href="#hero"
-          aria-label="Home"
-          onClick={(e) => handleSmoothScroll(e, '#hero')}
-          onMouseEnter={handleLogoEnter}
-          ref={logoRef}
-          className="rounded-full p-2 inline-flex items-center justify-center overflow-hidden backdrop-blur-xl border border-white/20 shadow-lg"
-          style={{
-            width: 'var(--nav-h)',
-            height: 'var(--nav-h)',
-            background: 'rgba(250, 204, 21, 0.1)'
-          }}
-        >
-          <img src={logo} alt={logoAlt} ref={logoImgRef} className="w-full h-full object-cover block" />
-        </a>
-
         <div
           ref={navItemsRef}
-          className="relative items-center rounded-full hidden md:flex ml-2 backdrop-blur-xl border border-white/20 shadow-lg"
+          className="relative items-center rounded-full flex backdrop-blur-xl border border-white/20 shadow-lg"
           style={{
             height: 'var(--nav-h)',
             background: 'rgba(250, 204, 21, 0.1)'
