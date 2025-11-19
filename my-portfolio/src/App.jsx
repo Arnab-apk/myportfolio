@@ -9,23 +9,28 @@ import Footer from "./components/Footer";
 import AuroraBackground from "./components/AuroraBackground";
 import SectionHeader from "./components/SectionHeader";
 import EnhancedMagicBento from "./components/EnhancedMagicBento";
-import LiquidEther from "./components/LiquidEther";
+import ColorBends from "./components/ColorBends";
 import PortfolioDock from "./components/PortfolioDock";
 
 function App() {
   return (
-    <div className="min-h-screen bg-brand-dark text-white relative">
-      <LiquidEther 
+    <div className="min-h-screen bg-[#0a0a0f] text-white relative">
+      <ColorBends 
         className="fixed inset-0 z-0"
-        colors={['#5227FF', '#FF9FFC', '#B19EEF']}
-        autoDemo={true}
-        autoSpeed={0.5}
-        autoIntensity={2.2}
-        mouseForce={20}
-        resolution={0.5}
+        colors={['#ff6b35', '#f7931e', '#fdc830', '#4facfe', '#00f2fe', '#667eea']}
+        rotation={45}
+        speed={0.15}
+        scale={1.2}
+        frequency={1}
+        warpStrength={1}
+        mouseInfluence={0.8}
+        parallax={0.5}
+        noise={0.08}
+        transparent={false}
+        autoRotate={2}
       />
       <div className="relative z-10">
-        <AuroraBackground>
+      <AuroraBackground>
         <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Hero />
           <About />
