@@ -58,7 +58,7 @@ function App() {
         activeHref={activeSection}
         baseColor="#facc15"
         pillColor="#050816"
-        hoveredPillTextColor="#facc15"
+        hoveredPillTextColor="#000000"
         pillTextColor="#ffffff"
       />
       <AuroraBackground>
