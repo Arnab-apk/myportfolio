@@ -73,7 +73,7 @@ function Hero() {
             . I specialize in developing AI/ML solutions, AR experiences, and scalable full-stack applications that solve real-world problems.
           </p>
 
-          <div className="flex flex-wrap gap-2 sm:gap-3 animate-[fadeIn_1.2s_ease-out_0.6s_both]">
+          <div className="flex flex-row flex-wrap gap-3 sm:gap-3 animate-[fadeIn_1.2s_ease-out_0.6s_both]">
             <GlassSurface
               width="auto"
               height="auto"
@@ -81,14 +81,14 @@ function Hero() {
               backgroundOpacity={0.12}
               blur={16}
               saturation={1.4}
-              className="inline-flex"
+              className="inline-flex flex-shrink-0"
             >
               <button
                 onClick={() => {
                   const el = document.getElementById("projects");
                   if (el) el.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="px-6 sm:px-8 py-3 sm:py-3.5 rounded-full bg-white/10 text-white text-xs sm:text-sm font-semibold backdrop-blur-sm border border-white/20 hover:bg-white/20 hover:-translate-y-[2px] hover:scale-105 transition-all duration-300"
+                className="px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-full bg-white/10 text-white text-xs sm:text-sm font-semibold backdrop-blur-sm border border-white/20 hover:bg-white/20 hover:-translate-y-[2px] hover:scale-105 transition-all duration-300 whitespace-nowrap"
               >
                 View Projects
               </button>
@@ -100,11 +100,11 @@ function Hero() {
               backgroundOpacity={0.08}
               blur={14}
               saturation={1.2}
-              className="inline-flex"
+              className="inline-flex flex-shrink-0"
             >
               <button
                 onClick={handleContactClick}
-                className="px-6 sm:px-8 py-3 sm:py-3.5 rounded-full text-xs sm:text-sm text-white/90 hover:text-white hover:-translate-y-[2px] transition-all duration-300"
+                className="px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-full text-xs sm:text-sm text-white/90 hover:text-white hover:-translate-y-[2px] transition-all duration-300 whitespace-nowrap"
               >
                 Let&apos;s Collaborate
               </button>
