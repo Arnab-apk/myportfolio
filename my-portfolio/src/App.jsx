@@ -1,4 +1,5 @@
 import Hero from "./components/Hero";
+import ChatBotWidget from "./components/ChatBotWidget";
 import About from "./components/About";
 import TechStack from "./components/TechStack";
 import Skills from "./components/Skills";
@@ -59,6 +60,7 @@ function App() {
         hoveredPillTextColor="#000000"
         pillTextColor="#ffffff"
       />
+      <ChatBotWidget />
       <AuroraBackground>
         <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Hero />
