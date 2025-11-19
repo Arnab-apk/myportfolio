@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 const ChatBotWidget = () => {
   const [open, setOpen] = useState(false);
@@ -6,6 +6,15 @@ const ChatBotWidget = () => {
     { from: "bot", text: "Hi! How can I help you today?" },
   ]);
   const [input, setInput] = useState("");
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   const handleSend = async () => {
     if (!input.trim()) return;
@@ -13,37 +22,19 @@ const ChatBotWidget = () => {
     setMessages(prev => [...prev, userMsg]);
     setInput("");
 
-    // Gemini API call
     try {
-      const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-      console.log("API Key exists:", !!apiKey);
-      
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
-      console.log("Making request to Gemini API...");
-      
-      const res = await fetch(url, {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: input }] }]
+        body: JSON.stringify({ 
+          contents: [{ parts: [{ text: `${input}\n\nRespond in 2-3 concise sentences.` }] }] 
         })
       });
-      
-      console.log("Response status:", res.status);
       const data = await res.json();
-      console.log("Response data:", data);
-      
-      let botText = "Sorry, I couldn't get a response.";
-      if (data && data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
-        botText = data.candidates[0].content.parts[0].text;
-      } else if (data.error) {
-        botText = `Error: ${data.error.message || "API Error"}`;
-        console.error("Gemini API Error:", data.error);
-      }
+      const botText = data?.candidates?.[0]?.content?.parts?.[0]?.text || data?.error?.message || "Sorry, I couldn't get a response.";
       setMessages(msgs => [...msgs, { from: "bot", text: botText }]);
-    } catch (err) {
-      console.error("Fetch error:", err);
-      setMessages(msgs => [...msgs, { from: "bot", text: `[Error: ${err.message}]` }]);
+    } catch {
+      setMessages(msgs => [...msgs, { from: "bot", text: "Connection error. Please try again." }]);
     }
   };
 
@@ -65,6 +56,7 @@ const ChatBotWidget = () => {
                 <div className={`px-3 py-2 rounded-xl max-w-[80%] ${msg.from === "user" ? "bg-yellow-100" : "bg-gray-200"}`}>{msg.text}</div>
               </div>
             ))}
+            <div ref={messagesEndRef} />
           </div>
           <div className="flex border-t border-gray-200">
             <input
