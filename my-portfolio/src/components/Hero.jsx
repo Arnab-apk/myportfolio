@@ -70,12 +70,22 @@ function Hero() {
                 View Projects
               </button>
             </GlassSurface>
-            <button
-              onClick={handleContactClick}
-              className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border border-slate-600 text-xs sm:text-sm text-slate-200 hover:border-brand-yellow hover:text-brand-yellow hover:-translate-y-[2px] transition-all duration-300"
+            <GlassSurface
+              width="auto"
+              height="auto"
+              borderRadius={25}
+              backgroundOpacity={0.1}
+              blur={10}
+              saturation={1.3}
+              className="inline-flex"
             >
-              Let&apos;s Collaborate
-            </button>
+              <button
+                onClick={handleContactClick}
+                className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm text-white/90 hover:text-white hover:-translate-y-[2px] transition-all duration-300"
+              >
+                Let&apos;s Collaborate
+              </button>
+            </GlassSurface>
           </div>
         </div>
 

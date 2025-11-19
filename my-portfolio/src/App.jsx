@@ -9,27 +9,13 @@ import Footer from "./components/Footer";
 import AuroraBackground from "./components/AuroraBackground";
 import SectionHeader from "./components/SectionHeader";
 import EnhancedMagicBento from "./components/EnhancedMagicBento";
-import ColorBends from "./components/ColorBends";
+import SplashCursor from "./components/SplashCursor";
 import PortfolioDock from "./components/PortfolioDock";
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-white relative">
-      <ColorBends 
-        className="fixed inset-0 z-0"
-        colors={['#ff6b35', '#f7931e', '#fdc830', '#4facfe', '#00f2fe', '#667eea']}
-        rotation={45}
-        speed={0.15}
-        scale={1.2}
-        frequency={1}
-        warpStrength={1}
-        mouseInfluence={0.8}
-        parallax={0.5}
-        noise={0.08}
-        transparent={false}
-        autoRotate={2}
-      />
-      <div className="relative z-10">
+    <div className="min-h-screen bg-brand-dark text-white">
+      <SplashCursor />
       <AuroraBackground>
         <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Hero />
@@ -66,7 +52,6 @@ function App() {
         <Footer />
         <PortfolioDock />
       </AuroraBackground>
-      </div>
     </div>
   );
 }

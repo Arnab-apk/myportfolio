@@ -3,13 +3,31 @@ import SectionHeader from "./SectionHeader";
 import AnimatedSection from "./AnimatedSection";
 import VariableProximity from "./VariableProximity";
 import { useRef } from "react";
-import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
 
 const techLogos = [
-  { node: <SiReact className="text-[42px] text-cyan-400 drop-shadow" />, ariaLabel: 'React' },
-  { node: <SiNextdotjs className="text-[42px] text-white drop-shadow" />, ariaLabel: 'Next.js' },
-  { node: <SiTypescript className="text-[42px] text-blue-500 drop-shadow" />, ariaLabel: 'TypeScript' },
-  { node: <SiTailwindcss className="text-[42px] text-sky-400 drop-shadow" />, ariaLabel: 'Tailwind CSS' },
+  { src: '/logos/python-original.svg', ariaLabel: 'Python' },
+  { src: '/logos/java-original.svg', ariaLabel: 'Java' },
+  { src: '/logos/cplusplus-original.svg', ariaLabel: 'C++' },
+  { src: '/logos/csharp-original.svg', ariaLabel: 'C#' },
+  { src: '/logos/tensorflow-original.svg', ariaLabel: 'TensorFlow' },
+  { src: '/logos/opencv-original.svg', ariaLabel: 'OpenCV' },
+  { src: '/logos/numpy-original.svg', ariaLabel: 'NumPy' },
+  { src: '/logos/pandas-original.svg', ariaLabel: 'Pandas' },
+  { src: '/logos/scikitlearn-original.svg', ariaLabel: 'Scikit-learn' },
+  { src: '/logos/unity.svg', ariaLabel: 'Unity' },
+  { src: '/logos/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f626c656e6465722f626c656e6465722d6f726967696e616c2e737667.svg', ariaLabel: 'Blender' },
+  { src: '/logos/android.svg', ariaLabel: 'Android' },
+  { src: '/logos/androidstudio-original.svg', ariaLabel: 'Android Studio' },
+  { src: '/logos/git-original.svg', ariaLabel: 'Git' },
+  { src: '/logos/github-original.svg', ariaLabel: 'GitHub' },
+  { src: '/logos/vscode-original.svg', ariaLabel: 'VS Code' },
+  { src: '/logos/mongodb-original.svg', ariaLabel: 'MongoDB' },
+  { src: '/logos/mysql-original.svg', ariaLabel: 'MySQL' },
+  { src: '/logos/68747470733a2f2f7777772e766563746f726c6f676f2e7a6f6e652f6c6f676f732f66697265626173652f66697265626173652d69636f6e2e737667.svg', ariaLabel: 'Firebase' },
+  { src: '/logos/68747470733a2f2f7777772e766563746f726c6f676f2e7a6f6e652f6c6f676f732f616d617a6f6e5f6177732f616d617a6f6e5f6177732d69636f6e2e737667.svg', ariaLabel: 'AWS' },
+  { src: '/logos/68747470733a2f2f7777772e766563746f726c6f676f2e7a6f6e652f6c6f676f732f676f6f676c655f636c6f75642f676f6f676c655f636c6f75642d69636f6e2e737667.svg', ariaLabel: 'Google Cloud' },
+  { src: '/logos/postman-original.svg', ariaLabel: 'Postman' },
+  { src: '/logos/jupyter-original.svg', ariaLabel: 'Jupyter' },
 ];
 
 // ...existing code... (image-based partner logos removed)
