@@ -27,7 +27,21 @@ const ChatBotWidget = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
-          contents: [{ parts: [{ text: `${input}\n\nRespond in 2-3 concise sentences.` }] }] 
+          contents: [{ parts: [{ text: `You are an AI assistant for Arnab Mandal's portfolio. Context:
+
+PERSONAL: Arnab Mandal - Computer Science Engineering student at Academy of Technology, West Bengal. Email: arnabmandal261@gmail.com, GitHub: github.com/Arnab-apk, LinkedIn: linkedin.com/in/arnab-mandal-00200131a/, WhatsApp: +919830945015
+
+SKILLS: Python, C, C++, Java, JavaScript, Dart, Flutter, Unity 3D, React, Node.js, TensorFlow, PyTorch, OpenCV, NumPy, Pandas, scikit-learn, Git, Linux, Bash
+
+EXPERTISE: AI/ML solutions, AR experiences, full-stack development, computer vision, game development, data science, mobile apps
+
+FOCUS: AI Agents & RAG Systems, AR/Game Development (Unity), Competitive Programming & DSA
+
+PROJECTS: 100 Days of Python, OpenCV (BTA), Google x Kaggle Workshop, ML in Python & R, College Coding (C), Coffee Machine (OOP)
+
+Question: ${input}
+
+Answer in 2-3 concise sentences about Arnab's portfolio.` }] }] 
         })
       });
       const data = await res.json();
