@@ -21,8 +21,75 @@ const ChatBotWidget = () => {
     const userMsg = { from: "user", text: input };
     setMessages(prev => [...prev, userMsg]);
     setInput("");
-    setMessages(msgs => [...msgs, { from: "bot", text: "Connection error. Please try again." }]);
-  }
+
+    try {
+      const res = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            contents: [
+              {
+                parts: [
+                  {
+                    text: `You are a professional portfolio assistant for Arnab Mandal. ONLY answer questions about:
+1. Arnab's technical skills and expertise
+2. His projects and work experience
+3. Technologies he uses (programming languages, frameworks, tools)
+4. His educational background
+5. How to contact him professionally
+
+STRICT RULES:
+- If asked personal questions (age, family, hobbies unrelated to tech), respond: "I can only answer questions about Arnab's professional portfolio and technical expertise. Please ask about his skills, projects, or technologies."
+- Keep answers concise (2-3 sentences max)
+- Be factual and professional
+- Use only the context below
+
+PORTFOLIO CONTEXT:
+Name: Arnab Mandal
+Education: Computer Science Engineering student at Academy of Technology, West Bengal
+Contact: arnabmandal261@gmail.com | GitHub: github.com/Arnab-apk | LinkedIn: linkedin.com/in/arnab-mandal-00200131a/ | WhatsApp: +919830945015
+
+Technical Skills: Python, C, C++, Java, JavaScript, Dart, Flutter, Unity 3D, React, Node.js, TensorFlow, PyTorch, OpenCV, NumPy, Pandas, scikit-learn, Git, Linux, Bash
+
+Expertise Areas:
+- AI & Machine Learning solutions
+- AR/VR experiences with Unity 3D
+- Full-stack web development
+- Computer vision applications
+- Data science and analytics
+- Mobile app development
+
+Current Focus:
+- AI Agents & RAG Systems
+- AR/Game Development
+- Competitive Programming & Data Structures
+
+Notable Projects:
+- 100 Days of Python Course
+- Machine Learning in Python & R
+- Google x Kaggle Workshop
+- AR Prototype with Unity
+- OpenCV Computer Vision projects
+
+User Question: ${input}
+
+Answer (2-3 sentences, professional tone):`
+                  }
+                ]
+              }
+            ]
+          })
+        }
+      );
+      const data = await res.json();
+      const botText = data?.candidates?.[0]?.content?.parts?.[0]?.text || data?.error?.message || "Sorry, I couldn't get a response.";
+      setMessages(msgs => [...msgs, { from: "bot", text: botText }]);
+    } catch (e) {
+      setMessages(msgs => [...msgs, { from: "bot", text: "Connection error. Please try again." }]);
+    }
+  };
 };
 
 return (
