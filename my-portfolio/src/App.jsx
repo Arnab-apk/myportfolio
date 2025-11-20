@@ -75,34 +75,34 @@ function App() {
 
   const projectItems = [
     {
-      image: 'https://picsum.photos/seed/project1/600/600',
-      link: 'https://github.com/arnab-mandal',
-      title: 'AI Assistant',
-      description: 'Next-gen AI powered by neural networks.'
+      image: 'https://picsum.photos/seed/python100days/600/600',
+      link: 'https://github.com/Arnab-apk/100-days-Python-Course',
+      title: '100 Days Python',
+      description: 'A wonderful journey from Python noob to intermediate pro developer.'
     },
     {
-      image: 'https://picsum.photos/seed/project2/600/600',
-      link: 'https://github.com/arnab-mandal',
-      title: 'Crypto Dash',
-      description: 'Real-time cryptocurrency tracking dashboard.'
+      image: 'https://picsum.photos/seed/mlpython/600/600',
+      link: 'https://github.com/Arnab-apk/Machine_Learning_Python-R',
+      title: 'Machine Learning',
+      description: 'Machine Learning projects in Python and R.'
     },
     {
-      image: 'https://picsum.photos/seed/project3/600/600',
-      link: 'https://github.com/arnab-mandal',
-      title: 'E-Commerce',
-      description: 'Full-stack shopping platform with Stripe.'
+      image: 'https://picsum.photos/seed/kaggle/600/600',
+      link: 'https://github.com/Arnab-apk/5-DayGoogleKaggleWS',
+      title: 'Google Kaggle WS',
+      description: '5-Day Google Kaggle Workshop projects and learnings.'
     },
     {
-      image: 'https://picsum.photos/seed/project4/600/600',
-      link: 'https://github.com/arnab-mandal',
-      title: 'Task Master',
-      description: 'Productivity app with drag-and-drop.'
+      image: 'https://picsum.photos/seed/arprototype/600/600',
+      link: 'https://github.com/Arnab-apk/Gentech_Thales_Prototype',
+      title: 'AR Prototype',
+      description: 'Augmented reality application prototype using Unity.'
     },
     {
-      image: 'https://picsum.photos/seed/project5/600/600',
-      link: 'https://github.com/arnab-mandal',
-      title: 'Portfolio V1',
-      description: 'Previous iteration of my personal site.'
+      image: 'https://picsum.photos/seed/portfolio/600/600',
+      link: 'https://github.com/Arnab-apk/myportfolio',
+      title: 'My Portfolio',
+      description: 'Personal portfolio website built with React.'
     }
   ];
 
@@ -133,21 +133,17 @@ function App() {
               title="HIGHLIGHTS"
               containerRef={highlightsRef}
             />
-            <div className="mt-8">
-              <ElectricBorder color="#FFD700" speed={2} chaos={0.5} thickness={2} style={{ borderRadius: '1.5rem' }}>
-                <div className="rounded-3xl bg-brand-card/30 backdrop-blur-md border border-white/10 overflow-hidden">
-                  <EnhancedMagicBento
-                    enableSpotlight={true}
-                    enableStars={true}
-                    enableBorderGlow={true}
-                    enableTilt={true}
-                    clickEffect={true}
-                    enableMagnetism={true}
-                    spotlightRadius={400}
-                    particleCount={20}
-                  />
-                </div>
-              </ElectricBorder>
+            <div className="mt-8 rounded-3xl bg-brand-card/30 backdrop-blur-md border border-white/10 overflow-hidden">
+              <EnhancedMagicBento
+                enableSpotlight={true}
+                enableStars={true}
+                enableBorderGlow={true}
+                enableTilt={true}
+                clickEffect={true}
+                enableMagnetism={true}
+                spotlightRadius={400}
+                particleCount={20}
+              />
             </div>
           </section>
 
