@@ -5,7 +5,7 @@ import { useRef } from "react";
 
 function Expertise() {
   const containerRef = useRef(null);
-  
+
   return (
     <section className="pt-14 sm:pt-20" id="expertise" ref={containerRef}>
       <AnimatedSection animation="fade-up">
@@ -17,9 +17,9 @@ function Expertise() {
       </AnimatedSection>
 
       <AnimatedSection animation="fade-up" delay={100}>
-        <div className="mt-8 rounded-3xl bg-brand-card/30 border border-slate-800 p-6 sm:p-8 backdrop-blur-sm">
+        <div className="mt-8 rounded-3xl bg-brand-card/30 border border-white/10 p-6 sm:p-8 backdrop-blur-sm">
           <div className="overflow-hidden rounded-2xl">
-            <ChromaGrid 
+            <ChromaGrid
               radius={380}
               damping={0.5}
               fadeOut={0.7}
