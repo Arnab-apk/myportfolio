@@ -656,14 +656,15 @@ const EnhancedMagicBento = ({
           @media (max-width: 599px) {
             .card-responsive {
               grid-template-columns: 1fr;
-              width: 92%;
-              margin: 0 auto;
-              padding: 0.5rem;
+              width: 100%;
+              margin: 0;
+              padding: 0;
+              gap: 1rem;
             }
             
             .card-responsive .card {
               width: 100%;
-              min-height: 200px;
+              min-height: 180px;
             }
           }
         `}
@@ -682,9 +683,8 @@ const EnhancedMagicBento = ({
       <BentoCardGrid gridRef={gridRef}>
         <div className="card-responsive grid gap-3">
           {cardData.map((card, index) => {
-            const baseClassName = `card flex flex-col justify-between relative aspect-[4/3] min-h-[220px] w-full max-w-full p-6 rounded-[24px] border-2 border-solid font-light overflow-hidden transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_12px_35px_rgba(0,0,0,0.25)] ${
-              enableBorderGlow ? 'card--border-glow' : ''
-            }`;
+            const baseClassName = `card flex flex-col justify-between relative aspect-[4/3] min-h-[220px] w-full max-w-full p-6 rounded-[24px] border-2 border-solid font-light overflow-hidden transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_12px_35px_rgba(0,0,0,0.25)] ${enableBorderGlow ? 'card--border-glow' : ''
+              }`;
 
             const cardStyle = {
               backgroundColor: card.color || 'var(--background-dark)',
@@ -712,14 +712,14 @@ const EnhancedMagicBento = ({
                 >
                   {/* Gradient background overlay */}
                   <div className={`card__gradient-bg bg-gradient-to-br ${card.gradient}`} />
-                  
+
                   <div className="card__header flex justify-between items-start gap-3 relative text-white z-10">
                     <span className="card__label text-sm font-medium tracking-wide px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
                       {card.label}
                     </span>
                     <span className="card__icon">{card.icon}</span>
                   </div>
-                  
+
                   <div className="card__content flex flex-col relative text-white z-10">
                     <h3 className={`card__title font-semibold text-lg sm:text-xl m-0 mb-2 ${textAutoHide ? 'text-clamp-1' : ''}`}>
                       {card.title}
@@ -742,14 +742,14 @@ const EnhancedMagicBento = ({
               >
                 {/* Gradient background overlay */}
                 <div className={`card__gradient-bg bg-gradient-to-br ${card.gradient}`} />
-                
+
                 <div className="card__header flex justify-between items-start gap-3 relative text-white z-10">
                   <span className="card__label text-sm font-medium tracking-wide px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
                     {card.label}
                   </span>
                   <span className="card__icon">{card.icon}</span>
                 </div>
-                
+
                 <div className="card__content flex flex-col relative text-white z-10">
                   <h3 className={`card__title font-semibold text-lg sm:text-xl m-0 mb-2 ${textAutoHide ? 'text-clamp-1' : ''}`}>
                     {card.title}
