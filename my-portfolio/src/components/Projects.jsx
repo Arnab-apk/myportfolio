@@ -52,7 +52,7 @@ const projects = [
 
 function Projects() {
   const containerRef = useRef(null);
-  
+
   return (
     <section className="pt-14 sm:pt-20" id="projects" ref={containerRef}>
       <AnimatedSection animation="fade-up">
@@ -67,39 +67,57 @@ function Projects() {
         {projects.map((project, idx) => (
           <AnimatedSection key={project.name} animation="scale" delay={idx * 100}>
             <FloatingCard>
-              <div className="relative h-full rounded-3xl border-2 border-slate-800 p-2">
+              <div className="relative h-full rounded-3xl border border-white/10 bg-brand-card/50 backdrop-blur-sm p-1 overflow-hidden group hover:border-brand-yellow/50 transition-colors duration-500">
                 <GlowingEffect
-                  spread={60}
+                  spread={40}
                   glow={true}
                   disabled={false}
-                  proximity={80}
+                  proximity={64}
                   inactiveZone={0.01}
                 />
-                <div className="group bg-brand-card/70 rounded-2xl p-4 sm:p-5 shadow-soft hover:shadow-2xl transition-all duration-500 transform flex flex-col h-full relative overflow-hidden">
-                  <LinkPreview url={project.link} className="font-semibold text-base sm:text-lg mb-2 group-hover:text-brand-yellow transition-colors duration-300 relative z-10">
+                <div className="relative h-full rounded-2xl bg-brand-dark-rich/80 p-6 flex flex-col transition-transform duration-500 group-hover:-translate-y-1">
+                  <div className="flex justify-between items-start mb-4">
+                    <div className="p-3 rounded-xl bg-brand-yellow/10 text-brand-yellow">
+                      {/* Simple icon placeholder based on tag */}
+                      {project.tags[0] === "Python" ? "🐍" : project.tags[0] === "C" ? "💻" : "⚡"}
+                    </div>
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-slate-400 hover:text-brand-yellow transition-colors"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                  </div>
+
+                  <LinkPreview url={project.link} className="font-display font-bold text-xl mb-3 text-white group-hover:text-brand-yellow transition-colors">
                     {project.name}
                   </LinkPreview>
-                  <p className="text-sm sm:text-base text-slate-300 flex-1 relative z-10">
+
+                  <p className="text-sm text-slate-400 leading-relaxed mb-6 flex-1">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-2 mt-3 relative z-10">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-1 rounded-full bg-slate-800 text-xs uppercase tracking-wide text-slate-200 group-hover:bg-slate-700 transition-colors duration-300"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-xs font-medium text-slate-300 group-hover:border-brand-yellow/20 transition-colors"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="absolute inset-0 z-0"
+                    aria-label={`Visit ${project.name} on GitHub`}
+                  />
                 </div>
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="absolute inset-0 z-0"
-                  aria-label={`Visit ${project.name} on GitHub`}
-                />
-              </div>
               </div>
             </FloatingCard>
           </AnimatedSection>

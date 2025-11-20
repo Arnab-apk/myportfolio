@@ -6,7 +6,7 @@ import { useRef } from "react";
 
 function Hero() {
   const heroRef = useRef(null);
-  
+
   const handleContactClick = () => {
     const el = document.getElementById("contact");
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -16,113 +16,90 @@ function Hero() {
     <section
       id="hero"
       ref={heroRef}
-      className="relative pt-12 pb-16 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28"
+      className="relative pt-20 pb-20 sm:pt-32 sm:pb-32 lg:pt-40 lg:pb-40 min-h-[90vh] flex items-center"
     >
-      <div className="grid gap-8 lg:gap-10 lg:grid-cols-[1.6fr,1fr] items-center">
-        <div className="space-y-4 sm:space-y-6">
-          <p className="text-[10px] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.3em] text-brand-yellow mb-2 sm:mb-3">
-            Computer Science Engineer · AI & AR Developer
-          </p>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-3 sm:mb-4">
-            <span className="block mb-1 sm:mb-2">
-              <VariableProximity
-                label="Hi, I'm"
-                fromFontVariationSettings="'wght' 700, 'wdth' 100"
-                toFontVariationSettings="'wght' 900, 'wdth' 125"
-                containerRef={heroRef}
-                radius={100}
-                falloff="gaussian"
-                style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
-              />
-            </span>
-            <span className="gradient-text drop-shadow-lg block">
-              <VariableProximity
-                label="Arnab Mandal"
-                fromFontVariationSettings="'wght' 800, 'wdth' 100"
-                toFontVariationSettings="'wght' 900, 'wdth' 125"
-                containerRef={heroRef}
-                radius={120}
-                falloff="gaussian"
-                style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
-              />
-            </span>
-            <div className="block">
-              <TextType
-                text={["Building intelligent & immersive experiences.", "AI, AR, and Full Stack Development.", "Let's create something exceptional."]}
-                as="span"
-                typingSpeed={38}
-                deletingSpeed={22}
-                pauseDuration={1700}
-                initialDelay={400}
-                loop={true}
-                className="text-slate-300 text-lg sm:text-xl md:text-2xl font-normal mt-2 sm:mt-3"
-                showCursor={true}
-                cursorCharacter="|"
-                cursorClassName="text-brand-yellow"
-                textColors={["#facc15", "#38bdf8", "#a3e635"]}
-                variableSpeed={{ min: 28, max: 55 }}
-              />
-            </div>
-          </h1>
+      <div className="grid gap-12 lg:gap-16 lg:grid-cols-[1.5fr,1fr] items-center w-full">
+        <div className="space-y-8 relative z-10">
+          <div className="space-y-2">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.3em] text-brand-yellow animate-fade-in">
+              Computer Science Engineer
+            </p>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-tight tracking-tight text-white">
+              <span className="block mb-2">
+                Hi, I'm
+              </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow via-yellow-200 to-brand-yellow drop-shadow-lg block">
+                Arnab Mandal
+              </span>
+            </h1>
+          </div>
 
-          <p className="text-slate-300 max-w-xl mb-4 sm:mb-6 text-xs sm:text-sm md:text-base leading-relaxed animate-[fadeIn_1s_ease-out_0.4s_both]">
-            Currently pursuing Computer Science Engineering at{" "}
-            <span className="font-semibold">
-              Academy of Technology
-            </span>
-            . I specialize in developing AI/ML solutions, AR experiences, and scalable full-stack applications that solve real-world problems.
-          </p>
+          <div className="max-w-2xl">
+            <TextType
+              text={["Building intelligent & immersive experiences.", "AI, AR, and Full Stack Development.", "Let's create something exceptional."]}
+              as="p"
+              typingSpeed={40}
+              deletingSpeed={20}
+              pauseDuration={2000}
+              initialDelay={500}
+              loop={true}
+              className="text-slate-400 text-lg sm:text-xl md:text-2xl font-light leading-relaxed"
+              showCursor={true}
+              cursorCharacter="|"
+              cursorClassName="text-brand-yellow"
+              textColors={["#e2e8f0", "#e2e8f0", "#e2e8f0"]}
+            />
+          </div>
 
-          <div className="flex flex-row flex-wrap gap-3 sm:gap-3 animate-[fadeIn_1.2s_ease-out_0.6s_both]">
+          <div className="flex flex-row flex-wrap gap-4 pt-4 animate-slide-up" style={{ animationDelay: '0.4s' }}>
             <GlassSurface
-              width="auto"
-              height="auto"
-              borderRadius={30}
-              backgroundOpacity={0.12}
-              blur={16}
-              saturation={1.4}
-              className="inline-flex flex-shrink-0"
+              borderRadius={9999}
+              backgroundOpacity={0.1}
+              blur={20}
+              className="inline-flex"
             >
               <button
                 onClick={() => {
                   const el = document.getElementById("projects");
                   if (el) el.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-full bg-white/10 text-white text-xs sm:text-sm font-semibold backdrop-blur-sm border border-white/20 hover:bg-white/20 hover:-translate-y-[2px] hover:scale-105 transition-all duration-300 whitespace-nowrap"
+                className="px-8 py-4 rounded-full bg-white text-brand-dark font-bold text-sm hover:bg-brand-yellow transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,215,0,0.3)]"
               >
                 View Projects
               </button>
             </GlassSurface>
+
             <GlassSurface
-              width="auto"
-              height="auto"
-              borderRadius={30}
-              backgroundOpacity={0.08}
-              blur={14}
-              saturation={1.2}
-              className="inline-flex flex-shrink-0"
+              borderRadius={9999}
+              backgroundOpacity={0.05}
+              blur={10}
+              className="inline-flex"
             >
               <button
                 onClick={handleContactClick}
-                className="px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-full text-xs sm:text-sm text-white/90 hover:text-white hover:-translate-y-[2px] transition-all duration-300 whitespace-nowrap"
+                className="px-8 py-4 rounded-full text-white border border-white/20 font-medium text-sm hover:bg-white/10 hover:border-white/40 transition-all duration-300"
               >
-                Let&apos;s Collaborate
+                Let's Collaborate
               </button>
             </GlassSurface>
           </div>
         </div>
 
         {/* 3D Holographic Profile Card */}
-        <div className="flex justify-center">
-          <ProfileCard
-            avatarUrl="/arnab.jpg"
-            name="Arnab Mandal"
-            title="Tech Enthusiast"
-            handle="arnab_mandal"
-            status=""
-            showUserInfo={true}
-            onContactClick={handleContactClick}
-          />
+        <div className="flex justify-center lg:justify-end relative z-10 perspective-1000">
+          <div className="relative w-full max-w-md aspect-square">
+            {/* Decorative glow behind profile */}
+            <div className="absolute inset-0 bg-brand-yellow/20 blur-[100px] rounded-full opacity-50 animate-pulse" />
+            <ProfileCard
+              avatarUrl="/arnab.jpg"
+              name="Arnab Mandal"
+              title="Tech Enthusiast"
+              handle="arnab_mandal"
+              status=""
+              showUserInfo={true}
+              onContactClick={handleContactClick}
+            />
+          </div>
         </div>
       </div>
     </section>
