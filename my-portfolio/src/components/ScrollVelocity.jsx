@@ -101,9 +101,9 @@ export const ScrollVelocity = ({
     const spans = [];
     for (let i = 0; i < (numCopies ?? 1); i++) {
       spans.push(
-        <span 
-          className={`flex-shrink-0 ${className}`} 
-          key={i} 
+        <span
+          className={`flex-shrink-0 ${className}`}
+          key={i}
           ref={i === 0 ? copyRef : null}
         >
           {children}
@@ -112,8 +112,8 @@ export const ScrollVelocity = ({
     }
 
     return (
-      <div 
-        className={`${parallaxClassName} relative overflow-hidden`} 
+      <div
+        className={`${parallaxClassName} relative overflow-hidden`}
         style={parallaxStyle}
       >
         <motion.div
@@ -129,7 +129,7 @@ export const ScrollVelocity = ({
   // Variant styles
   const variantStyles = {
     gradient: 'bg-gradient-to-r from-brand-yellow via-orange-500 to-brand-yellow bg-clip-text text-transparent',
-    outline: 'text-transparent [-webkit-text-stroke:2px_theme(colors.brand.yellow)] hover:[-webkit-text-stroke:2px_theme(colors.orange.500)] transition-all duration-500',
+    outline: 'text-transparent [-webkit-text-stroke:2px_theme(colors.brand-yellow)] hover:[-webkit-text-stroke:2px_theme(colors.orange.500)] transition-all duration-500',
     glow: 'text-brand-yellow drop-shadow-[0_0_20px_rgba(255,212,0,0.5)] hover:drop-shadow-[0_0_30px_rgba(255,212,0,0.8)] transition-all duration-300',
     minimal: 'text-slate-200 hover:text-brand-yellow transition-colors duration-500'
   };
@@ -140,7 +140,7 @@ export const ScrollVelocity = ({
     <section className="relative py-8 sm:py-12 md:py-16">
       {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-dark/50 to-transparent pointer-events-none" />
-      
+
       <div className="relative space-y-4 sm:space-y-6">
         {texts.map((text, index) => (
           <VelocityText
@@ -165,7 +165,7 @@ export const ScrollVelocity = ({
           </VelocityText>
         ))}
       </div>
-      
+
       {/* Bottom fade effect */}
       <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-brand-dark to-transparent pointer-events-none" />
     </section>

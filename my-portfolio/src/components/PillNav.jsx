@@ -1,67 +1,59 @@
-import { useRef, useState } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-
-const DockIcon = ({ mouseX, item, isActive }) => {
-  const ref = useRef(null);
-
-  const distance = useTransform(mouseX, (val) => {
-    const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
-    return val - bounds.x - bounds.width / 2;
-  });
-
-  const widthSync = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
-  const width = useSpring(widthSync, { mass: 0.1, stiffness: 150, damping: 12 });
-
-  return (
-    <motion.li
-      ref={ref}
-      style={{ width }}
-      className="aspect-square rounded-full flex items-center justify-center relative group cursor-pointer"
-    >
-      <a
-        href={item.href}
-        className={`w-full h-full rounded-full flex items-center justify-center transition-all duration-300 ${isActive
-            ? "bg-brand-yellow text-brand-dark shadow-[0_0_20px_rgba(255,215,0,0.5)]"
-            : "bg-white/10 text-slate-400 hover:bg-white/20 hover:text-white"
-          }`}
-      >
-        {/* You might want to add icons to your navItems prop for a true dock experience */}
-        <span className={`text-[10px] font-bold ${isActive ? "scale-110" : "scale-100"}`}>
-          {item.label.substring(0, 2).toUpperCase()}
-        </span>
-      </a>
-
-      {/* Tooltip */}
-      <span className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-brand-card border border-slate-800 rounded-md text-xs text-slate-200 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-        {item.label}
-      </span>
-
-      {isActive && (
-        <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-brand-yellow" />
-      )}
-    </motion.li>
-  );
-};
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { IconMenu2, IconX } from "@tabler/icons-react";
 
 const PillNav = ({ items = [], activeHref = '' }) => {
-  const mouseX = useMotionValue(Infinity);
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Close menu when clicking outside or scrolling
+  useEffect(() => {
+    const handleScroll = () => setIsOpen(false);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[1000]">
-      <motion.ul
-        onMouseMove={(e) => mouseX.set(e.pageX)}
-        onMouseLeave={() => mouseX.set(Infinity)}
-        className="flex items-end gap-3 px-4 py-3 rounded-2xl bg-brand-dark-rich/80 backdrop-blur-xl border border-white/10 shadow-2xl"
+    <nav className="fixed top-6 right-6 z-[1000]">
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => setIsOpen(!isOpen)}
+        className="p-3 rounded-full bg-brand-dark-rich/80 backdrop-blur-xl border border-white/10 text-white shadow-lg hover:bg-brand-yellow hover:text-brand-dark transition-colors duration-300"
       >
-        {items.map((item) => (
-          <DockIcon
-            key={item.href}
-            mouseX={mouseX}
-            item={item}
-            isActive={activeHref === item.href}
-          />
-        ))}
-      </motion.ul>
+        {isOpen ? <IconX size={24} /> : <IconMenu2 size={24} />}
+      </motion.button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: -10, originX: 1, originY: 0 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="absolute top-14 right-0 w-56 p-2 rounded-2xl bg-brand-dark-rich/90 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col gap-1"
+          >
+            {items.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+                className={`px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 flex items-center justify-between group ${activeHref === item.href
+                    ? "bg-brand-yellow text-brand-dark"
+                    : "text-slate-300 hover:bg-white/10 hover:text-white"
+                  }`}
+              >
+                {item.label}
+                {activeHref === item.href && (
+                  <motion.span
+                    layoutId="activeDot"
+                    className="w-1.5 h-1.5 rounded-full bg-brand-dark"
+                  />
+                )}
+              </a>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
