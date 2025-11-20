@@ -86,7 +86,7 @@ function Hero() {
         </div>
 
         {/* 3D Holographic Profile Card */}
-        <div className="flex justify-center lg:justify-end relative z-10 perspective-1000 order-1 lg:order-2 mb-6 lg:mb-0">
+        <div className="flex justify-center relative z-10 perspective-1000 order-1 lg:order-2 mb-6 lg:mb-0">
           <div className="relative w-64 sm:w-80 md:w-full max-w-md aspect-square">
             {/* Decorative glow behind profile */}
             <div className="absolute inset-0 bg-brand-yellow/20 blur-[60px] sm:blur-[100px] rounded-full opacity-50 animate-pulse" />
