@@ -19,7 +19,7 @@ function Hero() {
       className="relative pt-24 pb-12 sm:pt-32 sm:pb-32 lg:pt-40 lg:pb-40 min-h-[85vh] flex items-center"
     >
       <div className="grid gap-8 lg:gap-16 lg:grid-cols-[1.5fr,1fr] items-center w-full">
-        <div className="space-y-6 sm:space-y-8 relative z-10 order-2 lg:order-1">
+        <div className="space-y-6 sm:space-y-8 relative z-10 order-2 lg:order-1 text-center lg:text-left">
           <div className="space-y-2">
             <p className="text-[10px] sm:text-sm font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em] text-brand-yellow animate-fade-in">
               Computer Science Engineer
@@ -34,7 +34,7 @@ function Hero() {
             </h1>
           </div>
 
-          <div className="max-w-2xl">
+          <div className="max-w-2xl mx-auto lg:mx-0">
             <TextType
               text={["Building intelligent & immersive experiences.", "AI, AR, and Full Stack Development.", "Let's create something exceptional."]}
               as="p"
@@ -51,7 +51,7 @@ function Hero() {
             />
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4 animate-slide-up justify-center lg:justify-start" style={{ animationDelay: '0.4s' }}>
             <GlassSurface
               borderRadius={9999}
               backgroundOpacity={0.1}
