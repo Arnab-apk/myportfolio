@@ -133,6 +133,20 @@ function App() {
               title="HIGHLIGHTS"
               containerRef={highlightsRef}
             />
+
+            {/* Carousel for Achievements */}
+            <div className="mt-8 flex justify-center">
+              <Carousel
+                items={highlightItems}
+                baseWidth={350}
+                autoplay={true}
+                autoplayDelay={3500}
+                pauseOnHover={true}
+                loop={true}
+              />
+            </div>
+
+            {/* Magic Bento Grid */}
             <div className="mt-8 rounded-3xl bg-brand-card/30 backdrop-blur-md border border-white/10 overflow-hidden">
               <EnhancedMagicBento
                 enableSpotlight={true}
