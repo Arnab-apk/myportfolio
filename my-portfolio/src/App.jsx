@@ -94,6 +94,12 @@ function App() {
 
   const projectItems = [
     {
+      image: '/arnab.jpg',
+      link: 'https://github.com/Arnab-apk/myportfolio',
+      title: 'My Portfolio',
+      description: 'Personal portfolio website built with React.'
+    },
+    {
       image: 'https://picsum.photos/seed/python100days/600/600',
       link: 'https://github.com/Arnab-apk/100-days-Python-Course',
       title: '100 Days Python',
@@ -116,12 +122,6 @@ function App() {
       link: 'https://github.com/Arnab-apk/Gentech_Thales_Prototype',
       title: 'AR Prototype',
       description: 'Augmented reality application prototype using Unity.'
-    },
-    {
-      image: 'https://picsum.photos/seed/portfolio/600/600',
-      link: 'https://github.com/Arnab-apk/myportfolio',
-      title: 'My Portfolio',
-      description: 'Personal portfolio website built with React.'
     }
   ];
 
