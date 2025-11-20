@@ -95,7 +95,7 @@ function App() {
 
   const projectItems = [
     {
-      image: '/arnab.jpg',
+      image: '/portfolio-project.png',
       link: 'https://github.com/Arnab-apk/myportfolio',
       title: 'My Portfolio',
       description: 'Personal portfolio website built with React.'
