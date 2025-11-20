@@ -1,140 +1,111 @@
 import React, { useState, useRef, useEffect } from "react";
 
+// Static portfolio context (not sent if question is unrelated)
+const PORTFOLIO_CONTEXT = `Name: Arnab Mandal\nEducation: Computer Science Engineering student at Academy of Technology, West Bengal\nPublic Contacts: Email (arnabmandal261@gmail.com), GitHub (github.com/Arnab-apk), LinkedIn (linkedin.com/in/arnab-mandal-00200131a/)\nSkills: Python, C, C++, Java, JavaScript, Dart, Flutter, Unity 3D, React, Node.js, TensorFlow, PyTorch, OpenCV, NumPy, Pandas, scikit-learn, Git, Linux, Bash\nExpertise: AI/ML, AR/VR (Unity), Full-stack Web, Computer Vision, Data Science, Mobile Apps\nFocus: AI Agents & RAG, AR/Game Dev, Competitive Programming & DSA\nProjects: 100 Days of Python, ML in Python & R, Google x Kaggle Workshop, OpenCV CV projects, Coffee Machine (OOP), College Coding (C)`;
+
+// Simple heuristic for non-portfolio queries
+const UNRELATED_PATTERNS = [
+  /age|old are you|birthday/i,
+  /family|parents|mother|father|sister|brother/i,
+  /address|where do you live|location/i,
+  /salary|income|pay/i,
+  /religion|politics|belief|married|single/i,
+  /hobby|hobbies|favourite|favorite/i,
+  /tell.*joke|joke|funny/i,
+  /write .*code|solve .*math|equation|calculate/i
+];
+
 const ChatBotWidget = () => {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { from: "bot", text: "Hi! How can I help you today?" },
+    { from: "bot", text: "Hi! Ask me about Arnab's skills, projects, or tech." },
   ]);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef(null);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  const scrollToBottom = () => messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  useEffect(scrollToBottom, [messages]);
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+  const isUnrelated = (text) => UNRELATED_PATTERNS.some(r => r.test(text));
 
   const handleSend = async () => {
-    if (!input.trim()) return;
-    const userMsg = { from: "user", text: input };
-    setMessages(prev => [...prev, userMsg]);
+    const question = input.trim();
+    if (!question) return;
+    setMessages(prev => [...prev, { from: "user", text: question }]);
     setInput("");
 
+    // Fast local guard for unrelated queries
+    if (isUnrelated(question)) {
+      setMessages(prev => [...prev, { from: "bot", text: "I only answer portfolio-related questions: skills, projects, technologies, education, or professional contact." }]);
+      return;
+    }
+
     try {
-      const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`,
+      const bodyPrompt = `You are Arnab's portfolio assistant. ONLY answer portfolio-related queries. Be concise (max 2 sentences, <200 characters). If question is unrelated, reply: 'I only answer portfolio-related questions.'\n\nContext:\n${PORTFOLIO_CONTEXT}\n\nUser Question: ${question}\nAnswer:`;
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            contents: [
-              {
-                parts: [
-                  {
-                    text: `You are a professional portfolio assistant for Arnab Mandal. ONLY answer questions about:
-1. Arnab's technical skills and expertise
-2. His projects and work experience
-3. Technologies he uses (programming languages, frameworks, tools)
-4. His educational background
-5. How to contact him professionally
-
-STRICT RULES:
-- If asked personal questions (age, family, hobbies unrelated to tech), respond: "I can only answer questions about Arnab's professional portfolio and technical expertise. Please ask about his skills, projects, or technologies."
-- Keep answers concise (2-3 sentences max)
-- Be factual and professional
-- Use only the context below
-
-PORTFOLIO CONTEXT:
-Name: Arnab Mandal
-Education: Computer Science Engineering student at Academy of Technology, West Bengal
-Contact: arnabmandal261@gmail.com | GitHub: github.com/Arnab-apk | LinkedIn: linkedin.com/in/arnab-mandal-00200131a/ | WhatsApp: +919830945015
-
-Technical Skills: Python, C, C++, Java, JavaScript, Dart, Flutter, Unity 3D, React, Node.js, TensorFlow, PyTorch, OpenCV, NumPy, Pandas, scikit-learn, Git, Linux, Bash
-
-Expertise Areas:
-- AI & Machine Learning solutions
-- AR/VR experiences with Unity 3D
-- Full-stack web development
-- Computer vision applications
-- Data science and analytics
-- Mobile app development
-
-Current Focus:
-- AI Agents & RAG Systems
-- AR/Game Development
-- Competitive Programming & Data Structures
-
-Notable Projects:
-- 100 Days of Python Course
-- Machine Learning in Python & R
-- Google x Kaggle Workshop
-- AR Prototype with Unity
-- OpenCV Computer Vision projects
-
-User Question: ${input}
-
-Answer (2-3 sentences, professional tone):`
-                  }
-                ]
-              }
-            ]
-          })
-        }
-      );
+          body: JSON.stringify({ contents: [{ parts: [{ text: bodyPrompt }] }] })
+        });
       const data = await res.json();
-      const botText = data?.candidates?.[0]?.content?.parts?.[0]?.text || data?.error?.message || "Sorry, I couldn't get a response.";
-      setMessages(msgs => [...msgs, { from: "bot", text: botText }]);
-    } catch (e) {
-      setMessages(msgs => [...msgs, { from: "bot", text: "Connection error. Please try again." }]);
+      let botText = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, no response.";
+      // Enforce concise length client-side as fallback
+      botText = botText.replace(/\s+/g, ' ').trim();
+      if (botText.length > 200) botText = botText.slice(0, 197).replace(/[,;:]+$/,'').trim() + '...';
+      // If model ignored instruction and answered unrelated
+      if (isUnrelated(botText) || /I can'?t|unrelated/i.test(botText)) {
+        botText = "I only answer portfolio-related questions.";
+      }
+      setMessages(prev => [...prev, { from: "bot", text: botText }]);
+    } catch {
+      setMessages(prev => [...prev, { from: "bot", text: "Connection error. Try again." }]);
     }
   };
-};
 
-return (
-  <div>
-    <button
-      className="fixed bottom-6 right-6 z-[1200] bg-yellow-400 text-black rounded-full shadow-lg p-4 hover:bg-yellow-300 transition-all"
-      onClick={() => setOpen((o) => !o)}
-      aria-label="Open chat bot"
-    >
-      <span role="img" aria-label="Chat">💬</span>
-    </button>
-    {open && (
-      <div className="fixed bottom-24 right-6 w-80 max-w-[90vw] bg-white text-black rounded-2xl shadow-2xl z-[1200] flex flex-col overflow-hidden animate-fadeIn">
-        <div className="bg-yellow-400 px-4 py-2 font-bold">ChatBot</div>
-        <div className="flex-1 p-3 overflow-y-auto" style={{ maxHeight: 320 }}>
-          {messages.map((msg, i) => (
-            <div key={i} className={`mb-2 flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
-              <div className={`px-3 py-2 rounded-xl max-w-[80%] ${msg.from === "user" ? "bg-yellow-100" : "bg-gray-200"}`}>{msg.text}</div>
-            </div>
-          ))}
-          <div ref={messagesEndRef} />
+  return (
+    <div>
+      <button
+        className="fixed bottom-6 right-6 z-[1200] bg-yellow-400 text-black rounded-full shadow-lg p-4 hover:bg-yellow-300 transition-all"
+        onClick={() => setOpen(o => !o)}
+        aria-label="Open chat bot"
+      >
+        <span role="img" aria-label="Chat">💬</span>
+      </button>
+      {open && (
+        <div className="fixed bottom-24 right-6 w-80 max-w-[90vw] bg-white text-black rounded-2xl shadow-2xl z-[1200] flex flex-col overflow-hidden animate-fadeIn">
+          <div className="bg-yellow-400 px-4 py-2 font-bold">ChatBot</div>
+          <div className="flex-1 p-3 overflow-y-auto" style={{ maxHeight: 320 }}>
+            {messages.map((msg, i) => (
+              <div key={i} className={`mb-2 flex ${msg.from === 'user' ? 'justify-end' : 'justify-start'}`}>
+                <div className={`px-3 py-2 rounded-xl max-w-[80%] ${msg.from === 'user' ? 'bg-yellow-100' : 'bg-gray-200'}`}>{msg.text}</div>
+              </div>
+            ))}
+            <div ref={messagesEndRef} />
+          </div>
+          <div className="flex border-t border-gray-200">
+            <input
+              className="flex-1 px-3 py-2 outline-none"
+              value={input}
+              onChange={e => setInput(e.target.value)}
+              onKeyDown={e => e.key === 'Enter' && handleSend()}
+              placeholder="Ask about skills, projects..."
+            />
+            <button
+              className="px-4 py-2 bg-yellow-400 hover:bg-yellow-300 transition-all font-bold"
+              onClick={handleSend}
+            >
+              Send
+            </button>
+          </div>
         </div>
-        <div className="flex border-t border-gray-200">
-          <input
-            className="flex-1 px-3 py-2 outline-none"
-            value={input}
-            onChange={e => setInput(e.target.value)}
-            onKeyDown={e => e.key === "Enter" && handleSend()}
-            placeholder="Type a message..."
-          />
-          <button
-            className="px-4 py-2 bg-yellow-400 hover:bg-yellow-300 transition-all font-bold"
-            onClick={handleSend}
-          >
-            Send
-          </button>
-        </div>
-      </div>
-    )}
-    <style>{`
+      )}
+      <style>{`
         .animate-fadeIn { animation: fadeIn 0.25s; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
       `}</style>
-  </div>
-);
+    </div>
+  );
 };
 
 export default ChatBotWidget;
