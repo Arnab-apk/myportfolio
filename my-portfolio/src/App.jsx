@@ -184,7 +184,7 @@ function App() {
             <section className="pt-14 sm:pt-20" id="highlights" ref={highlightsRef}>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
                 {/* Highlights Carousel */}
-                <div>
+                <div className="min-h-[400px]">
                   <SectionHeader
                     id="highlights"
                     title="HIGHLIGHTS"
@@ -203,7 +203,7 @@ function App() {
                 </div>
 
                 {/* Expertise Carousel */}
-                <div id="expertise">
+                <div id="expertise" className="min-h-[400px]">
                   <Expertise />
                 </div>
               </div>
