@@ -47,7 +47,7 @@ function App() {
     { label: "Expertise", href: "#expertise" },
     { label: "Contact", href: "#contact" },
   ];
-  
+
   return (
     <div className="min-h-screen bg-brand-dark text-white">
       <PillNav
@@ -75,8 +75,8 @@ function App() {
               title="HIGHLIGHTS"
               containerRef={highlightsRef}
             />
-            <div className="mt-8 rounded-3xl bg-brand-card/40 border border-slate-800 overflow-hidden">
-              <EnhancedMagicBento 
+            <div className="mt-8 rounded-3xl bg-brand-card/30 backdrop-blur-md border border-white/10 overflow-hidden">
+              <EnhancedMagicBento
                 enableSpotlight={true}
                 enableStars={true}
                 enableBorderGlow={true}
