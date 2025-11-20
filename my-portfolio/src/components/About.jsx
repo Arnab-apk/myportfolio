@@ -1,6 +1,6 @@
 import SectionHeader from "./SectionHeader";
 import AnimatedSection from "./AnimatedSection";
-import VariableProximity from "./VariableProximity";
+import BentoCard from "./BentoCard";
 import { useRef } from "react";
 
 function About() {
@@ -18,7 +18,7 @@ function About() {
 
       <div className="grid gap-6 lg:grid-cols-[1.4fr,1fr]">
         <AnimatedSection animation="fade-right" delay={100}>
-          <div className="bg-brand-card/30 backdrop-blur-md border border-white/10 rounded-3xl p-6 sm:p-8 hover:border-brand-yellow/30 transition-all duration-500 hover:-translate-y-1 h-full">
+          <BentoCard className="p-6 sm:p-8 hover:-translate-y-1 transition-transform duration-500 h-full">
             <h3 className="font-display font-bold text-xl sm:text-2xl mb-5 text-white">
               Building at the intersection of AI, AR, and Web
             </h3>
@@ -36,12 +36,12 @@ function About() {
             <p className="text-base sm:text-lg text-slate-400 leading-relaxed mt-4">
               When I&apos;m not coding, I&apos;m making music or exploring creative design. This mindset influences everything I build — clean architecture, thoughtful interactions, and scalable systems.
             </p>
-          </div>
+          </BentoCard>
         </AnimatedSection>
 
         <div className="flex flex-col gap-4">
           <AnimatedSection animation="fade-left" delay={200}>
-            <div className="bg-brand-card/30 backdrop-blur-md border border-white/10 rounded-3xl p-6 hover:border-brand-yellow/30 transition-all duration-500 hover:-translate-y-1">
+            <BentoCard className="p-6 hover:-translate-y-1 transition-transform duration-500">
               <p className="font-display font-bold text-white mb-3 text-lg sm:text-xl">
                 Current Focus
               </p>
@@ -59,18 +59,29 @@ function About() {
                   <span>Competitive Programming & DSA</span>
                 </li>
               </ul>
-            </div>
+            </BentoCard>
           </AnimatedSection>
 
           <AnimatedSection animation="fade-left" delay={300}>
-            <div className="bg-brand-card/30 backdrop-blur-md border border-white/10 rounded-3xl p-6 hover:border-brand-yellow/30 transition-all duration-500 hover:-translate-y-1 h-full">
+            <BentoCard className="p-6 hover:-translate-y-1 transition-transform duration-500">
               <p className="font-display font-bold text-white mb-3 text-lg sm:text-xl">
-                Open To
+                Beyond Code
               </p>
-              <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
-                Internships, collaborations, and tech discussions. Always happy to connect and share knowledge.
-              </p>
-            </div>
+              <ul className="space-y-3 text-sm sm:text-base text-slate-400">
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-yellow" />
+                  <span>Music Production & Sound Design</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-yellow" />
+                  <span>UI/UX Design Exploration</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-yellow" />
+                  <span>Tech Community Building</span>
+                </li>
+              </ul>
+            </BentoCard>
           </AnimatedSection>
         </div>
       </div>
