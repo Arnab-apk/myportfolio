@@ -163,7 +163,7 @@ const GooeyNav = ({
             position: absolute;
             inset: -75px;
             z-index: -2;
-            background: #030508;
+            background: transparent;
           }
           .effect.filter::after {
             content: "";
