@@ -139,15 +139,15 @@ function App() {
       </div>
 
       {/* Hero Section - InfiniteMenu Full Viewport */}
-      <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center">
+      <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center pt-24">
         <AuroraBackground>
-          <div className="w-full h-screen flex flex-col items-center justify-center px-4">
+          <div className="w-full h-screen flex flex-col items-center justify-center px-4 pt-20">
             {/* Title */}
-            <div className="text-center mb-12 sm:mb-16 animate-fade-in space-y-4 sm:space-y-6">
+            <div className="text-center mb-12 sm:mb-16 animate-fade-in space-y-4 sm:space-y-6 relative z-10">
               <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.3em] text-brand-yellow">
                 Computer Science Engineer
               </p>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white drop-shadow-lg">
                 Arnab Mandal
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-slate-400">
@@ -180,40 +180,47 @@ function App() {
             <TechStack />
             <Skills />
 
-            {/* Highlights */}
-            <section className="pt-14 sm:pt-20" id="highlights" ref={highlightsRef}>
-              <SectionHeader
-                id="highlights"
-                title="HIGHLIGHTS"
-                containerRef={highlightsRef}
-              />
-
-              <div className="mt-8 flex justify-center">
-                <Carousel
-                  items={highlightItems}
-                  baseWidth={350}
-                  autoplay={true}
-                  autoplayDelay={3500}
-                  pauseOnHover={true}
-                  loop={true}
+            {/* Highlights & Expertise Side by Side */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 pt-14 sm:pt-20">
+              {/* Highlights */}
+              <section id="highlights" ref={highlightsRef}>
+                <SectionHeader
+                  id="highlights"
+                  title="HIGHLIGHTS"
+                  containerRef={highlightsRef}
                 />
-              </div>
 
-              <div className="mt-8 rounded-3xl bg-brand-card/30 backdrop-blur-md border border-white/10 overflow-hidden">
-                <EnhancedMagicBento
-                  enableSpotlight={true}
-                  enableStars={true}
-                  enableBorderGlow={true}
-                  enableTilt={true}
-                  clickEffect={true}
-                  enableMagnetism={true}
-                  spotlightRadius={400}
-                  particleCount={20}
-                />
-              </div>
-            </section>
+                <div className="mt-8 flex justify-center">
+                  <Carousel
+                    items={highlightItems}
+                    baseWidth={350}
+                    autoplay={true}
+                    autoplayDelay={3500}
+                    pauseOnHover={true}
+                    loop={true}
+                  />
+                </div>
 
-            <Expertise />
+                <div className="mt-8 rounded-3xl bg-brand-card/30 backdrop-blur-md border border-white/10 overflow-hidden">
+                  <EnhancedMagicBento
+                    enableSpotlight={true}
+                    enableStars={true}
+                    enableBorderGlow={true}
+                    enableTilt={true}
+                    clickEffect={true}
+                    enableMagnetism={true}
+                    spotlightRadius={400}
+                    particleCount={20}
+                  />
+                </div>
+              </section>
+
+              {/* Expertise */}
+              <section id="expertise">
+                <Expertise />
+              </section>
+            </div>
+
             <Contact />
           </main>
           <Footer />
