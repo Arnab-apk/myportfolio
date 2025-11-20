@@ -960,54 +960,34 @@ export default function InfiniteMenu({ items = [] }) {
 
             {activeItem && (
                 <>
-                    <h2
+                    <div
                         className={`
           select-none
           absolute
-          font-black
-          text-[1.5rem] sm:text-[2.5rem] md:text-[3rem]
-          left-[5%]
+          left-1/2
           top-1/2
           transform
+          -translate-x-1/2
           -translate-y-1/2
           transition-all
           ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
-          text-white
-          drop-shadow-lg
           z-10
           pointer-events-none
-          max-w-[40%]
+          text-center
+          max-w-[80%]
           ${isMoving
                                 ? 'opacity-0 duration-[100ms]'
                                 : 'opacity-100 duration-[500ms]'
                             }
         `}
                     >
-                        {activeItem.title}
-                    </h2>
-
-                    <p
-                        className={`
-          select-none
-          absolute
-          max-w-[35%]
-          text-[0.875rem] sm:text-[1rem] md:text-[1.25rem]
-          top-1/2
-          right-[5%]
-          transition-all
-          ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
-          text-slate-200
-          text-right
-          z-10
-          pointer-events-none
-          ${isMoving
-                                ? 'opacity-0 duration-[100ms] -translate-y-1/2'
-                                : 'opacity-100 duration-[500ms] -translate-y-1/2'
-                            }
-        `}
-                    >
-                        {activeItem.description}
-                    </p>
+                        <h2 className="font-black text-[1.5rem] sm:text-[2.5rem] md:text-[3rem] text-white drop-shadow-lg mb-2 sm:mb-4">
+                            {activeItem.title}
+                        </h2>
+                        <p className="text-[0.875rem] sm:text-[1rem] md:text-[1.25rem] text-slate-200">
+                            {activeItem.description}
+                        </p>
+                    </div>
 
                     <div
                         onClick={handleButtonClick}
