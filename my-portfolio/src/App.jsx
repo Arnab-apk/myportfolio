@@ -143,20 +143,20 @@ function App() {
         <AuroraBackground>
           <div className="w-full h-screen flex flex-col items-center justify-center px-4">
             {/* Title */}
-            <div className="text-center mb-8 animate-fade-in">
-              <p className="text-sm sm:text-base font-bold uppercase tracking-[0.3em] text-brand-yellow mb-4">
+            <div className="text-center mb-12 sm:mb-16 animate-fade-in space-y-4 sm:space-y-6">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.3em] text-brand-yellow">
                 Computer Science Engineer
               </p>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-2">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white">
                 Arnab Mandal
               </h1>
-              <p className="text-lg sm:text-xl text-slate-400">
+              <p className="text-base sm:text-lg md:text-xl text-slate-400">
                 AI, AR, and Full Stack Development
               </p>
             </div>
 
             {/* InfiniteMenu */}
-            <div className="w-full max-w-4xl h-[600px] relative">
+            <div className="w-full max-w-4xl h-[500px] sm:h-[600px] relative">
               <InfiniteMenu items={projectItems} />
             </div>
 
