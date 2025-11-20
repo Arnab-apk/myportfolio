@@ -13,7 +13,9 @@ import EnhancedMagicBento from "./components/EnhancedMagicBento";
 import CardNav from "./components/CardNav";
 import ElectricBorder from "./components/ElectricBorder";
 import InfiniteMenu from "./components/InfiniteMenu";
+import Carousel from "./components/Carousel";
 import { useRef, useState, useEffect } from "react";
+import { FiAward, FiBook, FiStar, FiTrendingUp, FiUsers, FiZap } from "react-icons/fi";
 
 function App() {
   const highlightsRef = useRef(null);
@@ -70,6 +72,45 @@ function App() {
         { label: 'Tech Stack', href: '#tech-stack' },
         { label: 'Skills', href: '#skills' }
       ]
+    }
+  ];
+
+  const highlightItems = [
+    {
+      title: 'Academic Excellence',
+      description: 'Maintaining strong academic performance in Computer Science & Engineering.',
+      id: 1,
+      icon: <FiBook className="h-[16px] w-[16px] text-white" />
+    },
+    {
+      title: 'Open Source Contributor',
+      description: 'Active contributor to open-source projects and tech communities.',
+      id: 2,
+      icon: <FiUsers className="h-[16px] w-[16px] text-white" />
+    },
+    {
+      title: 'Hackathon Participant',
+      description: 'Participated in multiple hackathons and coding competitions.',
+      id: 3,
+      icon: <FiZap className="h-[16px] w-[16px] text-white" />
+    },
+    {
+      title: 'Continuous Learner',
+      description: 'Completed 100 Days of Python and various online certifications.',
+      id: 4,
+      icon: <FiTrendingUp className="h-[16px] w-[16px] text-white" />
+    },
+    {
+      title: 'Problem Solver',
+      description: 'Solved 200+ problems on competitive programming platforms.',
+      id: 5,
+      icon: <FiStar className="h-[16px] w-[16px] text-white" />
+    },
+    {
+      title: 'Innovation Award',
+      description: 'Recognized for innovative AR prototype at Gentech Thales.',
+      id: 6,
+      icon: <FiAward className="h-[16px] w-[16px] text-white" />
     }
   ];
 
