@@ -100,25 +100,25 @@ function App() {
       description: 'Personal portfolio website built with React.'
     },
     {
-      image: 'https://picsum.photos/seed/python100days/600/600',
+      image: '/python-course.png',
       link: 'https://github.com/Arnab-apk/100-days-Python-Course',
       title: '100 Days Python',
       description: 'A wonderful journey from Python noob to intermediate pro developer.'
     },
     {
-      image: 'https://picsum.photos/seed/mlpython/600/600',
+      image: '/machine-learning.png',
       link: 'https://github.com/Arnab-apk/Machine_Learning_Python-R',
       title: 'Machine Learning',
       description: 'Machine Learning projects in Python and R.'
     },
     {
-      image: 'https://picsum.photos/seed/kaggle/600/600',
+      image: '/kaggle-workshop.png',
       link: 'https://github.com/Arnab-apk/5-DayGoogleKaggleWS',
       title: 'Google Kaggle WS',
       description: '5-Day Google Kaggle Workshop projects and learnings.'
     },
     {
-      image: 'https://picsum.photos/seed/arprototype/600/600',
+      image: '/ar-prototype.png',
       link: 'https://github.com/Arnab-apk/Gentech_Thales_Prototype',
       title: 'AR Prototype',
       description: 'Augmented reality application prototype using Unity.'
