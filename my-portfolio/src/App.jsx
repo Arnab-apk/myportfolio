@@ -10,7 +10,7 @@ import Footer from "./components/Footer";
 import AuroraBackground from "./components/AuroraBackground";
 import SectionHeader from "./components/SectionHeader";
 import EnhancedMagicBento from "./components/EnhancedMagicBento";
-import PillNav from "./components/PillNav";
+import CardNav from "./components/CardNav";
 import { useRef, useState, useEffect } from "react";
 
 function App() {
@@ -39,26 +39,48 @@ function App() {
   }, []);
 
   const navItems = [
-    { label: "Home", href: "#hero" },
-    { label: "About", href: "#about" },
-    { label: "Tech Stack", href: "#tech-stack" },
-    { label: "Skills", href: "#skills" },
-    { label: "Projects", href: "#projects" },
-    { label: "Expertise", href: "#expertise" },
-    { label: "Contact", href: "#contact" },
+    {
+      label: 'Menu',
+      bgColor: '#0F1629', // brand-card
+      textColor: '#ffffff',
+      links: [
+        { label: 'Home', href: '#hero' },
+        { label: 'About', href: '#about' },
+        { label: 'Contact', href: '#contact' }
+      ]
+    },
+    {
+      label: 'Work',
+      bgColor: '#FFD700', // brand-yellow
+      textColor: '#030508', // brand-dark
+      links: [
+        { label: 'Projects', href: '#projects' },
+        { label: 'Expertise', href: '#expertise' },
+        { label: 'Highlights', href: '#highlights' }
+      ]
+    },
+    {
+      label: 'Skills',
+      bgColor: '#1e293b', // slate-800
+      textColor: '#ffffff',
+      links: [
+        { label: 'Tech Stack', href: '#tech-stack' },
+        { label: 'Skills', href: '#skills' }
+      ]
+    }
   ];
 
   return (
     <div className="min-h-screen bg-brand-dark text-white">
-      <PillNav
+      <CardNav
         logo="/arnab.jpg"
-        logoAlt="Portfolio Logo"
+        logoAlt="Arnab Mandal"
         items={navItems}
-        activeHref={activeSection}
-        baseColor="#facc15"
-        pillColor="#050816"
-        hoveredPillTextColor="#000000"
-        pillTextColor="#ffffff"
+        baseColor="rgba(10, 15, 28, 0.8)" // brand-dark-rich with opacity
+        menuColor="#ffffff"
+        buttonBgColor="#FFD700"
+        buttonTextColor="#030508"
+        className="backdrop-blur-md"
       />
       <ChatBotWidget />
       <AuroraBackground>
