@@ -180,46 +180,48 @@ function App() {
             <TechStack />
             <Skills />
 
-            {/* Highlights & Expertise Side by Side */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 pt-14 sm:pt-20">
-              {/* Highlights */}
-              <section id="highlights" ref={highlightsRef}>
-                <SectionHeader
-                  id="highlights"
-                  title="HIGHLIGHTS"
-                  containerRef={highlightsRef}
+            {/* Highlights & Expertise Carousels Side by Side */}
+            <section className="pt-14 sm:pt-20" id="highlights" ref={highlightsRef}>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                {/* Highlights Carousel */}
+                <div>
+                  <SectionHeader
+                    id="highlights"
+                    title="HIGHLIGHTS"
+                    containerRef={highlightsRef}
+                  />
+                  <div className="mt-8 flex justify-center">
+                    <Carousel
+                      items={highlightItems}
+                      baseWidth={350}
+                      autoplay={true}
+                      autoplayDelay={3500}
+                      pauseOnHover={true}
+                      loop={true}
+                    />
+                  </div>
+                </div>
+
+                {/* Expertise Carousel */}
+                <div id="expertise">
+                  <Expertise />
+                </div>
+              </div>
+
+              {/* Magic Bento Grid - Full Width Below */}
+              <div className="mt-12 sm:mt-16 rounded-3xl bg-brand-card/30 backdrop-blur-md border border-white/10 overflow-hidden">
+                <EnhancedMagicBento
+                  enableSpotlight={true}
+                  enableStars={true}
+                  enableBorderGlow={true}
+                  enableTilt={true}
+                  clickEffect={true}
+                  enableMagnetism={true}
+                  spotlightRadius={400}
+                  particleCount={20}
                 />
-
-                <div className="mt-8 flex justify-center">
-                  <Carousel
-                    items={highlightItems}
-                    baseWidth={350}
-                    autoplay={true}
-                    autoplayDelay={3500}
-                    pauseOnHover={true}
-                    loop={true}
-                  />
-                </div>
-
-                <div className="mt-8 rounded-3xl bg-brand-card/30 backdrop-blur-md border border-white/10 overflow-hidden">
-                  <EnhancedMagicBento
-                    enableSpotlight={true}
-                    enableStars={true}
-                    enableBorderGlow={true}
-                    enableTilt={true}
-                    clickEffect={true}
-                    enableMagnetism={true}
-                    spotlightRadius={400}
-                    particleCount={20}
-                  />
-                </div>
-              </section>
-
-              {/* Expertise */}
-              <section id="expertise">
-                <Expertise />
-              </section>
-            </div>
+              </div>
+            </section>
 
             <Contact />
           </main>
