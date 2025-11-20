@@ -97,17 +97,21 @@ function App() {
               title="HIGHLIGHTS"
               containerRef={highlightsRef}
             />
-            <div className="mt-8 rounded-3xl bg-brand-card/30 backdrop-blur-md border border-white/10 overflow-hidden">
-              <EnhancedMagicBento
-                enableSpotlight={true}
-                enableStars={true}
-                enableBorderGlow={true}
-                enableTilt={true}
-                clickEffect={true}
-                enableMagnetism={true}
-                spotlightRadius={400}
-                particleCount={20}
-              />
+            <div className="mt-8">
+              <ElectricBorder color="#FFD700" speed={2} chaos={0.5} thickness={2} style={{ borderRadius: '1.5rem' }}>
+                <div className="rounded-3xl bg-brand-card/30 backdrop-blur-md border border-white/10 overflow-hidden">
+                  <EnhancedMagicBento
+                    enableSpotlight={true}
+                    enableStars={true}
+                    enableBorderGlow={true}
+                    enableTilt={true}
+                    clickEffect={true}
+                    enableMagnetism={true}
+                    spotlightRadius={400}
+                    particleCount={20}
+                  />
+                </div>
+              </ElectricBorder>
             </div>
           </section>
 
