@@ -4,6 +4,15 @@ import FloatingCard from "./FloatingCard";
 import { GlowingEffect } from "./ui/glowing-effect";
 import { LinkPreview } from "./ui/link-preview";
 import { useRef } from "react";
+import {
+  IconBrandPython,
+  IconEye,
+  IconChartBar,
+  IconBrain,
+  IconTerminal2,
+  IconCoffee,
+  IconExternalLink
+} from "@tabler/icons-react";
 
 const projects = [
   {
@@ -12,6 +21,7 @@ const projects = [
     description:
       "A curated journey from Python basics to intermediate projects, building real-world console apps.",
     link: "https://github.com/Arnab-apk/100-days-Python-Course",
+    icon: <IconBrandPython size={24} />,
   },
   {
     name: "OpenCV (BTA)",
@@ -19,6 +29,7 @@ const projects = [
     description:
       "Hands-on computer vision exercises using OpenCV: image ops, filters, contours and more.",
     link: "https://github.com/Arnab-apk/Open_CV_-BTA-",
+    icon: <IconEye size={24} />,
   },
   {
     name: "Google x Kaggle: 5-Day WS",
@@ -26,6 +37,7 @@ const projects = [
     description:
       "Workshop notebooks covering data cleaning, visualization, and beginner ML workflows.",
     link: "https://github.com/Arnab-apk/5-DayGoogleKaggleWS",
+    icon: <IconChartBar size={24} />,
   },
   {
     name: "ML in Python & R",
@@ -33,6 +45,7 @@ const projects = [
     description:
       "Practical ML notebooks experimenting with classic algorithms and evaluation techniques.",
     link: "https://github.com/Arnab-apk/Machine_Learning_Python-R",
+    icon: <IconBrain size={24} />,
   },
   {
     name: "College Coding (C)",
@@ -40,6 +53,7 @@ const projects = [
     description:
       "Foundational C programs and DSA practice from college coursework and labs.",
     link: "https://github.com/Arnab-apk/CollegeCoding-C",
+    icon: <IconTerminal2 size={24} />,
   },
   {
     name: "Coffee Machine (OOP)",
@@ -47,6 +61,7 @@ const projects = [
     description:
       "A console-based coffee machine demonstrating OOP principles and stateful workflows.",
     link: "https://github.com/Arnab-apk/Coffee_Machine",
+    icon: <IconCoffee size={24} />,
   },
 ];
 
@@ -78,8 +93,7 @@ function Projects() {
                 <div className="relative h-full rounded-2xl bg-brand-dark-rich/80 p-6 flex flex-col transition-transform duration-500 group-hover:-translate-y-1">
                   <div className="flex justify-between items-start mb-4">
                     <div className="p-3 rounded-xl bg-brand-yellow/10 text-brand-yellow">
-                      {/* Simple icon placeholder based on tag */}
-                      {project.tags[0] === "Python" ? "🐍" : project.tags[0] === "C" ? "💻" : "⚡"}
+                      {project.icon}
                     </div>
                     <a
                       href={project.link}
@@ -87,7 +101,7 @@ function Projects() {
                       rel="noreferrer"
                       className="text-slate-400 hover:text-brand-yellow transition-colors"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                      <IconExternalLink size={20} />
                     </a>
                   </div>
 
