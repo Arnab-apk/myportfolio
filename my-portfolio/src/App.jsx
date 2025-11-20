@@ -145,9 +145,6 @@ function App() {
           <div className="w-full h-screen flex flex-col items-center justify-center px-4 pt-20">
             {/* Title */}
             <div className="text-center mb-12 sm:mb-16 animate-fade-in space-y-4 sm:space-y-6 relative z-10">
-              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.3em] text-brand-yellow">
-                Computer Science Engineer
-              </p>
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white drop-shadow-lg">
                 Arnab Mandal
               </h1>
