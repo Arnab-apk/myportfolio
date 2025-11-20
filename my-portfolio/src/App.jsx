@@ -11,10 +11,13 @@ import AuroraBackground from "./components/AuroraBackground";
 import SectionHeader from "./components/SectionHeader";
 import EnhancedMagicBento from "./components/EnhancedMagicBento";
 import CardNav from "./components/CardNav";
+import ElectricBorder from "./components/ElectricBorder";
+import InfiniteMenu from "./components/InfiniteMenu";
 import { useRef, useState, useEffect } from "react";
 
 function App() {
   const highlightsRef = useRef(null);
+  const projectsRef = useRef(null);
   const [activeSection, setActiveSection] = useState("#hero");
 
   useEffect(() => {
@@ -70,6 +73,39 @@ function App() {
     }
   ];
 
+  const projectItems = [
+    {
+      image: 'https://picsum.photos/seed/project1/600/600',
+      link: 'https://github.com/arnab-mandal',
+      title: 'AI Assistant',
+      description: 'Next-gen AI powered by neural networks.'
+    },
+    {
+      image: 'https://picsum.photos/seed/project2/600/600',
+      link: 'https://github.com/arnab-mandal',
+      title: 'Crypto Dash',
+      description: 'Real-time cryptocurrency tracking dashboard.'
+    },
+    {
+      image: 'https://picsum.photos/seed/project3/600/600',
+      link: 'https://github.com/arnab-mandal',
+      title: 'E-Commerce',
+      description: 'Full-stack shopping platform with Stripe.'
+    },
+    {
+      image: 'https://picsum.photos/seed/project4/600/600',
+      link: 'https://github.com/arnab-mandal',
+      title: 'Task Master',
+      description: 'Productivity app with drag-and-drop.'
+    },
+    {
+      image: 'https://picsum.photos/seed/project5/600/600',
+      link: 'https://github.com/arnab-mandal',
+      title: 'Portfolio V1',
+      description: 'Previous iteration of my personal site.'
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-brand-dark text-white">
       <CardNav
@@ -116,7 +152,24 @@ function App() {
           </section>
 
           <Expertise />
-          <Projects />
+
+          {/* Projects (Infinite 3D Menu) */}
+          <section className="pt-14 sm:pt-20 min-h-[600px] relative" id="projects" ref={projectsRef}>
+            <SectionHeader
+              id="projects"
+              title="PROJECTS"
+              containerRef={projectsRef}
+            />
+            <div className="w-full h-[600px] mt-8 relative rounded-3xl overflow-hidden border border-white/10 bg-brand-card/30 backdrop-blur-md">
+              <div className="absolute inset-0 z-0">
+                <InfiniteMenu items={projectItems} />
+              </div>
+              <div className="absolute bottom-4 right-6 z-10 text-xs text-slate-500 pointer-events-none">
+                Drag to rotate • Click to visit
+              </div>
+            </div>
+          </section>
+
           <Contact />
         </main>
         <Footer />
