@@ -965,11 +965,10 @@ export default function InfiniteMenu({ items = [] }) {
           select-none
           absolute
           font-black
-          [font-size:2rem] sm:[font-size:4rem]
-          left-[1.6em]
+          text-[1.5rem] sm:text-[2.5rem] md:text-[3rem]
+          left-[5%]
           top-1/2
           transform
-          translate-x-[20%]
           -translate-y-1/2
           transition-all
           ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
@@ -977,6 +976,7 @@ export default function InfiniteMenu({ items = [] }) {
           drop-shadow-lg
           z-10
           pointer-events-none
+          max-w-[40%]
           ${isMoving
                                 ? 'opacity-0 duration-[100ms]'
                                 : 'opacity-100 duration-[500ms]'
@@ -990,8 +990,8 @@ export default function InfiniteMenu({ items = [] }) {
                         className={`
           select-none
           absolute
-          max-w-[20ch]
-          text-[1rem] sm:text-[1.5rem]
+          max-w-[35%]
+          text-[0.875rem] sm:text-[1rem] md:text-[1.25rem]
           top-1/2
           right-[5%]
           transition-all
@@ -1001,8 +1001,8 @@ export default function InfiniteMenu({ items = [] }) {
           z-10
           pointer-events-none
           ${isMoving
-                                ? 'opacity-0 duration-[100ms] translate-x-[-60%] -translate-y-1/2'
-                                : 'opacity-100 duration-[500ms] translate-x-0 -translate-y-1/2'
+                                ? 'opacity-0 duration-[100ms] -translate-y-1/2'
+                                : 'opacity-100 duration-[500ms] -translate-y-1/2'
                             }
         `}
                     >
