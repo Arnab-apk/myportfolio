@@ -13,6 +13,7 @@ import InfiniteMenu from "./components/InfiniteMenu";
 import Carousel from "./components/Carousel";
 import MagneticCursor from "./components/MagneticCursor";
 import AmbientParticles from "./components/AmbientParticles";
+import ProfileCard from "./components/ProfileCard";
 import { useRef, useState, useEffect } from "react";
 import { FiAward, FiBook, FiStar, FiTrendingUp, FiUsers, FiZap } from "react-icons/fi";
 
@@ -155,9 +156,27 @@ function App() {
               </p>
             </div>
 
-            {/* InfiniteMenu */}
-            <div className="w-full max-w-4xl h-[500px] sm:h-[600px] relative">
-              <InfiniteMenu items={projectItems} />
+            {/* Profile Card and InfiniteMenu Side by Side */}
+            <div className="w-full max-w-6xl flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
+              {/* Profile Card */}
+              <div className="flex-shrink-0">
+                <ProfileCard
+                  avatarUrl="/arnab.jpg"
+                  name="Arnab Mandal"
+                  title="Tech Enthusiast"
+                  handle="arnab_mandal"
+                  status="Available for work"
+                  contactText="CONTACT"
+                  onContactClick={() => {
+                    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                />
+              </div>
+
+              {/* InfiniteMenu */}
+              <div className="w-full max-w-2xl h-[500px] sm:h-[600px] relative">
+                <InfiniteMenu items={projectItems} />
+              </div>
             </div>
 
             {/* Scroll Indicator */}
