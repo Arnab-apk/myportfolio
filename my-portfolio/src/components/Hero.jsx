@@ -28,7 +28,7 @@ function Hero() {
               <span className="block mb-1 sm:mb-2">
                 Hi, I'm
               </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow via-yellow-200 to-brand-yellow drop-shadow-lg block">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow via-yellow-200 to-brand-yellow bg-[length:200%_auto] animate-background-pan drop-shadow-lg block">
                 Arnab Mandal
               </span>
             </h1>

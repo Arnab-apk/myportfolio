@@ -1,28 +1,44 @@
-import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import { motion } from "framer-motion";
 
 function AnimatedSection({ children, animation = "fade-up", delay = 0, className = "" }) {
-  const [ref, isVisible] = useScrollAnimation({ threshold: 0.1 });
-
-  const animations = {
-    "fade-up": "opacity-0 translate-y-10",
-    "fade-down": "opacity-0 -translate-y-10",
-    "fade-left": "opacity-0 translate-x-10",
-    "fade-right": "opacity-0 -translate-x-10",
-    "scale": "opacity-0 scale-95",
-    "fade": "opacity-0",
+  const variants = {
+    "fade-up": {
+      hidden: { opacity: 0, y: 40 },
+      visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
+    },
+    "fade-down": {
+      hidden: { opacity: 0, y: -40 },
+      visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
+    },
+    "fade-left": {
+      hidden: { opacity: 0, x: 40 },
+      visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
+    },
+    "fade-right": {
+      hidden: { opacity: 0, x: -40 },
+      visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
+    },
+    "scale": {
+      hidden: { opacity: 0, scale: 0.9 },
+      visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+    },
+    "fade": {
+      hidden: { opacity: 0 },
+      visible: { opacity: 1, transition: { duration: 1 } }
+    }
   };
 
-  const baseClasses = "transition-all duration-700 ease-out";
-  const visibleClasses = "opacity-100 translate-y-0 translate-x-0 scale-100";
-
   return (
-    <div
-      ref={ref}
-      className={`${baseClasses} ${!isVisible ? animations[animation] : visibleClasses} ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      variants={variants[animation] || variants["fade-up"]}
+      transition={{ delay: delay / 1000 }}
+      className={className}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }
 
