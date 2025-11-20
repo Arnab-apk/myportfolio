@@ -1,5 +1,13 @@
 import { useRef, useEffect, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
+import {
+  IconBrain,
+  IconAugmentedReality,
+  IconLayout,
+  IconDeviceMobile,
+  IconChartDots,
+  IconDeviceGamepad2
+} from '@tabler/icons-react';
 
 const DEFAULT_PARTICLE_COUNT = 15;
 const DEFAULT_SPOTLIGHT_RADIUS = 350;
@@ -12,7 +20,7 @@ const cardData = [
     title: 'AI & Machine Learning',
     description: 'Building intelligent systems with Python, TensorFlow, and computer vision',
     label: 'Intelligence',
-    icon: '🤖',
+    icon: <IconBrain size={32} />,
     gradient: 'from-purple-500/20 to-pink-500/20'
   },
   {
@@ -20,7 +28,7 @@ const cardData = [
     title: 'AR Experiences',
     description: 'Creating immersive augmented reality with Unity and cutting-edge tech',
     label: 'Immersive',
-    icon: '🥽',
+    icon: <IconAugmentedReality size={32} />,
     gradient: 'from-cyan-500/20 to-blue-500/20'
   },
   {
@@ -28,7 +36,7 @@ const cardData = [
     title: 'Full-Stack Development',
     description: 'End-to-end web applications with React, Node.js, and modern frameworks',
     label: 'Web Apps',
-    icon: '🌐',
+    icon: <IconLayout size={32} />,
     gradient: 'from-green-500/20 to-emerald-500/20'
   },
   {
@@ -36,7 +44,7 @@ const cardData = [
     title: 'Mobile Apps',
     description: 'Cross-platform mobile development with Flutter for iOS and Android',
     label: 'Mobile',
-    icon: '📱',
+    icon: <IconDeviceMobile size={32} />,
     gradient: 'from-blue-500/20 to-indigo-500/20'
   },
   {
@@ -44,7 +52,7 @@ const cardData = [
     title: 'Data Science',
     description: 'Analyzing and visualizing data with Pandas, NumPy, and Jupyter notebooks',
     label: 'Analytics',
-    icon: '📊',
+    icon: <IconChartDots size={32} />,
     gradient: 'from-orange-500/20 to-red-500/20'
   },
   {
@@ -52,7 +60,7 @@ const cardData = [
     title: 'Game Development',
     description: 'Interactive experiences with Unity, ShaderLab, and game design principles',
     label: 'Gaming',
-    icon: '🎮',
+    icon: <IconDeviceGamepad2 size={32} />,
     gradient: 'from-yellow-500/20 to-orange-500/20'
   }
 ];
