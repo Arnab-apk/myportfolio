@@ -182,7 +182,7 @@ function App() {
 
             {/* Highlights & Expertise Carousels Side by Side */}
             <section className="pt-14 sm:pt-20" id="highlights" ref={highlightsRef}>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
                 {/* Highlights Carousel */}
                 <div>
                   <SectionHeader
