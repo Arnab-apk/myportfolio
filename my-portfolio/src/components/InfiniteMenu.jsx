@@ -975,6 +975,13 @@ export default function InfiniteMenu({ items = [] }) {
           pointer-events-none
           text-center
           max-w-[80%]
+          bg-black/60
+          backdrop-blur-sm
+          px-6
+          py-4
+          rounded-2xl
+          border
+          border-white/10
           ${isMoving
                                 ? 'opacity-0 duration-[100ms]'
                                 : 'opacity-100 duration-[500ms]'
