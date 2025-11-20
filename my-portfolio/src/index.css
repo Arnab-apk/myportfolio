@@ -4,20 +4,21 @@
 
 html, body, #root {
   height: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-gray-950 text-white font-sans;
+  @apply bg-brand-dark text-slate-200 font-sans antialiased selection:bg-brand-yellow/30 selection:text-brand-yellow;
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-700 rounded-full;
+  @apply bg-slate-800/50 rounded-full hover:bg-brand-yellow/50 transition-colors;
 }
 ::-webkit-scrollbar-track {
-  @apply bg-gray-950;
+  @apply bg-transparent;
 }
 
 /* Custom Animations */

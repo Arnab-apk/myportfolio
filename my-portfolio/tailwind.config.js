@@ -8,17 +8,32 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        display: ['Outfit', 'Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
-        'brand-yellow': '#FFD400',
-        'brand-dark': '#050816',
-        'brand-card': '#0b1020',
-      },
-      fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        'brand-yellow': '#FFD700', // Slightly more golden
+        'brand-dark': '#030508', // Deeper black/blue
+        'brand-dark-rich': '#0A0F1C', // Richer dark for cards
+        'brand-card': '#0F1629', // Lighter card bg
+        'brand-accent': '#38bdf8', // Light blue accent
       },
       boxShadow: {
-        soft: "0 18px 40px rgba(0,0,0,0.45)",
+        soft: "0 10px 40px -10px rgba(0,0,0,0.5)",
+        glow: "0 0 20px rgba(255, 215, 0, 0.3)",
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.5s ease-out forwards',
+        'slide-up': 'slideUp 0.5s ease-out forwards',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
       },
     },
   },
