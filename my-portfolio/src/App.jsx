@@ -10,8 +10,7 @@ import Footer from "./components/Footer";
 import AuroraBackground from "./components/AuroraBackground";
 import SectionHeader from "./components/SectionHeader";
 import EnhancedMagicBento from "./components/EnhancedMagicBento";
-import CardNav from "./components/CardNav";
-import ElectricBorder from "./components/ElectricBorder";
+import GooeyNav from "./components/GooeyNav";
 import InfiniteMenu from "./components/InfiniteMenu";
 import Carousel from "./components/Carousel";
 import { useRef, useState, useEffect } from "react";
@@ -44,35 +43,11 @@ function App() {
   }, []);
 
   const navItems = [
-    {
-      label: 'Menu',
-      bgColor: '#0F1629', // brand-card
-      textColor: '#ffffff',
-      links: [
-        { label: 'Home', href: '#hero' },
-        { label: 'About', href: '#about' },
-        { label: 'Contact', href: '#contact' }
-      ]
-    },
-    {
-      label: 'Work',
-      bgColor: '#FFD700', // brand-yellow
-      textColor: '#030508', // brand-dark
-      links: [
-        { label: 'Projects', href: '#projects' },
-        { label: 'Expertise', href: '#expertise' },
-        { label: 'Highlights', href: '#highlights' }
-      ]
-    },
-    {
-      label: 'Skills',
-      bgColor: '#1e293b', // slate-800
-      textColor: '#ffffff',
-      links: [
-        { label: 'Tech Stack', href: '#tech-stack' },
-        { label: 'Skills', href: '#skills' }
-      ]
-    }
+    { label: 'Home', href: '#hero' },
+    { label: 'About', href: '#about' },
+    { label: 'Skills', href: '#skills' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Contact', href: '#contact' }
   ];
 
   const highlightItems = [
@@ -149,16 +124,11 @@ function App() {
 
   return (
     <div className="min-h-screen bg-brand-dark text-white">
-      <CardNav
-        logo="/arnab.jpg"
-        logoAlt="Arnab Mandal"
-        items={navItems}
-        baseColor="rgba(10, 15, 28, 0.8)" // brand-dark-rich with opacity
-        menuColor="#ffffff"
-        buttonBgColor="#FFD700"
-        buttonTextColor="#030508"
-        className="backdrop-blur-md"
-      />
+      <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6">
+        <div className="bg-brand-dark-rich/80 backdrop-blur-md rounded-full px-6 py-3 border border-white/10">
+          <GooeyNav items={navItems} initialActiveIndex={0} />
+        </div>
+      </div>
       <ChatBotWidget />
       <AuroraBackground>
         <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
