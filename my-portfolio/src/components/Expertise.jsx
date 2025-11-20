@@ -47,7 +47,7 @@ function Expertise() {
   ];
 
   return (
-    <section className="pt-14 sm:pt-20 scroll-mt-24" id="expertise" ref={containerRef}>
+    <section className="scroll-mt-24" id="expertise" ref={containerRef}>
       <AnimatedSection animation="fade-up">
         <SectionHeader
           id="expertise"
