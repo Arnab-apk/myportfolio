@@ -13,7 +13,7 @@ const PillNav = ({ items = [], activeHref = '' }) => {
   }, []);
 
   return (
-    <nav className="fixed top-6 right-6 z-[1000]">
+    <nav className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[1000]">
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
@@ -38,8 +38,8 @@ const PillNav = ({ items = [], activeHref = '' }) => {
                 href={item.href}
                 onClick={() => setIsOpen(false)}
                 className={`px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 flex items-center justify-between group ${activeHref === item.href
-                    ? "bg-brand-yellow text-brand-dark"
-                    : "text-slate-300 hover:bg-white/10 hover:text-white"
+                  ? "bg-brand-yellow text-brand-dark"
+                  : "text-slate-300 hover:bg-white/10 hover:text-white"
                   }`}
               >
                 {item.label}
