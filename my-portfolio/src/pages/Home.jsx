@@ -60,19 +60,19 @@ const Home = () => {
             sparkCount={8}
             duration={400}
         >
-            <div className="relative min-h-screen flex flex-col items-center pb-20 px-4 z-10 pt-20 sm:pt-24">
+            <div className="relative min-h-screen flex flex-col items-center pb-12 sm:pb-20 px-3 sm:px-4 z-10 pt-16 sm:pt-20 md:pt-24">
                 {/* Title */}
-                <div className="text-center mb-12 sm:mb-16 animate-fade-in space-y-6 relative z-10 mt-20">
-                    <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-display font-black text-black md:text-white drop-shadow-2xl tracking-tighter">
+                <div className="text-center mb-8 sm:mb-12 md:mb-16 animate-fade-in space-y-3 sm:space-y-4 md:space-y-6 relative z-10 mt-8 sm:mt-12 md:mt-20">
+                    <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-display font-black text-black md:text-white drop-shadow-2xl tracking-tighter leading-tight">
                         Arnab Mandal
                     </h1>
-                    <p className="text-xl sm:text-2xl md:text-3xl text-black md:text-white font-light tracking-widest uppercase">
+                    <p className="text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-black md:text-white font-light tracking-wide sm:tracking-widest uppercase px-2">
                         AI, AR, and Full Stack Development
                     </p>
                 </div>
 
                 {/* Profile Card */}
-                <div className="mb-16 animate-slide-up">
+                <div className="mb-8 sm:mb-12 md:mb-16 animate-slide-up w-full max-w-md mx-auto">
                     <ProfileCard
                         avatarUrl="/arnab.jpg"
                         name="Arnab Mandal"
@@ -87,9 +87,9 @@ const Home = () => {
                 </div>
 
                 {/* Project Showcase - Enhanced Magic Bento */}
-                <div className="w-full max-w-6xl animate-slide-up delay-200">
-                    <div className="inline-block mb-8 mx-auto relative left-1/2 -translate-x-1/2">
-                        <h2 className="text-4xl sm:text-5xl font-bold text-white px-8 py-4 rounded-2xl bg-white/20 backdrop-blur-xl border-2 border-white/30 shadow-[0_8px_32px_0_rgba(255,255,255,0.1)]">
+                <div className="w-full max-w-6xl animate-slide-up delay-200 px-2 sm:px-0">
+                    <div className="inline-block mb-6 sm:mb-8 mx-auto relative left-1/2 -translate-x-1/2">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-xl sm:rounded-2xl bg-white/20 backdrop-blur-xl border-2 border-white/30 shadow-[0_8px_32px_0_rgba(255,255,255,0.1)]">
                             Featured Projects
                         </h2>
                     </div>
@@ -107,7 +107,7 @@ const Home = () => {
                 </div>
 
                 {/* Scroll Indicator */}
-                <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <div className="hidden sm:block absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
                     <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center pt-2">
                         <div className="w-1 h-3 bg-white/50 rounded-full animate-pulse" />
                     </div>

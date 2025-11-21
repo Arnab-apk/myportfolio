@@ -56,22 +56,22 @@ const ProjectsPage = () => {
             sparkCount={8}
             duration={400}
         >
-            <div className="min-h-screen pt-20 sm:pt-24">
+            <div className="min-h-screen pt-16 sm:pt-20 md:pt-24">
                 <AuroraBackground>
-                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                    <div className="max-w-6xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-8 sm:py-10 md:py-12">
                         <section id="highlights" ref={highlightsRef}>
                             <div className="flex flex-col items-center gap-8 lg:gap-12">
                                 {/* Highlights Carousel */}
-                                <div className="w-full min-h-[400px]">
+                                <div className="w-full min-h-[350px] sm:min-h-[400px]">
                                     <SectionHeader
                                         id="highlights"
                                         title="HIGHLIGHTS"
                                         containerRef={highlightsRef}
                                     />
-                                    <div className="mt-8 flex justify-center">
+                                    <div className="mt-6 sm:mt-8 flex justify-center">
                                         <Carousel
                                             items={highlightItems}
-                                            baseWidth={350}
+                                            baseWidth={280}
                                             autoplay={true}
                                             autoplayDelay={3500}
                                             pauseOnHover={true}
@@ -82,7 +82,7 @@ const ProjectsPage = () => {
                             </div>
 
                             {/* Magic Bento Grid - Full Width Below */}
-                            <div className="mt-12 sm:mt-16 rounded-3xl bg-brand-card/30 backdrop-blur-md border border-white/10 overflow-hidden">
+                            <div className="mt-8 sm:mt-10 md:mt-12 lg:mt-16 rounded-2xl sm:rounded-3xl bg-brand-card/30 backdrop-blur-md border border-white/10 overflow-hidden">
                                 <EnhancedMagicBento
                                     enableSpotlight={true}
                                     enableStars={true}

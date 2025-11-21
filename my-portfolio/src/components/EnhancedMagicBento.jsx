@@ -669,12 +669,31 @@ const EnhancedMagicBento = ({
               width: 100%;
               margin: 0;
               padding: 0;
-              gap: 1rem;
+              gap: 0.75rem;
             }
             
             .card-responsive .card {
               width: 100%;
-              min-height: 180px;
+              min-height: 200px;
+              padding: 1.25rem;
+            }
+            
+            .card__title {
+              font-size: 1.125rem !important;
+            }
+            
+            .card__description {
+              font-size: 0.813rem !important;
+              line-height: 1.4 !important;
+            }
+            
+            .card__icon {
+              font-size: 1.75rem !important;
+            }
+            
+            .card__label {
+              font-size: 0.75rem !important;
+              padding: 0.25rem 0.625rem !important;
             }
           }
         `}
@@ -693,7 +712,7 @@ const EnhancedMagicBento = ({
       <BentoCardGrid gridRef={gridRef}>
         <div className="card-responsive grid gap-3">
           {items.map((card, index) => {
-            const baseClassName = `card flex flex-col justify-between relative aspect-[4/3] min-h-[320px] w-full max-w-full p-6 rounded-[24px] border-2 border-solid font-light overflow-hidden transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_12px_35px_rgba(0,0,0,0.25)] ${enableBorderGlow ? 'card--border-glow' : ''
+            const baseClassName = `card flex flex-col justify-between relative aspect-[4/3] min-h-[240px] sm:min-h-[280px] md:min-h-[320px] w-full max-w-full p-4 sm:p-5 md:p-6 rounded-[20px] sm:rounded-[24px] border-2 border-solid font-light overflow-hidden transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_12px_35px_rgba(0,0,0,0.25)] ${enableBorderGlow ? 'card--border-glow' : ''
               }`;
 
             const cardStyle = {
@@ -732,11 +751,11 @@ const EnhancedMagicBento = ({
                 </div>
 
                 <div className="card__content flex flex-col relative text-white z-10">
-                  <h3 className={`card__title font-semibold text-lg sm:text-xl m-0 mb-2 ${textAutoHide ? 'text-clamp-1' : ''}`}>
+                  <h3 className={`card__title font-semibold text-base sm:text-lg md:text-xl m-0 mb-1.5 sm:mb-2 ${textAutoHide ? 'text-clamp-1' : ''}`}>
                     {card.title}
                   </h3>
                   <p
-                    className={`card__description text-sm leading-6 opacity-80 ${textAutoHide ? 'text-clamp-2' : ''}`}
+                    className={`card__description text-xs sm:text-sm leading-5 sm:leading-6 opacity-80 ${textAutoHide ? 'text-clamp-2' : ''}`}
                   >
                     {card.description}
                   </p>

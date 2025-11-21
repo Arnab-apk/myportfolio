@@ -96,13 +96,13 @@ function Contact() {
         />
       </AnimatedSection>
 
-      <div className="grid gap-8 lg:gap-12 lg:grid-cols-[1.2fr,1fr]">
+      <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.2fr,1fr]">
         <AnimatedSection animation="fade-right" delay={100}>
           <form
-            className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 sm:p-8 space-y-6 hover:border-white/30 transition-all duration-500"
+            className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 space-y-5 sm:space-y-6 hover:border-white/30 transition-all duration-500"
             onSubmit={handleSubmit}
           >
-            <div className="grid gap-6 sm:grid-cols-2">
+            <div className="grid gap-4 sm:gap-6">
               <div className="space-y-2">
                 <label className="block text-xs font-bold uppercase tracking-wider text-slate-400">
                   Name *
@@ -113,10 +113,12 @@ function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-sm text-white outline-none focus:border-white focus:bg-white/10 transition-all duration-300 placeholder:text-slate-600"
+                  className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3.5 sm:py-3 text-sm text-white outline-none focus:border-white focus:bg-white/10 transition-all duration-300 placeholder:text-slate-600 min-h-[44px]"
                   placeholder="John Doe"
                 />
               </div>
+            </div>
+            <div className="grid gap-4 sm:gap-6">
               <div className="space-y-2">
                 <label className="block text-xs font-bold uppercase tracking-wider text-slate-400">
                   Email *
@@ -127,7 +129,7 @@ function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-sm text-white outline-none focus:border-white focus:bg-white/10 transition-all duration-300 placeholder:text-slate-600"
+                  className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3.5 sm:py-3 text-sm text-white outline-none focus:border-white focus:bg-white/10 transition-all duration-300 placeholder:text-slate-600 min-h-[44px]"
                   placeholder="john@example.com"
                 />
               </div>
@@ -142,7 +144,7 @@ function Contact() {
                 onChange={handleChange}
                 required
                 rows={5}
-                className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-sm text-white outline-none focus:border-white focus:bg-white/10 resize-none transition-all duration-300 placeholder:text-slate-600"
+                className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3.5 sm:py-3 text-sm text-white outline-none focus:border-white focus:bg-white/10 resize-none transition-all duration-300 placeholder:text-slate-600 min-h-[120px]"
                 placeholder="Tell me about your project..."
               />
             </div>
@@ -162,7 +164,7 @@ function Contact() {
             <button
               type="submit"
               disabled={status.submitting}
-              className="w-full sm:w-auto px-8 py-3 rounded-full bg-white text-black font-bold text-sm shadow-lg hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+              className="w-full sm:w-auto px-8 py-3.5 sm:py-3 rounded-full bg-white text-black font-bold text-sm shadow-lg hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 min-h-[44px]"
             >
               {status.submitting ? 'Sending...' : 'Send Message'}
             </button>
@@ -179,7 +181,7 @@ function Contact() {
         </AnimatedSection>
 
         <AnimatedSection animation="fade-left" delay={200}>
-          <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col justify-between h-full hover:border-white/30 transition-all duration-500">
+          <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between h-full hover:border-white/30 transition-all duration-500">
             <div>
               <div className="mb-6">
                 <p className="text-2xl font-display font-bold text-white mb-2">
@@ -216,7 +218,7 @@ function Contact() {
                     href={social.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="px-4 py-2 rounded-lg bg-white/5 border border-white/5 text-sm text-slate-300 hover:bg-white/10 hover:text-white hover:border-white/20 transition-all duration-300"
+                    className="px-4 py-2.5 sm:py-2 rounded-lg bg-white/5 border border-white/5 text-sm text-slate-300 hover:bg-white/10 hover:text-white hover:border-white/20 transition-all duration-300 min-h-[44px] inline-flex items-center justify-center"
                   >
                     {social.name}
                   </a>

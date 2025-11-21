@@ -504,7 +504,7 @@ export const StaggeredMenu = ({
 .sm-scope .sm-socials-link:hover { color: var(--sm-accent, #ff0000); }
 .sm-scope .sm-panel-title { margin: 0; font-size: 1rem; font-weight: 600; color: #fff; text-transform: uppercase; }
 .sm-scope .sm-panel-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
-.sm-scope .sm-panel-item { position: relative; color: #000; font-weight: 600; font-size: 4rem; cursor: pointer; line-height: 1; letter-spacing: -2px; text-transform: uppercase; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: inline-block; text-decoration: none; padding-right: 1.4em; }
+.sm-scope .sm-panel-item { position: relative; color: #000; font-weight: 600; font-size: clamp(2.5rem, 8vw, 4rem); cursor: pointer; line-height: 1; letter-spacing: -2px; text-transform: uppercase; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: inline-block; text-decoration: none; padding-right: 1.4em; }
 .sm-scope .sm-panel-list:hover .sm-panel-item:not(:hover) { color: #ccc; opacity: 0.5; }
 .sm-scope .sm-panel-list:focus-within .sm-panel-item:not(:focus-visible) { color: #ccc; opacity: 0.5; }
 .sm-scope .sm-panel-itemLabel { display: inline-block; will-change: transform; transform-origin: 50% 100%; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
