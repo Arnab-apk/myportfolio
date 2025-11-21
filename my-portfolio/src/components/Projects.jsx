@@ -82,7 +82,7 @@ function Projects() {
         {projects.map((project, idx) => (
           <AnimatedSection key={project.name} animation="scale" delay={idx * 100}>
             <FloatingCard>
-              <div className="relative h-full rounded-3xl border border-white/10 bg-brand-card/50 backdrop-blur-sm p-1 overflow-hidden group hover:border-brand-yellow/50 transition-colors duration-500">
+              <div className="relative h-full rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm p-1 overflow-hidden group hover:border-white/50 transition-colors duration-500">
                 <GlowingEffect
                   spread={40}
                   glow={true}
@@ -92,20 +92,20 @@ function Projects() {
                 />
                 <div className="relative h-full rounded-2xl bg-brand-dark-rich/80 p-6 flex flex-col transition-transform duration-500 group-hover:-translate-y-1">
                   <div className="flex justify-between items-start mb-4">
-                    <div className="p-3 rounded-xl bg-brand-yellow/10 text-brand-yellow">
+                    <div className="p-3 rounded-xl bg-white/10 text-white">
                       {project.icon}
                     </div>
                     <a
                       href={project.link}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-slate-400 hover:text-brand-yellow transition-colors"
+                      className="text-slate-400 hover:text-white transition-colors"
                     >
                       <IconExternalLink size={20} />
                     </a>
                   </div>
 
-                  <LinkPreview url={project.link} className="font-display font-bold text-xl mb-3 text-white group-hover:text-brand-yellow transition-colors">
+                  <LinkPreview url={project.link} className="font-display font-bold text-xl mb-3 text-white group-hover:text-white transition-colors">
                     {project.name}
                   </LinkPreview>
 
@@ -117,7 +117,7 @@ function Projects() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-xs font-medium text-slate-300 group-hover:border-brand-yellow/20 transition-colors"
+                        className="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-xs font-medium text-slate-300 group-hover:border-white/20 transition-colors"
                       >
                         {tag}
                       </span>
