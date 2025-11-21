@@ -63,10 +63,10 @@ const Home = () => {
             <div className="relative min-h-screen flex flex-col items-center pb-20 px-4 z-10 pt-20 sm:pt-24">
                 {/* Title */}
                 <div className="text-center mb-12 sm:mb-16 animate-fade-in space-y-6 relative z-10 mt-20">
-                    <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-display font-black text-black drop-shadow-2xl tracking-tighter">
+                    <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-display font-black text-black md:text-white drop-shadow-2xl tracking-tighter">
                         Arnab Mandal
                     </h1>
-                    <p className="text-xl sm:text-2xl md:text-3xl text-black font-light tracking-widest uppercase">
+                    <p className="text-xl sm:text-2xl md:text-3xl text-black md:text-white font-light tracking-widest uppercase">
                         AI, AR, and Full Stack Development
                     </p>
                 </div>
