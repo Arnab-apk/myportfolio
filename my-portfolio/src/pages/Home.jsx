@@ -89,7 +89,7 @@ const Home = () => {
                 {/* Project Showcase - Enhanced Magic Bento */}
                 <div className="w-full max-w-6xl animate-slide-up delay-200">
                     <div className="inline-block mb-8 mx-auto relative left-1/2 -translate-x-1/2">
-                        <h2 className="text-4xl sm:text-5xl font-bold text-white px-8 py-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
+                        <h2 className="text-4xl sm:text-5xl font-bold text-white px-8 py-4 rounded-2xl bg-white/20 backdrop-blur-xl border-2 border-white/30 shadow-[0_8px_32px_0_rgba(255,255,255,0.1)]">
                             Featured Projects
                         </h2>
                     </div>
