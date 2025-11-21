@@ -1,10 +1,10 @@
 import AuroraBackground from "../components/AuroraBackground";
-import InfiniteMenu from "../components/InfiniteMenu";
 import ProfileCard from "../components/ProfileCard";
 import { useNavigate } from "react-router-dom";
 import ClickSpark from "../components/ClickSpark";
 import MetallicLogo from "../components/MetallicLogo";
 import ShapeBlur from "../components/ShapeBlur";
+import ProjectShowcase from "../components/ProjectShowcase";
 
 const Home = () => {
     const navigate = useNavigate();
@@ -50,7 +50,7 @@ const Home = () => {
             sparkCount={8}
             duration={400}
         >
-            <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center pt-24 overflow-hidden">
+            <section id="hero" className="relative min-h-screen flex flex-col items-center pt-24 overflow-hidden pb-20">
                 <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
                     <ShapeBlur
                         variation={0}
@@ -63,7 +63,7 @@ const Home = () => {
                     />
                 </div>
                 <AuroraBackground>
-                    <div className="w-full h-screen flex flex-col items-center justify-center px-4 pt-20 relative z-10">
+                    <div className="w-full min-h-screen flex flex-col items-center px-4 pt-20 relative z-10">
                         {/* Metallic Logo */}
                         <div className="mb-8 animate-fade-in">
                             <MetallicLogo />
@@ -79,27 +79,25 @@ const Home = () => {
                             </p>
                         </div>
 
-                        {/* Profile Card and InfiniteMenu Side by Side */}
-                        <div className="w-full max-w-6xl flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
-                            {/* Profile Card */}
-                            <div className="flex-shrink-0">
-                                <ProfileCard
-                                    avatarUrl="/arnab.jpg"
-                                    name="Arnab Mandal"
-                                    title="Tech Enthusiast"
-                                    handle="arnab_mandal"
-                                    status="Available for work"
-                                    contactText="CONTACT"
-                                    onContactClick={() => {
-                                        navigate('/contact');
-                                    }}
-                                />
-                            </div>
+                        {/* Profile Card */}
+                        <div className="mb-16 animate-slide-up">
+                            <ProfileCard
+                                avatarUrl="/arnab.jpg"
+                                name="Arnab Mandal"
+                                title="Tech Enthusiast"
+                                handle="arnab_mandal"
+                                status="Available for work"
+                                contactText="CONTACT"
+                                onContactClick={() => {
+                                    navigate('/contact');
+                                }}
+                            />
+                        </div>
 
-                            {/* InfiniteMenu */}
-                            <div className="w-full max-w-2xl h-[500px] sm:h-[600px] relative">
-                                <InfiniteMenu items={projectItems} />
-                            </div>
+                        {/* Project Showcase */}
+                        <div className="w-full animate-slide-up delay-200">
+                            <h2 className="text-2xl font-bold text-white text-center mb-8">Featured Projects</h2>
+                            <ProjectShowcase items={projectItems} />
                         </div>
 
                         {/* Scroll Indicator */}
