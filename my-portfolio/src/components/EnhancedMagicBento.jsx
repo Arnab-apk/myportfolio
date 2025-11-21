@@ -502,7 +502,8 @@ const EnhancedMagicBento = ({
   enableTilt = true,
   glowColor = DEFAULT_GLOW_COLOR,
   clickEffect = true,
-  enableMagnetism = true
+  enableMagnetism = true,
+  items = cardData // Default to original data if no items provided
 }) => {
   const gridRef = useRef(null);
   const isMobile = useMobileDetection();
@@ -660,6 +661,21 @@ const EnhancedMagicBento = ({
           .card:hover .card__gradient-bg {
             opacity: 1;
           }
+
+          .card__image-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+            z-index: 0;
+            opacity: 0.6;
+          }
+
+          .card:hover .card__image-bg {
+            transform: scale(1.1);
+            opacity: 0.4;
+          }
           
           @media (max-width: 599px) {
             .card-responsive {
@@ -690,7 +706,7 @@ const EnhancedMagicBento = ({
 
       <BentoCardGrid gridRef={gridRef}>
         <div className="card-responsive grid gap-3">
-          {cardData.map((card, index) => {
+          {items.map((card, index) => {
             const baseClassName = `card flex flex-col justify-between relative aspect-[4/3] min-h-[220px] w-full max-w-full p-6 rounded-[24px] border-2 border-solid font-light overflow-hidden transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_12px_35px_rgba(0,0,0,0.25)] ${enableBorderGlow ? 'card--border-glow' : ''
               }`;
 
@@ -705,68 +721,94 @@ const EnhancedMagicBento = ({
               backdropFilter: 'blur(10px)'
             };
 
-            if (enableStars) {
-              return (
-                <ParticleCard
-                  key={index}
-                  className={baseClassName}
-                  style={cardStyle}
-                  disableAnimations={shouldDisableAnimations}
-                  particleCount={particleCount}
-                  glowColor={glowColor}
-                  enableTilt={enableTilt}
-                  clickEffect={clickEffect}
-                  enableMagnetism={enableMagnetism}
-                >
-                  {/* Gradient background overlay */}
+            const CardContent = () => (
+              <>
+                {/* Background: Image or Gradient */}
+                {card.image ? (
+                  <>
+                    <div
+                      className="card__image-bg"
+                      style={{ backgroundImage: `url(${card.image})` }}
+                    />
+                    <div className="absolute inset-0 bg-black/50 z-[1]" />
+                  </>
+                ) : (
                   <div className={`card__gradient-bg bg-gradient-to-br ${card.gradient}`} />
+                )}
 
-                  <div className="card__header flex justify-between items-start gap-3 relative text-white z-10">
+                <div className="card__header flex justify-between items-start gap-3 relative text-white z-10">
+                  {card.label && (
                     <span className="card__label text-sm font-medium tracking-wide px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
                       {card.label}
                     </span>
-                    <span className="card__icon">{card.icon}</span>
-                  </div>
-
-                  <div className="card__content flex flex-col relative text-white z-10">
-                    <h3 className={`card__title font-semibold text-lg sm:text-xl m-0 mb-2 ${textAutoHide ? 'text-clamp-1' : ''}`}>
-                      {card.title}
-                    </h3>
-                    <p
-                      className={`card__description text-sm leading-6 opacity-80 ${textAutoHide ? 'text-clamp-2' : ''}`}
-                    >
-                      {card.description}
-                    </p>
-                  </div>
-                </ParticleCard>
-              );
-            }
-
-            return (
-              <div
-                key={index}
-                className={baseClassName}
-                style={cardStyle}
-              >
-                {/* Gradient background overlay */}
-                <div className={`card__gradient-bg bg-gradient-to-br ${card.gradient}`} />
-
-                <div className="card__header flex justify-between items-start gap-3 relative text-white z-10">
-                  <span className="card__label text-sm font-medium tracking-wide px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
-                    {card.label}
-                  </span>
-                  <span className="card__icon">{card.icon}</span>
+                  )}
+                  {card.icon && <span className="card__icon">{card.icon}</span>}
                 </div>
 
                 <div className="card__content flex flex-col relative text-white z-10">
                   <h3 className={`card__title font-semibold text-lg sm:text-xl m-0 mb-2 ${textAutoHide ? 'text-clamp-1' : ''}`}>
                     {card.title}
                   </h3>
-                  <p className={`card__description text-sm leading-6 opacity-80 ${textAutoHide ? 'text-clamp-2' : ''}`}>
+                  <p
+                    className={`card__description text-sm leading-6 opacity-80 ${textAutoHide ? 'text-clamp-2' : ''}`}
+                  >
                     {card.description}
                   </p>
                 </div>
-              </div>
+              </>
+            );
+
+            const CardWrapper = card.link ? 'a' : 'div';
+            const wrapperProps = card.link ? {
+              href: card.link,
+              target: "_blank",
+              rel: "noopener noreferrer",
+              className: "block h-full w-full"
+            } : {};
+
+            if (enableStars) {
+              return (
+                <CardWrapper key={index} {...wrapperProps}>
+                  {card.link ? (
+                    <ParticleCard
+                      className={baseClassName}
+                      style={cardStyle}
+                      disableAnimations={shouldDisableAnimations}
+                      particleCount={particleCount}
+                      glowColor={glowColor}
+                      enableTilt={enableTilt}
+                      clickEffect={clickEffect}
+                      enableMagnetism={enableMagnetism}
+                    >
+                      <CardContent />
+                    </ParticleCard>
+                  ) : (
+                    <ParticleCard
+                      className={baseClassName}
+                      style={cardStyle}
+                      disableAnimations={shouldDisableAnimations}
+                      particleCount={particleCount}
+                      glowColor={glowColor}
+                      enableTilt={enableTilt}
+                      clickEffect={clickEffect}
+                      enableMagnetism={enableMagnetism}
+                    >
+                      <CardContent />
+                    </ParticleCard>
+                  )}
+                </CardWrapper>
+              );
+            }
+
+            return (
+              <CardWrapper key={index} {...wrapperProps}>
+                <div
+                  className={baseClassName}
+                  style={cardStyle}
+                >
+                  <CardContent />
+                </div>
+              </CardWrapper>
             );
           })}
         </div>

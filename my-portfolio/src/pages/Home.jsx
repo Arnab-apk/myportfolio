@@ -2,7 +2,7 @@ import AuroraBackground from "../components/AuroraBackground";
 import ProfileCard from "../components/ProfileCard";
 import { useNavigate } from "react-router-dom";
 import ClickSpark from "../components/ClickSpark";
-import ProjectShowcase from "../components/ProjectShowcase";
+import EnhancedMagicBento from "../components/EnhancedMagicBento";
 
 const Home = () => {
     const navigate = useNavigate();
@@ -12,31 +12,36 @@ const Home = () => {
             image: '/portfolio-project.png',
             link: 'https://github.com/Arnab-apk/myportfolio',
             title: 'My Portfolio',
-            description: 'Personal portfolio website built with React.'
+            description: 'Personal portfolio website built with React.',
+            label: 'Web'
         },
         {
             image: '/python-course.png',
             link: 'https://github.com/Arnab-apk/100-days-Python-Course',
             title: '100 Days Python',
-            description: 'A wonderful journey from Python noob to intermediate pro developer.'
+            description: 'A wonderful journey from Python noob to intermediate pro developer.',
+            label: 'Python'
         },
         {
             image: '/machine-learning.png',
             link: 'https://github.com/Arnab-apk/Machine_Learning_Python-R',
             title: 'Machine Learning',
-            description: 'Machine Learning projects in Python and R.'
+            description: 'Machine Learning projects in Python and R.',
+            label: 'AI/ML'
         },
         {
             image: '/kaggle-workshop.png',
             link: 'https://github.com/Arnab-apk/5-DayGoogleKaggleWS',
             title: 'Google Kaggle WS',
-            description: '5-Day Google Kaggle Workshop projects and learnings.'
+            description: '5-Day Google Kaggle Workshop projects and learnings.',
+            label: 'Data Science'
         },
         {
             image: '/ar-prototype.png',
             link: 'https://github.com/Arnab-apk/Gentech_Thales_Prototype',
             title: 'AR Prototype',
-            description: 'Augmented reality application prototype using Unity.'
+            description: 'Augmented reality application prototype using Unity.',
+            label: 'AR/VR'
         }
     ];
 
@@ -75,10 +80,20 @@ const Home = () => {
                         />
                     </div>
 
-                    {/* Project Showcase */}
-                    <div className="w-full animate-slide-up delay-200">
+                    {/* Project Showcase - Enhanced Magic Bento */}
+                    <div className="w-full max-w-6xl animate-slide-up delay-200">
                         <h2 className="text-2xl font-bold text-white text-center mb-8">Featured Projects</h2>
-                        <ProjectShowcase items={projectItems} />
+                        <EnhancedMagicBento
+                            items={projectItems}
+                            enableSpotlight={true}
+                            enableStars={true}
+                            enableBorderGlow={true}
+                            enableTilt={true}
+                            clickEffect={true}
+                            enableMagnetism={true}
+                            spotlightRadius={400}
+                            particleCount={15}
+                        />
                     </div>
 
                     {/* Scroll Indicator */}
