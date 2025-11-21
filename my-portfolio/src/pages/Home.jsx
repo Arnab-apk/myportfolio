@@ -3,6 +3,7 @@ import InfiniteMenu from "../components/InfiniteMenu";
 import ProfileCard from "../components/ProfileCard";
 import { useNavigate } from "react-router-dom";
 import ClickSpark from "../components/ClickSpark";
+import MetallicLogo from "../components/MetallicLogo";
 
 const Home = () => {
     const navigate = useNavigate();
@@ -51,6 +52,11 @@ const Home = () => {
             <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center pt-24">
                 <AuroraBackground>
                     <div className="w-full h-screen flex flex-col items-center justify-center px-4 pt-20">
+                        {/* Metallic Logo */}
+                        <div className="mb-8 animate-fade-in">
+                            <MetallicLogo />
+                        </div>
+
                         {/* Title */}
                         <div className="text-center mb-12 sm:mb-16 animate-fade-in space-y-4 sm:space-y-6 relative z-10">
                             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white drop-shadow-lg">
