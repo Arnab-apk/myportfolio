@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import ChatBotWidget from "./components/ChatBotWidget";
 import Footer from "./components/Footer";
-import CardNav from "./components/CardNav";
+import { StaggeredMenu } from "./components/StaggeredMenu";
 import AuroraBackground from "./components/AuroraBackground";
 import PageTransition from "./components/PageTransition";
 
@@ -12,45 +12,35 @@ import ContactPage from "./pages/ContactPage";
 
 function AppContent() {
   const navItems = [
-    {
-      label: 'Pages',
-      bgColor: '#1a1a1a',
-      textColor: '#ffffff',
-      links: [
-        { label: 'Home', href: '/', ariaLabel: 'Navigate to home page' },
-        { label: 'About', href: '/about', ariaLabel: 'Navigate to about page' }
-      ]
-    },
-    {
-      label: 'Work',
-      bgColor: '#2a2a2a',
-      textColor: '#ffffff',
-      links: [
-        { label: 'Projects', href: '/projects', ariaLabel: 'Navigate to projects page' }
-      ]
-    },
-    {
-      label: 'Connect',
-      bgColor: '#3a3a3a',
-      textColor: '#ffffff',
-      links: [
-        { label: 'Contact', href: '/contact', ariaLabel: 'Navigate to contact page' }
-      ]
-    }
+    { label: 'Home', link: '/', ariaLabel: 'Navigate to home page' },
+    { label: 'About', link: '/about', ariaLabel: 'Navigate to about page' },
+    { label: 'Projects', link: '/projects', ariaLabel: 'Navigate to projects page' },
+    { label: 'Contact', link: '/contact', ariaLabel: 'Navigate to contact page' }
+  ];
+
+  const socialItems = [
+    { label: 'GitHub', link: 'https://github.com/yourusername' },
+    { label: 'LinkedIn', link: 'https://linkedin.com/in/yourusername' },
+    { label: 'Twitter', link: 'https://twitter.com/yourusername' }
   ];
 
   return (
     <AuroraBackground>
       <div className="min-h-screen bg-transparent text-white overflow-x-hidden">
         {/* Navigation */}
-        <CardNav
-          logo="/vite.svg"
-          logoAlt="Portfolio Logo"
+        <StaggeredMenu
+          position="right"
+          colors={['#2a2a2a', '#1a1a1a', '#0a0a0a']}
           items={navItems}
-          baseColor="#ffffff"
-          menuColor="#000000"
-          buttonBgColor="#000000"
-          buttonTextColor="#ffffff"
+          socialItems={socialItems}
+          displaySocials={true}
+          displayItemNumbering={true}
+          logoUrl="/vite.svg"
+          menuButtonColor="#ffffff"
+          openMenuButtonColor="#000000"
+          changeMenuColorOnOpen={true}
+          isFixed={true}
+          accentColor="#ffffff"
         />
 
         <PageTransition>
