@@ -4,6 +4,7 @@ import ProfileCard from "../components/ProfileCard";
 import { useNavigate } from "react-router-dom";
 import ClickSpark from "../components/ClickSpark";
 import MetallicLogo from "../components/MetallicLogo";
+import ShapeBlur from "../components/ShapeBlur";
 
 const Home = () => {
     const navigate = useNavigate();
@@ -49,9 +50,20 @@ const Home = () => {
             sparkCount={8}
             duration={400}
         >
-            <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center pt-24">
+            <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center pt-24 overflow-hidden">
+                <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
+                    <ShapeBlur
+                        variation={0}
+                        pixelRatioProp={window.devicePixelRatio}
+                        shapeSize={1.5}
+                        roundness={0.5}
+                        borderSize={0.05}
+                        circleSize={0.5}
+                        circleEdge={1.0}
+                    />
+                </div>
                 <AuroraBackground>
-                    <div className="w-full h-screen flex flex-col items-center justify-center px-4 pt-20">
+                    <div className="w-full h-screen flex flex-col items-center justify-center px-4 pt-20 relative z-10">
                         {/* Metallic Logo */}
                         <div className="mb-8 animate-fade-in">
                             <MetallicLogo />
