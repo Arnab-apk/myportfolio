@@ -7,8 +7,8 @@ function AuroraBackground({ children, className = "" }) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Small delay to ensure smooth initial render
-    const timer = setTimeout(() => setIsLoaded(true), 100);
+    // Minimal delay for smooth initial render
+    const timer = setTimeout(() => setIsLoaded(true), 50);
     return () => clearTimeout(timer);
   }, []);
 

@@ -2,36 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   min-height: 100dvh;
   scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-brand-dark text-slate-200 font-sans antialiased selection:bg-brand-yellow/30 selection:text-brand-yellow;
+  @apply bg-transparent text-slate-200 font-sans antialiased selection:bg-brand-yellow/30 selection:text-brand-yellow;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-thumb {
   @apply bg-slate-800/50 rounded-full hover:bg-brand-yellow/50 transition-colors;
 }
+
 ::-webkit-scrollbar-track {
   @apply bg-transparent;
 }
 
 /* Custom Animations */
 @keyframes aurora-1 {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate(0, 0) scale(1);
     opacity: 0.3;
   }
+
   33% {
     transform: translate(30px, -30px) scale(1.1);
     opacity: 0.4;
   }
+
   66% {
     transform: translate(-20px, 20px) scale(0.95);
     opacity: 0.25;
@@ -39,14 +50,18 @@ body {
 }
 
 @keyframes aurora-2 {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate(0, 0) scale(1);
     opacity: 0.25;
   }
+
   33% {
     transform: translate(-40px, 30px) scale(1.15);
     opacity: 0.35;
   }
+
   66% {
     transform: translate(30px, -25px) scale(0.9);
     opacity: 0.2;
@@ -54,10 +69,13 @@ body {
 }
 
 @keyframes aurora-3 {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate(0, 0) scale(1);
     opacity: 0.2;
   }
+
   50% {
     transform: translate(25px, 25px) scale(1.2);
     opacity: 0.3;
@@ -65,18 +83,24 @@ body {
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-20px);
   }
 }
 
 @keyframes glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(255, 212, 0, 0.3);
   }
+
   50% {
     box-shadow: 0 0 40px rgba(255, 212, 0, 0.6);
   }
@@ -86,6 +110,7 @@ body {
   0% {
     background-position: -1000px 0;
   }
+
   100% {
     background-position: 1000px 0;
   }
@@ -96,6 +121,7 @@ body {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
