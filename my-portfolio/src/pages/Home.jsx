@@ -64,10 +64,10 @@ const Home = () => {
                 <div className="relative min-h-screen flex flex-col items-center pt-24 pb-20 px-4 z-10">
                     {/* Title */}
                     <div className="text-center mb-12 sm:mb-16 animate-fade-in space-y-6 relative z-10 mt-20">
-                        <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-display font-black text-white drop-shadow-2xl tracking-tighter">
+                        <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-display font-black text-black drop-shadow-2xl tracking-tighter">
                             Arnab Mandal
                         </h1>
-                        <p className="text-xl sm:text-2xl md:text-3xl text-slate-300 font-light tracking-widest uppercase">
+                        <p className="text-xl sm:text-2xl md:text-3xl text-black font-light tracking-widest uppercase">
                             AI, AR, and Full Stack Development
                         </p>
                     </div>
@@ -89,7 +89,7 @@ const Home = () => {
 
                     {/* Project Showcase - Enhanced Magic Bento */}
                     <div className="w-full max-w-6xl animate-slide-up delay-200">
-                        <h2 className="text-2xl font-bold text-white text-center mb-8">Featured Projects</h2>
+                        <h2 className="text-2xl font-bold text-black text-center mb-8">Featured Projects</h2>
                         <EnhancedMagicBento
                             items={projectItems}
                             enableSpotlight={true}
