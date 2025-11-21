@@ -28,7 +28,7 @@ function About() {
                 Academy of Technology, West Bengal
               </span>
               , specializing in{" "}
-              <span className="font-semibold text-brand-yellow">
+              <span className="font-semibold text-white">
                 AI/ML, AR experiences, and full-stack development
               </span>
               . I create solutions that blend algorithmic thinking with intuitive user experiences.
@@ -47,15 +47,15 @@ function About() {
               </p>
               <ul className="space-y-3 text-sm sm:text-base text-slate-400">
                 <li className="flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-yellow" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-white" />
                   <span>AI Agents & RAG Systems</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-yellow" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-white" />
                   <span>AR/Game Development (Unity)</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-yellow" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-white" />
                   <span>Competitive Programming & DSA</span>
                 </li>
               </ul>
@@ -69,15 +69,15 @@ function About() {
               </p>
               <ul className="space-y-3 text-sm sm:text-base text-slate-400">
                 <li className="flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-yellow" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-white" />
                   <span>Music Production & Sound Design</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-yellow" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-white" />
                   <span>UI/UX Design Exploration</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-yellow" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-white" />
                   <span>Tech Community Building</span>
                 </li>
               </ul>
