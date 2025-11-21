@@ -209,7 +209,7 @@ function Contact() {
               <div className="flex gap-4">
                 {[
                   { name: "GitHub", url: "https://github.com/Arnab-apk" },
-                  { name: "LinkedIn", url: "https://www.linkedin.com" }
+                  { name: "LinkedIn", url: "https://www.linkedin.com/in/arnab-mandal-b3a8b4250" }
                 ].map((social) => (
                   <a
                     key={social.name}
