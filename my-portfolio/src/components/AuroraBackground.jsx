@@ -17,14 +17,14 @@ function AuroraBackground({ children, className = "" }) {
       {/* Silk WebGL Background with lazy loading */}
       <div className="absolute inset-0 overflow-hidden">
         <Suspense fallback={
-          <div className="w-full h-full bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600" />
+          <div className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-black" />
         }>
           {isLoaded && (
             <Silk
-              color="#FFD700"
+              color="#FFFFFF"
               speed={2}
               scale={1.5}
-              noiseIntensity={0.5}
+              noiseIntensity={0.3}
             />
           )}
         </Suspense>

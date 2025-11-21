@@ -52,7 +52,7 @@ const ChatBotWidget = () => {
       let botText = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, no response.";
       // Enforce concise length client-side as fallback
       botText = botText.replace(/\s+/g, ' ').trim();
-      if (botText.length > 200) botText = botText.slice(0, 197).replace(/[,;:]+$/,'').trim() + '...';
+      if (botText.length > 200) botText = botText.slice(0, 197).replace(/[,;:]+$/, '').trim() + '...';
       // If model ignored instruction and answered unrelated
       if (isUnrelated(botText) || /I can'?t|unrelated/i.test(botText)) {
         botText = "I only answer portfolio-related questions.";
@@ -66,7 +66,7 @@ const ChatBotWidget = () => {
   return (
     <div>
       <button
-        className="fixed bottom-6 right-6 z-[1200] bg-yellow-400 text-black rounded-full shadow-lg p-4 hover:bg-yellow-300 transition-all"
+        className="fixed bottom-6 right-6 z-[1200] bg-white text-black rounded-full shadow-lg p-4 hover:bg-gray-200 transition-all"
         onClick={() => setOpen(o => !o)}
         aria-label="Open chat bot"
       >
@@ -74,11 +74,11 @@ const ChatBotWidget = () => {
       </button>
       {open && (
         <div className="fixed bottom-24 right-6 w-80 max-w-[90vw] bg-white text-black rounded-2xl shadow-2xl z-[1200] flex flex-col overflow-hidden animate-fadeIn">
-          <div className="bg-yellow-400 px-4 py-2 font-bold">ChatBot</div>
+          <div className="bg-gray-800 text-white px-4 py-2 font-bold">ChatBot</div>
           <div className="flex-1 p-3 overflow-y-auto" style={{ maxHeight: 320 }}>
             {messages.map((msg, i) => (
               <div key={i} className={`mb-2 flex ${msg.from === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`px-3 py-2 rounded-xl max-w-[80%] ${msg.from === 'user' ? 'bg-yellow-100' : 'bg-gray-200'}`}>{msg.text}</div>
+                <div className={`px-3 py-2 rounded-xl max-w-[80%] ${msg.from === 'user' ? 'bg-gray-800 text-white' : 'bg-gray-200'}`}>{msg.text}</div>
               </div>
             ))}
             <div ref={messagesEndRef} />
@@ -92,7 +92,7 @@ const ChatBotWidget = () => {
               placeholder="Ask about skills, projects..."
             />
             <button
-              className="px-4 py-2 bg-yellow-400 hover:bg-yellow-300 transition-all font-bold"
+              className="px-4 py-2 bg-gray-800 text-white hover:bg-gray-700 transition-all font-bold"
               onClick={handleSend}
             >
               Send

@@ -7,14 +7,18 @@ body,
 #root {
   height: 100%;
   min-height: 100dvh;
+  min-height: -webkit-fill-available;
   scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  @apply bg-transparent text-slate-200 font-sans antialiased selection:bg-brand-yellow/30 selection:text-brand-yellow;
+  @apply bg-black text-white font-sans antialiased selection:bg-white/30 selection:text-white;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  position: relative;
 }
 
 ::-webkit-scrollbar {
@@ -22,7 +26,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-800/50 rounded-full hover:bg-brand-yellow/50 transition-colors;
+  @apply bg-gray-700/50 rounded-full hover:bg-white/50 transition-colors;
 }
 
 ::-webkit-scrollbar-track {
@@ -98,11 +102,11 @@ body {
 
   0%,
   100% {
-    box-shadow: 0 0 20px rgba(255, 212, 0, 0.3);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
   }
 
   50% {
-    box-shadow: 0 0 40px rgba(255, 212, 0, 0.6);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
   }
 }
 
@@ -150,7 +154,7 @@ body {
 
 /* Gradient text effect */
 .gradient-text {
-  background: linear-gradient(90deg, #FFD400, #FF6B00, #FFD400);
+  background: linear-gradient(90deg, #FFFFFF, #CCCCCC, #FFFFFF);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

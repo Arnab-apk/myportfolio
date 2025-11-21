@@ -143,10 +143,10 @@ const GooeyNav = ({
         {`
           :root {
             --linear-ease: linear(0, 0.068, 0.19 2.7%, 0.804 8.1%, 1.037, 1.199 13.2%, 1.245, 1.27 15.8%, 1.274, 1.272 17.4%, 1.249 19.1%, 0.996 28%, 0.949, 0.928 33.3%, 0.926, 0.933 36.8%, 1.001 45.6%, 1.013, 1.019 50.8%, 1.018 54.4%, 1 63.1%, 0.995 68%, 1.001 85%, 1);
-            --color-1: #FFD700;
-            --color-2: #FFA500;
-            --color-3: #38bdf8;
-            --color-4: #FFFFFF;
+            --color-1: #FFFFFF;
+            --color-2: #E5E5E5;
+            --color-3: #D1D1D1;
+            --color-4: #CCCCCC;
           }
           .effect {
             position: absolute;
@@ -160,9 +160,15 @@ const GooeyNav = ({
             color: white;
             transition: color 0.3s ease;
             font-weight: 500;
+            display: none; /* Hide on mobile to prevent dual text */
+          }
+          @media (min-width: 640px) {
+            .effect.text {
+              display: grid; /* Show on larger screens */
+            }
           }
           .effect.text.active {
-            color: #000000;
+            color: #FFFFFF;
             font-weight: 600;
           }
           .effect.filter {
@@ -180,7 +186,7 @@ const GooeyNav = ({
             content: "";
             position: absolute;
             inset: 0;
-            background: #FFD700;
+            background: #FFFFFF;
             transform: scale(0);
             opacity: 0;
             z-index: -1;
@@ -276,7 +282,7 @@ const GooeyNav = ({
             position: absolute;
             inset: 0;
             border-radius: 8px;
-            background: #FFD700;
+            background: #FFFFFF;
             opacity: 0;
             transform: scale(0);
             transition: all 0.3s ease;
@@ -290,14 +296,14 @@ const GooeyNav = ({
             ref={navRef}
             className="flex gap-2 sm:gap-8 list-none p-0 px-3 sm:px-4 m-0 relative z-[3] text-xs sm:text-base"
             style={{
-              color: '#000000',
+              color: '#FFFFFF',
               textShadow: 'none'
             }}
           >
             {items.map((item, index) => (
               <li
                 key={index}
-                className={`rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] ${activeIndex === index ? 'active' : 'text-black'
+                className={`rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] ${activeIndex === index ? 'active' : 'text-white'
                   }`}
               >
                 <Link

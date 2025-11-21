@@ -20,14 +20,14 @@ function AppContent() {
 
   return (
     <AuroraBackground>
-      <div className="min-h-screen bg-transparent text-black overflow-x-hidden">
+      <div className="min-h-screen bg-transparent text-white overflow-x-hidden">
         {/* Kinetic Effects */}
 
         {/* AmbientParticles removed for performance */}
 
         {/* Navigation */}
         <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 sm:pt-6">
-          <div className="bg-transparent backdrop-blur-sm rounded-full px-5 sm:px-7 py-2.5 sm:py-3.5 border border-black/10 shadow-sm hover:border-black/20 transition-all duration-300">
+          <div className="bg-black/20 backdrop-blur-sm rounded-full px-5 sm:px-7 py-2.5 sm:py-3.5 border border-white/20 shadow-sm hover:border-white/30 transition-all duration-300">
             <GooeyNav items={navItems} />
           </div>
         </div>
