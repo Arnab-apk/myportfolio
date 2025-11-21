@@ -26,8 +26,8 @@ function AppContent() {
         {/* AmbientParticles removed for performance */}
 
         {/* Navigation */}
-        <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 sm:pt-6">
-          <div className="bg-black/20 backdrop-blur-sm rounded-full px-5 sm:px-7 py-2.5 sm:py-3.5 border border-white/20 shadow-sm hover:border-white/30 transition-all duration-300">
+        <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-3 sm:pt-4">
+          <div className="bg-white/90 backdrop-blur-sm rounded-full px-5 sm:px-7 py-2.5 sm:py-3.5 border border-gray-200 shadow-lg hover:border-gray-300 transition-all duration-300">
             <GooeyNav items={navItems} />
           </div>
         </div>

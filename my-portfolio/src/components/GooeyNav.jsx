@@ -157,7 +157,7 @@ const GooeyNav = ({
             z-index: 1;
           }
           .effect.text {
-            color: white;
+            color: black;
             transition: color 0.3s ease;
             font-weight: 500;
             display: none; /* Hide on mobile to prevent dual text */
@@ -168,7 +168,7 @@ const GooeyNav = ({
             }
           }
           .effect.text.active {
-            color: #FFFFFF;
+            color: #000000;
             font-weight: 600;
           }
           .effect.filter {
@@ -296,14 +296,14 @@ const GooeyNav = ({
             ref={navRef}
             className="flex gap-2 sm:gap-8 list-none p-0 px-3 sm:px-4 m-0 relative z-[3] text-xs sm:text-base"
             style={{
-              color: '#FFFFFF',
+              color: '#000000',
               textShadow: 'none'
             }}
           >
             {items.map((item, index) => (
               <li
                 key={index}
-                className={`rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] ${activeIndex === index ? 'active' : 'text-white'
+                className={`rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] ${activeIndex === index ? 'active' : 'text-black'
                   }`}
               >
                 <Link
