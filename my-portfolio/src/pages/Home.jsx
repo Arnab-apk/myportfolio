@@ -3,7 +3,6 @@ import ProfileCard from "../components/ProfileCard";
 import { useNavigate } from "react-router-dom";
 import ClickSpark from "../components/ClickSpark";
 import MetallicLogo from "../components/MetallicLogo";
-import ShapeBlur from "../components/ShapeBlur";
 import ProjectShowcase from "../components/ProjectShowcase";
 
 const Home = () => {
@@ -50,65 +49,52 @@ const Home = () => {
             sparkCount={8}
             duration={400}
         >
-            <section id="hero" className="relative min-h-screen flex flex-col items-center pt-24 overflow-hidden pb-20">
-                <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
-                    <ShapeBlur
-                        variation={0}
-                        pixelRatioProp={window.devicePixelRatio}
-                        shapeSize={1.5}
-                        roundness={0.5}
-                        borderSize={0.05}
-                        circleSize={0.5}
-                        circleEdge={1.0}
-                    />
-                </div>
-                <AuroraBackground>
-                    <div className="w-full min-h-screen flex flex-col items-center px-4 pt-20 relative z-10">
-                        {/* Metallic Logo */}
-                        <div className="mb-8 animate-fade-in">
-                            <MetallicLogo />
-                        </div>
+            <AuroraBackground className="min-h-screen">
+                <div className="relative min-h-screen flex flex-col items-center pt-24 pb-20 px-4 z-10">
+                    {/* Metallic Logo */}
+                    <div className="mb-8 animate-fade-in">
+                        <MetallicLogo />
+                    </div>
 
-                        {/* Title */}
-                        <div className="text-center mb-12 sm:mb-16 animate-fade-in space-y-4 sm:space-y-6 relative z-10">
-                            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white drop-shadow-lg">
-                                Arnab Mandal
-                            </h1>
-                            <p className="text-base sm:text-lg md:text-xl text-slate-400">
-                                AI, AR, and Full Stack Development
-                            </p>
-                        </div>
+                    {/* Title */}
+                    <div className="text-center mb-12 sm:mb-16 animate-fade-in space-y-4 sm:space-y-6 relative z-10">
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white drop-shadow-lg">
+                            Arnab Mandal
+                        </h1>
+                        <p className="text-base sm:text-lg md:text-xl text-slate-400">
+                            AI, AR, and Full Stack Development
+                        </p>
+                    </div>
 
-                        {/* Profile Card */}
-                        <div className="mb-16 animate-slide-up">
-                            <ProfileCard
-                                avatarUrl="/arnab.jpg"
-                                name="Arnab Mandal"
-                                title="Tech Enthusiast"
-                                handle="arnab_mandal"
-                                status="Available for work"
-                                contactText="CONTACT"
-                                onContactClick={() => {
-                                    navigate('/contact');
-                                }}
-                            />
-                        </div>
+                    {/* Profile Card */}
+                    <div className="mb-16 animate-slide-up">
+                        <ProfileCard
+                            avatarUrl="/arnab.jpg"
+                            name="Arnab Mandal"
+                            title="Tech Enthusiast"
+                            handle="arnab_mandal"
+                            status="Available for work"
+                            contactText="CONTACT"
+                            onContactClick={() => {
+                                navigate('/contact');
+                            }}
+                        />
+                    </div>
 
-                        {/* Project Showcase */}
-                        <div className="w-full animate-slide-up delay-200">
-                            <h2 className="text-2xl font-bold text-white text-center mb-8">Featured Projects</h2>
-                            <ProjectShowcase items={projectItems} />
-                        </div>
+                    {/* Project Showcase */}
+                    <div className="w-full animate-slide-up delay-200">
+                        <h2 className="text-2xl font-bold text-white text-center mb-8">Featured Projects</h2>
+                        <ProjectShowcase items={projectItems} />
+                    </div>
 
-                        {/* Scroll Indicator */}
-                        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-                            <div className="w-6 h-10 border-2 border-brand-yellow/50 rounded-full flex justify-center pt-2">
-                                <div className="w-1 h-3 bg-brand-yellow/50 rounded-full animate-pulse" />
-                            </div>
+                    {/* Scroll Indicator */}
+                    <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                        <div className="w-6 h-10 border-2 border-brand-yellow/50 rounded-full flex justify-center pt-2">
+                            <div className="w-1 h-3 bg-brand-yellow/50 rounded-full animate-pulse" />
                         </div>
                     </div>
-                </AuroraBackground>
-            </section>
+                </div>
+            </AuroraBackground>
         </ClickSpark>
     );
 };
