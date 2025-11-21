@@ -542,22 +542,8 @@ const EnhancedMagicBento = ({
           
           @media (min-width: 1024px) {
             .card-responsive {
-              grid-template-columns: repeat(4, 1fr);
-            }
-            
-            .card-responsive .card:nth-child(3) {
-              grid-column: span 2;
-              grid-row: span 2;
-            }
-            
-            .card-responsive .card:nth-child(4) {
-              grid-column: 1 / span 2;
-              grid-row: 2 / span 2;
-            }
-            
-            .card-responsive .card:nth-child(6) {
-              grid-column: 4;
-              grid-row: 3;
+              grid-template-columns: repeat(2, 1fr);
+              max-width: 1200px;
             }
           }
           
@@ -707,7 +693,7 @@ const EnhancedMagicBento = ({
       <BentoCardGrid gridRef={gridRef}>
         <div className="card-responsive grid gap-3">
           {items.map((card, index) => {
-            const baseClassName = `card flex flex-col justify-between relative aspect-[4/3] min-h-[220px] w-full max-w-full p-6 rounded-[24px] border-2 border-solid font-light overflow-hidden transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_12px_35px_rgba(0,0,0,0.25)] ${enableBorderGlow ? 'card--border-glow' : ''
+            const baseClassName = `card flex flex-col justify-between relative aspect-[4/3] min-h-[320px] w-full max-w-full p-6 rounded-[24px] border-2 border-solid font-light overflow-hidden transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_12px_35px_rgba(0,0,0,0.25)] ${enableBorderGlow ? 'card--border-glow' : ''
               }`;
 
             const cardStyle = {
