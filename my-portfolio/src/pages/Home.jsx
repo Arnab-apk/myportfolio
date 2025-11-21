@@ -2,7 +2,6 @@ import AuroraBackground from "../components/AuroraBackground";
 import ProfileCard from "../components/ProfileCard";
 import { useNavigate } from "react-router-dom";
 import ClickSpark from "../components/ClickSpark";
-import MetallicLogo from "../components/MetallicLogo";
 import ProjectShowcase from "../components/ProjectShowcase";
 
 const Home = () => {
@@ -51,17 +50,12 @@ const Home = () => {
         >
             <AuroraBackground className="min-h-screen">
                 <div className="relative min-h-screen flex flex-col items-center pt-24 pb-20 px-4 z-10">
-                    {/* Metallic Logo */}
-                    <div className="mb-8 animate-fade-in">
-                        <MetallicLogo />
-                    </div>
-
                     {/* Title */}
-                    <div className="text-center mb-12 sm:mb-16 animate-fade-in space-y-4 sm:space-y-6 relative z-10">
-                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white drop-shadow-lg">
+                    <div className="text-center mb-12 sm:mb-16 animate-fade-in space-y-6 relative z-10 mt-20">
+                        <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-display font-black text-white drop-shadow-2xl tracking-tighter">
                             Arnab Mandal
                         </h1>
-                        <p className="text-base sm:text-lg md:text-xl text-slate-400">
+                        <p className="text-xl sm:text-2xl md:text-3xl text-slate-300 font-light tracking-widest uppercase">
                             AI, AR, and Full Stack Development
                         </p>
                     </div>

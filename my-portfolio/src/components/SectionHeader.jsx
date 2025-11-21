@@ -22,7 +22,7 @@ function SectionHeader({ id, title, containerRef }) {
               containerRef={containerRef}
               radius={120}
               falloff="gaussian"
-              className="text-white text-2xl sm:text-3xl md:text-4xl font-bold tracking-wider"
+              className="text-white text-4xl sm:text-5xl md:text-6xl font-black tracking-widest"
               style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
             />
           </div>
