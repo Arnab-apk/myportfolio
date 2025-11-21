@@ -19,14 +19,14 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-brand-dark text-white overflow-x-hidden">
+      <div className="min-h-screen bg-transparent text-black overflow-x-hidden">
         {/* Kinetic Effects */}
 
         {/* AmbientParticles removed for performance */}
 
         {/* Navigation */}
         <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6">
-          <div className="bg-white/5 backdrop-blur-xl rounded-full px-6 py-3 border border-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] hover:bg-white/10 transition-all duration-300">
+          <div className="bg-transparent backdrop-blur-sm rounded-full px-6 py-3 border border-black/10 shadow-sm hover:border-black/20 transition-all duration-300">
             <GooeyNav items={navItems} />
           </div>
         </div>
