@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ChatBotWidget from "./components/ChatBotWidget";
 import Footer from "./components/Footer";
 import GooeyNav from "./components/GooeyNav";
-import MagneticCursor from "./components/MagneticCursor";
+
 
 import Home from "./pages/Home";
 import AboutPage from "./pages/AboutPage";
@@ -21,7 +21,7 @@ function App() {
     <Router>
       <div className="min-h-screen bg-brand-dark text-white overflow-x-hidden">
         {/* Kinetic Effects */}
-        <MagneticCursor />
+
         {/* AmbientParticles removed for performance */}
 
         {/* Navigation */}
