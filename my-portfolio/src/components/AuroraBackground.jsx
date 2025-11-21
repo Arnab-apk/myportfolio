@@ -3,11 +3,11 @@ import Silk from "./Silk";
 
 function AuroraBackground({ children, className = "" }) {
   return (
-    <div className={`relative ${className} bg-brand-dark`}>
+    <div className={`relative ${className} bg-brand-dark min-h-[100dvh]`}>
       {/* Silk WebGL Background */}
       <div className="absolute inset-0 overflow-hidden">
         <Silk
-          color="#1a1a2e"
+          color="#FFD700"
           speed={2}
           scale={1.5}
           noiseIntensity={0.5}
