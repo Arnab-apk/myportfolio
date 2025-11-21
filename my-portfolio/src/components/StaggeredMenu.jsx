@@ -419,6 +419,12 @@ export const StaggeredMenu = ({
                       to={it.link}
                       aria-label={it.ariaLabel}
                       data-index={idx + 1}
+                      onClick={() => {
+                        // Auto-collapse menu after clicking a link
+                        if (openRef.current) {
+                          toggleMenu();
+                        }
+                      }}
                     >
                       <span className="sm-panel-itemLabel inline-block [transform-origin:50%_100%] will-change-transform">
                         {it.label}

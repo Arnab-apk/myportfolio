@@ -88,7 +88,11 @@ const Home = () => {
 
                 {/* Project Showcase - Enhanced Magic Bento */}
                 <div className="w-full max-w-6xl animate-slide-up delay-200">
-                    <h2 className="text-2xl font-bold text-black text-center mb-8">Featured Projects</h2>
+                    <div className="inline-block mb-8 mx-auto relative left-1/2 -translate-x-1/2">
+                        <h2 className="text-4xl sm:text-5xl font-bold text-white px-8 py-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
+                            About
+                        </h2>
+                    </div>
                     <EnhancedMagicBento
                         items={projectItems}
                         enableSpotlight={true}
