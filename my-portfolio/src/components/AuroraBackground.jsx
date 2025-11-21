@@ -15,7 +15,7 @@ function AuroraBackground({ children, className = "" }) {
   return (
     <div className={`relative ${className} min-h-[100dvh]`}>
       {/* Silk WebGL Background with lazy loading */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden opacity-40">
         <Suspense fallback={
           <div className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-black" />
         }>
@@ -24,7 +24,7 @@ function AuroraBackground({ children, className = "" }) {
               color="#FFFFFF"
               speed={2}
               scale={1.5}
-              noiseIntensity={0.3}
+              noiseIntensity={0.15}
             />
           )}
         </Suspense>
