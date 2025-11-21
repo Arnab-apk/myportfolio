@@ -9,42 +9,42 @@ const Home = () => {
 
     const projectItems = [
         {
-            image: '/portfolio-project.png',
+            image: '/portfolio-project-bw.png',
             link: 'https://github.com/Arnab-apk/myportfolio',
             title: 'My Portfolio',
             description: 'Personal portfolio website built with React.',
             label: 'Web'
         },
         {
-            image: '/python-course.png',
+            image: '/python-course-bw.png',
             link: 'https://github.com/Arnab-apk/100-days-Python-Course',
             title: '100 Days Python',
             description: 'A wonderful journey from Python noob to intermediate pro developer.',
             label: 'Python'
         },
         {
-            image: '/machine-learning.png',
+            image: '/machine-learning-bw.png',
             link: 'https://github.com/Arnab-apk/Machine_Learning_Python-R',
             title: 'Machine Learning',
             description: 'Machine Learning projects in Python and R.',
             label: 'AI/ML'
         },
         {
-            image: '/kaggle-workshop.png',
+            image: '/kaggle-workshop-bw.png',
             link: 'https://github.com/Arnab-apk/5-DayGoogleKaggleWS',
             title: 'Google Kaggle WS',
             description: '5-Day Google Kaggle Workshop projects and learnings.',
             label: 'Data Science'
         },
         {
-            image: '/ar-prototype.png',
+            image: '/ar-prototype-bw.png',
             link: 'https://github.com/Arnab-apk/Gentech_Thales_Prototype',
             title: 'AR Prototype',
             description: 'Augmented reality application prototype using Unity.',
             label: 'AR/VR'
         },
         {
-            image: '/opencv-project.png',
+            image: '/opencv-project-bw.png',
             link: 'https://github.com/Arnab-apk/Open_CV_-BTA-',
             title: 'OpenCV (BTA)',
             description: 'Hands-on computer vision exercises using OpenCV.',
