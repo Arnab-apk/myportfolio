@@ -2,6 +2,7 @@ import AuroraBackground from "../components/AuroraBackground";
 import InfiniteMenu from "../components/InfiniteMenu";
 import ProfileCard from "../components/ProfileCard";
 import { useNavigate } from "react-router-dom";
+import ClickSpark from "../components/ClickSpark";
 
 const Home = () => {
     const navigate = useNavigate();
@@ -40,51 +41,59 @@ const Home = () => {
     ];
 
     return (
-        <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center pt-24">
-            <AuroraBackground>
-                <div className="w-full h-screen flex flex-col items-center justify-center px-4 pt-20">
-                    {/* Title */}
-                    <div className="text-center mb-12 sm:mb-16 animate-fade-in space-y-4 sm:space-y-6 relative z-10">
-                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white drop-shadow-lg">
-                            Arnab Mandal
-                        </h1>
-                        <p className="text-base sm:text-lg md:text-xl text-slate-400">
-                            AI, AR, and Full Stack Development
-                        </p>
-                    </div>
-
-                    {/* Profile Card and InfiniteMenu Side by Side */}
-                    <div className="w-full max-w-6xl flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
-                        {/* Profile Card */}
-                        <div className="flex-shrink-0">
-                            <ProfileCard
-                                avatarUrl="/arnab.jpg"
-                                name="Arnab Mandal"
-                                title="Tech Enthusiast"
-                                handle="arnab_mandal"
-                                status="Available for work"
-                                contactText="CONTACT"
-                                onContactClick={() => {
-                                    navigate('/contact');
-                                }}
-                            />
+        <ClickSpark
+            sparkColor='#fff'
+            sparkSize={10}
+            sparkRadius={15}
+            sparkCount={8}
+            duration={400}
+        >
+            <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center pt-24">
+                <AuroraBackground>
+                    <div className="w-full h-screen flex flex-col items-center justify-center px-4 pt-20">
+                        {/* Title */}
+                        <div className="text-center mb-12 sm:mb-16 animate-fade-in space-y-4 sm:space-y-6 relative z-10">
+                            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white drop-shadow-lg">
+                                Arnab Mandal
+                            </h1>
+                            <p className="text-base sm:text-lg md:text-xl text-slate-400">
+                                AI, AR, and Full Stack Development
+                            </p>
                         </div>
 
-                        {/* InfiniteMenu */}
-                        <div className="w-full max-w-2xl h-[500px] sm:h-[600px] relative">
-                            <InfiniteMenu items={projectItems} />
-                        </div>
-                    </div>
+                        {/* Profile Card and InfiniteMenu Side by Side */}
+                        <div className="w-full max-w-6xl flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
+                            {/* Profile Card */}
+                            <div className="flex-shrink-0">
+                                <ProfileCard
+                                    avatarUrl="/arnab.jpg"
+                                    name="Arnab Mandal"
+                                    title="Tech Enthusiast"
+                                    handle="arnab_mandal"
+                                    status="Available for work"
+                                    contactText="CONTACT"
+                                    onContactClick={() => {
+                                        navigate('/contact');
+                                    }}
+                                />
+                            </div>
 
-                    {/* Scroll Indicator */}
-                    <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-                        <div className="w-6 h-10 border-2 border-brand-yellow/50 rounded-full flex justify-center pt-2">
-                            <div className="w-1 h-3 bg-brand-yellow/50 rounded-full animate-pulse" />
+                            {/* InfiniteMenu */}
+                            <div className="w-full max-w-2xl h-[500px] sm:h-[600px] relative">
+                                <InfiniteMenu items={projectItems} />
+                            </div>
+                        </div>
+
+                        {/* Scroll Indicator */}
+                        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                            <div className="w-6 h-10 border-2 border-brand-yellow/50 rounded-full flex justify-center pt-2">
+                                <div className="w-1 h-3 bg-brand-yellow/50 rounded-full animate-pulse" />
+                            </div>
                         </div>
                     </div>
-                </div>
-            </AuroraBackground>
-        </section>
+                </AuroraBackground>
+            </section>
+        </ClickSpark>
     );
 };
 

@@ -2,6 +2,7 @@ import Carousel from "../components/Carousel";
 import EnhancedMagicBento from "../components/EnhancedMagicBento";
 import SectionHeader from "../components/SectionHeader";
 import AuroraBackground from "../components/AuroraBackground";
+import ClickSpark from "../components/ClickSpark";
 import { useRef } from "react";
 import { FiAward, FiBook, FiStar, FiTrendingUp, FiUsers, FiZap } from "react-icons/fi";
 
@@ -48,48 +49,56 @@ const ProjectsPage = () => {
     ];
 
     return (
-        <div className="pt-24 min-h-screen">
-            <AuroraBackground>
-                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                    <section id="highlights" ref={highlightsRef}>
-                        <div className="flex flex-col items-center gap-8 lg:gap-12">
-                            {/* Highlights Carousel */}
-                            <div className="w-full min-h-[400px]">
-                                <SectionHeader
-                                    id="highlights"
-                                    title="HIGHLIGHTS"
-                                    containerRef={highlightsRef}
-                                />
-                                <div className="mt-8 flex justify-center">
-                                    <Carousel
-                                        items={highlightItems}
-                                        baseWidth={350}
-                                        autoplay={true}
-                                        autoplayDelay={3500}
-                                        pauseOnHover={true}
-                                        loop={true}
+        <ClickSpark
+            sparkColor='#fff'
+            sparkSize={10}
+            sparkRadius={15}
+            sparkCount={8}
+            duration={400}
+        >
+            <div className="pt-24 min-h-screen">
+                <AuroraBackground>
+                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                        <section id="highlights" ref={highlightsRef}>
+                            <div className="flex flex-col items-center gap-8 lg:gap-12">
+                                {/* Highlights Carousel */}
+                                <div className="w-full min-h-[400px]">
+                                    <SectionHeader
+                                        id="highlights"
+                                        title="HIGHLIGHTS"
+                                        containerRef={highlightsRef}
                                     />
+                                    <div className="mt-8 flex justify-center">
+                                        <Carousel
+                                            items={highlightItems}
+                                            baseWidth={350}
+                                            autoplay={true}
+                                            autoplayDelay={3500}
+                                            pauseOnHover={true}
+                                            loop={true}
+                                        />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        {/* Magic Bento Grid - Full Width Below */}
-                        <div className="mt-12 sm:mt-16 rounded-3xl bg-brand-card/30 backdrop-blur-md border border-white/10 overflow-hidden">
-                            <EnhancedMagicBento
-                                enableSpotlight={true}
-                                enableStars={true}
-                                enableBorderGlow={true}
-                                enableTilt={true}
-                                clickEffect={true}
-                                enableMagnetism={true}
-                                spotlightRadius={400}
-                                particleCount={20}
-                            />
-                        </div>
-                    </section>
-                </div>
-            </AuroraBackground>
-        </div>
+                            {/* Magic Bento Grid - Full Width Below */}
+                            <div className="mt-12 sm:mt-16 rounded-3xl bg-brand-card/30 backdrop-blur-md border border-white/10 overflow-hidden">
+                                <EnhancedMagicBento
+                                    enableSpotlight={true}
+                                    enableStars={true}
+                                    enableBorderGlow={true}
+                                    enableTilt={true}
+                                    clickEffect={true}
+                                    enableMagnetism={true}
+                                    spotlightRadius={400}
+                                    particleCount={20}
+                                />
+                            </div>
+                        </section>
+                    </div>
+                </AuroraBackground>
+            </div>
+        </ClickSpark>
     );
 };
 
