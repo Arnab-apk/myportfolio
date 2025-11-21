@@ -19,27 +19,28 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-transparent text-black overflow-x-hidden">
-        {/* Kinetic Effects */}
+      <div className="min-h-screen">
+        <AuroraBackground>verflow-x-hidden">
+          {/* Kinetic Effects */}
 
-        {/* AmbientParticles removed for performance */}
+          {/* AmbientParticles removed for performance */}
 
-        {/* Navigation */}
-        <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6">
-          <div className="bg-transparent backdrop-blur-sm rounded-full px-6 py-3 border border-black/10 shadow-sm hover:border-black/20 transition-all duration-300">
-            <GooeyNav items={navItems} />
+          {/* Navigation */}
+          <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 sm:pt-6">
+            <div className="bg-transparent backdrop-blur-sm rounded-full px-4 sm:px-6 py-2 sm:py-3 border border-black/10 shadow-sm hover:border-black/20 transition-all duration-300">
+              <GooeyNav items={navItems} />
+            </div>
           </div>
-        </div>
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
 
-        <ChatBotWidget />
-        <Footer />
+          <ChatBotWidget />
+          <Footer />
       </div>
     </Router>
   );
