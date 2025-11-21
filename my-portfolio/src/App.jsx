@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import ChatBotWidget from "./components/ChatBotWidget";
 import Footer from "./components/Footer";
-import GooeyNav from "./components/GooeyNav";
+import CardNav from "./components/CardNav";
 import AuroraBackground from "./components/AuroraBackground";
 import PageTransition from "./components/PageTransition";
 
@@ -12,25 +12,46 @@ import ContactPage from "./pages/ContactPage";
 
 function AppContent() {
   const navItems = [
-    { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
-    { label: 'Projects', href: '/projects' },
-    { label: 'Contact', href: '/contact' }
+    {
+      label: 'Pages',
+      bgColor: '#1a1a1a',
+      textColor: '#ffffff',
+      links: [
+        { label: 'Home', href: '/', ariaLabel: 'Navigate to home page' },
+        { label: 'About', href: '/about', ariaLabel: 'Navigate to about page' }
+      ]
+    },
+    {
+      label: 'Work',
+      bgColor: '#2a2a2a',
+      textColor: '#ffffff',
+      links: [
+        { label: 'Projects', href: '/projects', ariaLabel: 'Navigate to projects page' }
+      ]
+    },
+    {
+      label: 'Connect',
+      bgColor: '#3a3a3a',
+      textColor: '#ffffff',
+      links: [
+        { label: 'Contact', href: '/contact', ariaLabel: 'Navigate to contact page' }
+      ]
+    }
   ];
 
   return (
     <AuroraBackground>
       <div className="min-h-screen bg-transparent text-white overflow-x-hidden">
-        {/* Kinetic Effects */}
-
-        {/* AmbientParticles removed for performance */}
-
         {/* Navigation */}
-        <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-3 sm:pt-4">
-          <div className="bg-white/90 backdrop-blur-sm rounded-full px-5 sm:px-7 py-2.5 sm:py-3.5 border border-gray-200 shadow-lg hover:border-gray-300 transition-all duration-300">
-            <GooeyNav items={navItems} />
-          </div>
-        </div>
+        <CardNav
+          logo="/vite.svg"
+          logoAlt="Portfolio Logo"
+          items={navItems}
+          baseColor="#ffffff"
+          menuColor="#000000"
+          buttonBgColor="#000000"
+          buttonTextColor="#ffffff"
+        />
 
         <PageTransition>
           <Routes>
