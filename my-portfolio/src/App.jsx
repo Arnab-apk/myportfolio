@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ChatBotWidget from "./components/ChatBotWidget";
 import Footer from "./components/Footer";
 import GooeyNav from "./components/GooeyNav";
+import AuroraBackground from "./components/AuroraBackground";
 
 
 import Home from "./pages/Home";
