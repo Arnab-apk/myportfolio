@@ -99,7 +99,7 @@ function Contact() {
       <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.2fr,1fr]">
         <AnimatedSection animation="fade-right" delay={100}>
           <form
-            className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 space-y-5 sm:space-y-6 hover:border-white/30 transition-all duration-500"
+            className="bg-white/5 border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 space-y-5 sm:space-y-6 hover:border-white/30 transition-all duration-500"
             onSubmit={handleSubmit}
           >
             <div className="grid gap-4 sm:gap-6">
@@ -181,7 +181,7 @@ function Contact() {
         </AnimatedSection>
 
         <AnimatedSection animation="fade-left" delay={200}>
-          <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between h-full hover:border-white/30 transition-all duration-500">
+          <div className="bg-white/5 border border-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between h-full hover:border-white/30 transition-all duration-500">
             <div>
               <div className="mb-6">
                 <p className="text-2xl font-display font-bold text-white mb-2">

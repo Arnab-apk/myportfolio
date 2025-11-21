@@ -164,8 +164,8 @@ export default function Carousel({
                         <motion.div
                             key={index}
                             className={`relative shrink-0 flex flex-col ${round
-                                    ? 'items-center justify-center text-center bg-brand-card/30 backdrop-blur-md border-0'
-                                    : 'items-start justify-between bg-brand-card/30 backdrop-blur-md border border-white/10 rounded-[12px]'
+                                ? 'items-center justify-center text-center bg-brand-card/30 border-0'
+                                : 'items-start justify-between bg-brand-card/30 border border-white/10 rounded-[12px]'
                                 } overflow-hidden cursor-grab active:cursor-grabbing`}
                             style={{
                                 width: itemWidth,
@@ -194,8 +194,8 @@ export default function Carousel({
                         <motion.div
                             key={index}
                             className={`h-2 w-2 rounded-full cursor-pointer transition-colors duration-150 ${currentIndex % items.length === index
-                                    ? 'bg-brand-yellow'
-                                    : 'bg-white/20'
+                                ? 'bg-brand-yellow'
+                                : 'bg-white/20'
                                 }`}
                             animate={{
                                 scale: currentIndex % items.length === index ? 1.2 : 1

@@ -82,7 +82,7 @@ const ProjectsPage = () => {
                             </div>
 
                             {/* Magic Bento Grid - Full Width Below */}
-                            <div className="mt-8 sm:mt-10 md:mt-12 lg:mt-16 rounded-2xl sm:rounded-3xl bg-brand-card/30 backdrop-blur-md border border-white/10 overflow-hidden">
+                            <div className="mt-8 sm:mt-10 md:mt-12 lg:mt-16 rounded-2xl sm:rounded-3xl bg-brand-card/30 border border-white/10 overflow-hidden">
                                 <EnhancedMagicBento
                                     enableSpotlight={true}
                                     enableStars={true}

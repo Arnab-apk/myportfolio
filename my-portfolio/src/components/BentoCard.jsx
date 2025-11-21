@@ -29,7 +29,7 @@ const BentoCard = ({
             {...props}
         >
             {/* Background with glassmorphism */}
-            <div className="absolute inset-0 bg-brand-card/30 backdrop-blur-md rounded-2xl" />
+            <div className="absolute inset-0 bg-brand-card/30 rounded-2xl" />
 
             {/* Border glow effect */}
             {borderGlow && (
