@@ -42,6 +42,13 @@ const Home = () => {
             title: 'AR Prototype',
             description: 'Augmented reality application prototype using Unity.',
             label: 'AR/VR'
+        },
+        {
+            image: '/opencv-project.png',
+            link: 'https://github.com/Arnab-apk/Open_CV_-BTA-',
+            title: 'OpenCV (BTA)',
+            description: 'Hands-on computer vision exercises using OpenCV.',
+            label: 'Computer Vision'
         }
     ];
 
