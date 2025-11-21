@@ -1,15 +1,15 @@
-import Aurora from "./Aurora";
+import PrismaticBurst from "./PrismaticBurst";
 
 function AuroraBackground({ children, className = "" }) {
   return (
     <div className={`relative ${className} bg-brand-dark`}>
-      {/* Animated Aurora WebGL Background */}
+      {/* Animated Prismatic WebGL Background */}
       <div className="absolute inset-0 overflow-hidden">
-        <Aurora
-          colorStops={['#38bdf8', '#8b5cf6', '#FFD700']}
-          amplitude={1.2}
-          blend={0.6}
+        <PrismaticBurst
+          colors={['#38bdf8', '#8b5cf6', '#FFD700']}
+          intensity={2}
           speed={0.5}
+          distort={0.3}
         />
       </div>
 
