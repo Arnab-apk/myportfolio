@@ -7,7 +7,7 @@ function Footer() {
             © {new Date().getFullYear()} Arnab Mandal.
           </span>
           <span className="text-xs text-slate-600">
-            Built with React, Tailwind & React Bits ✨
+            Built with React, Tailwind & React Bits , Antigravity
           </span>
         </div>
 
