@@ -159,9 +159,11 @@ const GooeyNav = ({
           .effect.text {
             color: white;
             transition: color 0.3s ease;
+            font-weight: 500;
           }
           .effect.text.active {
-            color: #030508;
+            color: #000000;
+            font-weight: 600;
           }
           .effect.filter {
             filter: blur(7px) contrast(100) blur(0);
@@ -261,8 +263,9 @@ const GooeyNav = ({
             }
           }
           li.active {
-            color: #030508;
+            color: #000000 !important;
             text-shadow: none;
+            font-weight: 600;
           }
           li.active::after {
             opacity: 1;
@@ -285,7 +288,7 @@ const GooeyNav = ({
         <nav className="flex relative" style={{ transform: 'translate3d(0,0,0.01px)' }}>
           <ul
             ref={navRef}
-            className="flex gap-4 sm:gap-8 list-none p-0 px-4 m-0 relative z-[3] text-sm sm:text-base"
+            className="flex gap-2 sm:gap-8 list-none p-0 px-3 sm:px-4 m-0 relative z-[3] text-xs sm:text-base"
             style={{
               color: 'white',
               textShadow: '0 1px 1px hsl(205deg 30% 10% / 0.2)'
@@ -294,7 +297,7 @@ const GooeyNav = ({
             {items.map((item, index) => (
               <li
                 key={index}
-                className={`rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] text-white ${activeIndex === index ? 'active' : ''
+                className={`rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] ${activeIndex === index ? 'active' : 'text-white'
                   }`}
               >
                 <Link
@@ -303,7 +306,7 @@ const GooeyNav = ({
                     handleClick(e, index);
                   }}
                   onKeyDown={e => handleKeyDown(e, index)}
-                  className="outline-none py-[0.6em] px-[1em] inline-block"
+                  className="outline-none py-[0.5em] px-[0.8em] sm:py-[0.6em] sm:px-[1em] inline-block"
                 >
                   {item.label}
                 </Link>
