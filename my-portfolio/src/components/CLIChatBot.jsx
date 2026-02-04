@@ -34,7 +34,7 @@ const THEMES = {
   retro: { bg: 'bg-[#1a1a1a]', text: 'text-amber-500', prompt: 'text-amber-600' },
 };
 
-const CLIChatBot = ({ isOpen, onClose, onSendMessage, onClear, messages = [], isProcessing }) => {
+const CLIChatBot = ({ isOpen, onClose, onSendMessage, onClear, messages = [], isProcessing, mode = 'chat', onLoginSuccess }) => {
   const [input, setInput] = useState('');
   const [history, setHistory] = useState([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
@@ -42,22 +42,39 @@ const CLIChatBot = ({ isOpen, onClose, onSendMessage, onClear, messages = [], is
   const [isMaximized, setIsMaximized] = useState(true);
   const [minimized, setMinimized] = useState(false);
   
+  // Login State
+  const [loginStep, setLoginStep] = useState(mode === 'login' ? 0 : -1); // 0: prompt, 1: password
+  const [loginMsg, setLoginMsg] = useState(["Initialising secure connection...", "Enter password to access portfolio:"]);
+
   const navigate = useNavigate();
   const location = useLocation();
 
   const inputRef = useRef(null);
   const bottomRef = useRef(null);
-  const containerRef = useRef(null);
+  
+  // PASSWORD configuration
+  const ACCESS_PASSWORD = "arnab"; 
 
   useEffect(() => {
     if (isOpen && !minimized) {
       inputRef.current?.focus();
       scrollToBottom();
     }
-  }, [isOpen, messages, minimized, isMaximized]);
+  }, [isOpen, messages, minimized, isMaximized, loginMsg]);
 
   const scrollToBottom = () => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleLogin = (val) => {
+     if (val === ACCESS_PASSWORD) {
+        setLoginMsg(prev => [...prev, `> ${'*'.repeat(val.length)}`, "Access Granted.", "Loading graphical interface..."]);
+        setTimeout(() => {
+           if (onLoginSuccess) onLoginSuccess();
+        }, 1500);
+     } else {
+        setLoginMsg(prev => [...prev, `> ${'*'.repeat(val.length)}`, "Access Denied. Try again:", "Enter password to access portfolio:"]);
+     }
   };
 
   const handleCommand = (cmd) => {
@@ -153,6 +170,13 @@ const CLIChatBot = ({ isOpen, onClose, onSendMessage, onClear, messages = [], is
       }
     } else if (e.key === 'Enter') {
       const trimmed = input.trim();
+      
+      if (mode === 'login') {
+        handleLogin(trimmed);
+        setInput('');
+        return;
+      }
+
       if (!trimmed) return;
 
       setHistory(prev => [...prev, trimmed]);
@@ -184,7 +208,8 @@ const CLIChatBot = ({ isOpen, onClose, onSendMessage, onClear, messages = [], is
         transition={{ type: "spring", stiffness: 260, damping: 20 }}
         className={`fixed z-[2000] shadow-2xl overflow-hidden flex flex-col font-mono text-sm md:text-base border border-opacity-30 border-white
           ${minimized ? 'bottom-4 right-4 w-64 h-12 rounded-md cursor-pointer border-gray-500' : 
-            isMaximized ? 'inset-0 w-full h-full rounded-none' : 
+            // In login mode or hackermode, force fullscreen mostly
+            (isMaximized || mode === 'login') ? 'inset-0 w-full h-full rounded-none' : 
             'bottom-4 right-4 w-[95vw] md:w-[600px] h-[80vh] md:h-[600px] rounded-lg'
           }
           ${currentTheme.bg} ${currentTheme.text}
@@ -192,20 +217,22 @@ const CLIChatBot = ({ isOpen, onClose, onSendMessage, onClear, messages = [], is
         style={{ backdropFilter: 'blur(10px)' }}
         onClick={() => minimized && setMinimized(false)}
       >
-        {/* Title Bar */}
+        {/* Title Bar - Simplified for hacker vibe */}
+        {mode !== 'login' && (
         <div className={`flex items-center justify-between px-4 py-2 bg-white/10 select-none cursor-move`}>
           <div className="flex items-center gap-2">
             <FaTerminal />
             <span className="font-bold">param@arnab-portfolio:~</span>
           </div>
           <div className="flex items-center gap-3">
-            <button onClick={(e) => { e.stopPropagation(); setMinimized(!minimized); }} className="hover:text-white"><FaMinus /></button>
-            <button onClick={() => setIsMaximized(!isMaximized)} className="hover:text-white">
-              {isMaximized ? <FaCompress /> : <FaExpand />}
-            </button>
+             {/* Removed minimize/resize as requested, only Close is left but user might want NO controls at all. 
+                 I'll keep Close for safety unless strictly 'login' mode, but the user said "remove teh minimise a d resize option". 
+                 If it is 'login' mode, we usually don't want them to close it. 
+             */}
             <button onClick={onClose} className="hover:text-red-500"><FaTimes /></button>
           </div>
         </div>
+        )}
 
         {/* Terminal Content */}
         {!minimized && (
@@ -213,6 +240,35 @@ const CLIChatBot = ({ isOpen, onClose, onSendMessage, onClear, messages = [], is
             className="flex-1 overflow-y-auto p-4 scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent"
             onClick={() => inputRef.current?.focus()}
           >
+            {mode === 'login' ? (
+                <div className="h-full flex flex-col justify-center items-center text-center">
+                   <div className="mb-4 font-bold whitespace-pre text-[0.6rem] md:text-xs lg:text-sm opacity-80 leading-tight select-none">
+                      {ASCII_ART}
+                   </div>
+                   <div className="max-w-md w-full text-left space-y-2 font-mono">
+                      {loginMsg.map((msg, i) => (
+                        <div key={i} className={`${i === loginMsg.length - 1 ? 'text-green-400' : 'opacity-70 text-gray-300'}`}>
+                          {msg}
+                        </div>
+                      ))}
+                      
+                      <div className="flex items-center gap-2 mt-4 text-green-500 text-xl border-b border-green-500/50 pb-1">
+                        <span>{'>'}</span>
+                        <input 
+                           ref={inputRef}
+                           type="password"
+                           value={input}
+                           onChange={(e) => setInput(e.target.value)}
+                           onKeyDown={handleKeyDown}
+                           className={`flex-1 bg-transparent outline-none border-none p-0 ${currentTheme.text} caret-current`}
+                           autoFocus
+                        />
+                      </div>
+                      <div className="text-xs text-gray-500 mt-2">Hint: The password is "arnab"</div>
+                   </div>
+                </div>
+            ) : (
+             <>
             <div className="whitespace-pre mb-4 font-bold opacity-50 select-none hidden md:block">
               {ASCII_ART}
             </div>
@@ -237,7 +293,7 @@ const CLIChatBot = ({ isOpen, onClose, onSendMessage, onClear, messages = [], is
               <div key={i} className="mb-2">
                 {msg.from === 'user' ? (
                   <div className="flex gap-2">
-                    <span className={`${currentTheme.prompt}`}>user@portfolio:~$</span>
+                    <span className={`${currentTheme.prompt}`}>user@portfolio:{location.pathname === '/' ? '~' : location.pathname}$</span>
                     <span>{msg.text}</span>
                   </div>
                 ) : (
@@ -270,6 +326,8 @@ const CLIChatBot = ({ isOpen, onClose, onSendMessage, onClear, messages = [], is
                 autoFocus
               />
             </div>
+            </>
+            )}
             <div ref={bottomRef} />
           </div>
         )}
