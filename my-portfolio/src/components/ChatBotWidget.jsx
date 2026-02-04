@@ -58,13 +58,17 @@ const ChatBotWidget = () => {
 
     try {
       const bodyPrompt = `You are Arnab's portfolio assistant. ONLY answer portfolio-related queries. Be concise (max 2 sentences, <200 characters). If question is unrelated, reply: 'I only answer portfolio-related questions.'\n\nContext:\n${PORTFOLIO_CONTEXT}\n\nUser Question: ${question}\nAnswer:`;
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`,
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ contents: [{ parts: [{ text: bodyPrompt }] }] })
         });
       const data = await res.json();
+      if (!res.ok) {
+        console.error("Gemini API Error:", data);
+        throw new Error(data.error?.message || "API Request failed");
+      }
       let botText = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, no response.";
       // Enforce concise length client-side as fallback
       botText = botText.replace(/\s+/g, ' ').trim();
