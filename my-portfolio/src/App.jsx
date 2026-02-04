@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import ChatBotWidget from "./components/ChatBotWidget";
 import CLIChatBot from "./components/CLIChatBot"; // Direct import for Gate
 import PageTransition from "./components/PageTransition";
+import Navbar from "./components/Navbar"; // Added Navbar
 
 import Home from "./pages/Home";
 import AboutPage from "./pages/AboutPage";
@@ -19,15 +20,17 @@ function AppContent() {
            isOpen={true}
            mode="login"
            onLoginSuccess={() => setIsGranted(true)}
-           messages={[]} // Dummy
-           onSendMessage={() => {}} // Dummy
-           isProcessing={false} // Dummy
-           onClose={() => {}} // Block closing
+           messages={[]} 
+           onSendMessage={() => {}} 
+           isProcessing={false} 
+           onClose={() => {}} 
         />
       )}
 
       {isGranted && (
         <div className="min-h-screen bg-black text-white font-sans selection:bg-green-500 selection:text-black">
+          <Navbar />
+          
           {/* Post-Login Content */}
           <PageTransition>
             <Routes>
