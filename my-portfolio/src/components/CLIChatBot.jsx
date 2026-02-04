@@ -1,10 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTerminal, FaTimes, FaExpand, FaCompress, FaMinus } from 'react-icons/fa';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const COMMANDS = {
   help: "Show available commands",
   clear: "Clear terminal output",
+  ls: "List directory contents",
+  cd: "Change directory (e.g., 'cd projects')",
+  pwd: "Print working directory",
+  whoami: "Print current user",
   about: "Display information about Arnab",
   projects: "List projects",
   skills: "List technical skills",
@@ -37,6 +42,9 @@ const CLIChatBot = ({ isOpen, onClose, onSendMessage, onClear, messages = [], is
   const [isMaximized, setIsMaximized] = useState(true);
   const [minimized, setMinimized] = useState(false);
   
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const inputRef = useRef(null);
   const bottomRef = useRef(null);
   const containerRef = useRef(null);
