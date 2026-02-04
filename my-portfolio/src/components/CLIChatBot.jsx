@@ -138,21 +138,14 @@ const CLIChatBot = ({ isOpen, onClose, onSendMessage, onClear, messages = [], is
         initial={{ opacity: 0, scale: 0, y: 100 }}
         animate={{ 
           opacity: 1, 
-          scale: minimized ? 0.1 : 1, 
-          y: minimized ? 300 : 0,
-          x: minimized ? 150 : 0
+          scale: 1, 
+          y: 0,
+          x: 0
         }}
         exit={{ opacity: 0, scale: 0, y: 100 }}
         transition={{ type: "spring", stiffness: 260, damping: 20 }}
         className={`fixed z-[2000] shadow-2xl overflow-hidden flex flex-col font-mono text-sm md:text-base border border-opacity-30 border-white
-          ${minimized ? 'bottom-4 right-4 w-64 h-16 rounded-md cursor-pointer opacity-0 pointer-events-none' :  // Hide completely when "minimized" via state, OR show small pill. 
-            // Wait, if minimized is true, it shows a small box. But user said "when it minimised also check that teh cli opens on full screen on default"
-            // Re-reading: "when it minimised also check that teh cli opens on full screen on default".
-            // Maybe they mean if they minimize it and then restore it?
-            // "opens on full screen on default" -> implies restoring should be full screen if it was full screen?
-            // Or maybe "opens on full screen" means maximizes not just restores to previous size?
-            // Since we set isMaximized=true by default, standard restore (minimized=false) will use isMaximized state.
-            // Let's stick to the current logic which uses isMaximized.
+          ${minimized ? 'bottom-4 right-4 w-64 h-12 rounded-md cursor-pointer border-gray-500' : 
             isMaximized ? 'inset-0 w-full h-full rounded-none' : 
             'bottom-4 right-4 w-[95vw] md:w-[600px] h-[80vh] md:h-[600px] rounded-lg'
           }
