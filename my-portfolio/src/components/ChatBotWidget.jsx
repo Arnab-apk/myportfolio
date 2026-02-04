@@ -96,7 +96,7 @@ const ChatBotWidget = () => {
       const qLower = question.toLowerCase();
       
       if (qLower.includes('skill') || qLower.includes('tech') || qLower.includes('stack')) {
-        fallbackText = "My skills include Python, C++, Java, React, Node.js, Flutter, Unity, and AI/ML frames like TensorFlow/PyTorch.";
+        fallbackText = "My skills include Python, C++, Java, React, Node.js, Flutter, Unity, and AI/ML frameworks like TensorFlow/PyTorch.";
       } else if (qLower.includes('project') || qLower.includes('work')) {
         fallbackText = "I've worked on '100 Days of Python', AI/ML projects, a Coffee Machine app, and various Computer Vision tools.";
       } else if (qLower.includes('contact') || qLower.includes('email') || qLower.includes('reach')) {
@@ -105,6 +105,8 @@ const ChatBotWidget = () => {
         fallbackText = "I'm a Computer Science Engineering student at Academy of Technology, West Bengal.";
       } else if (qLower.includes('who') || qLower.includes('name') || qLower.includes('about')) {
         fallbackText = "I am Arnab Mandal, a CS student passionate about AI Agents, Game Dev, and Full-Stack Web.";
+      } else if (qLower.includes('help')) {
+        fallbackText = "I can tell you about my skills, projects, education or how to contact me.";
       } else {
         fallbackText += "Since I'm in offline mode, please ask about 'skills', 'projects', 'contact', or 'about me'.";
       }
@@ -114,6 +116,13 @@ const ChatBotWidget = () => {
       setProcessing(false);
     }
   };
+
+  const QUICK_ACTIONS = [
+    { label: "Skills", cmd: "What are your skills?" },
+    { label: "Projects", cmd: "Tell me about your projects" },
+    { label: "Contact", cmd: "How can I contact you?" },
+    { label: "About", cmd: "Tell me about yourself" },
+  ];
 
   return (
     <div>
@@ -154,6 +163,19 @@ const ChatBotWidget = () => {
               </div>
             ))}
             {processing && <div className="text-gray-400 text-xs ml-2">Typing...</div>}
+            
+            <div className="mt-4 flex flex-wrap gap-2 justify-center">
+               {QUICK_ACTIONS.map((action) => (
+                 <button
+                   key={action.label}
+                   onClick={() => handleSend(action.cmd)}
+                   className="text-xs bg-gray-200 hover:bg-gray-300 text-gray-800 px-2 py-1 rounded-full transition-colors"
+                 >
+                   {action.label}
+                 </button>
+               ))}
+            </div>
+
             <div ref={messagesEndRef} />
           </div>
           <div className="flex border-t border-gray-200">

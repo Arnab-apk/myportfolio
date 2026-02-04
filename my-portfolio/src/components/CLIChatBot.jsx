@@ -14,10 +14,13 @@ const COMMANDS = {
 };
 
 const ASCII_ART = `
-   _    ____  _  _    _    ___ 
-  / \\  |  _ \\| \\| |  / \\  | _ )
- / _ \\ |   /| .  | / _ \\ | _ \\
-/_/ \\_\\|_|_\\|_|\\_|/_/ \\_\\|___/
+      .:.           .::::::.      ...     :.        .:.          .::::::. 
+     .:::.          ::.    ::     .:::.   ::       .:::.         ::.    ::
+    .::.::.         ::.    ::     ::.::.  ::      .::.::.        ::.    ::
+   .::.  .::.       :::::::.      :: .::. ::     .::.  .::.      :::::::. 
+  .::::::::::.      ::.   ::.     ::  .::.::    .::::::::::.     ::.    ::
+ .::.      .::.     ::.    ::.    ::   .:::.   .::.      .::.    ::.    ::
+.::.        .::.    ::.     ::.   ::     .::  .::.        .::.   :::::::. 
 `;
 
 const THEMES = {
@@ -31,7 +34,7 @@ const CLIChatBot = ({ isOpen, onClose, onSendMessage, onClear, messages = [], is
   const [history, setHistory] = useState([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [theme, setTheme] = useState('matrix');
-  const [isMaximized, setIsMaximized] = useState(false);
+  const [isMaximized, setIsMaximized] = useState(true);
   const [minimized, setMinimized] = useState(false);
   
   const inputRef = useRef(null);
@@ -132,16 +135,24 @@ const CLIChatBot = ({ isOpen, onClose, onSendMessage, onClear, messages = [], is
   return (
     <AnimatePresence>
       <motion.div
-        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        initial={{ opacity: 0, scale: 0, y: 100 }}
         animate={{ 
           opacity: 1, 
-          scale: minimized ? 0.5 : 1, 
+          scale: minimized ? 0.1 : 1, 
           y: minimized ? 300 : 0,
           x: minimized ? 150 : 0
         }}
-        exit={{ opacity: 0, scale: 0.9, y: 20 }}
+        exit={{ opacity: 0, scale: 0, y: 100 }}
+        transition={{ type: "spring", stiffness: 260, damping: 20 }}
         className={`fixed z-[2000] shadow-2xl overflow-hidden flex flex-col font-mono text-sm md:text-base border border-opacity-30 border-white
-          ${minimized ? 'bottom-4 right-4 w-64 h-16 rounded-md cursor-pointer' : 
+          ${minimized ? 'bottom-4 right-4 w-64 h-16 rounded-md cursor-pointer opacity-0 pointer-events-none' :  // Hide completely when "minimized" via state, OR show small pill. 
+            // Wait, if minimized is true, it shows a small box. But user said "when it minimised also check that teh cli opens on full screen on default"
+            // Re-reading: "when it minimised also check that teh cli opens on full screen on default".
+            // Maybe they mean if they minimize it and then restore it?
+            // "opens on full screen on default" -> implies restoring should be full screen if it was full screen?
+            // Or maybe "opens on full screen" means maximizes not just restores to previous size?
+            // Since we set isMaximized=true by default, standard restore (minimized=false) will use isMaximized state.
+            // Let's stick to the current logic which uses isMaximized.
             isMaximized ? 'inset-0 w-full h-full rounded-none' : 
             'bottom-4 right-4 w-[95vw] md:w-[600px] h-[80vh] md:h-[600px] rounded-lg'
           }
@@ -176,6 +187,19 @@ const CLIChatBot = ({ isOpen, onClose, onSendMessage, onClear, messages = [], is
             </div>
             <div className="mb-4 opacity-70">
               Welcome to the interactive CLI. Type 'help' for commands.
+            </div>
+
+            {/* Quick Actions / Chips in CLI (rendered as clickable text or buttons) */}
+            <div className="mb-4 flex flex-wrap gap-2">
+              {['about', 'projects', 'skills', 'contact'].map(cmd => (
+                <button 
+                  key={cmd}
+                  onClick={() => handleCommand(cmd)}
+                  className={`px-2 py-1 text-xs border border-current opacity-50 hover:opacity-100 hover:bg-white/10 transition-all rounded`}
+                >
+                  {cmd}
+                </button>
+              ))}
             </div>
 
             {messages.filter(msg => !msg.text.startsWith("Hi! Ask me")).map((msg, i) => (
