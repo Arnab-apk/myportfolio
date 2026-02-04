@@ -19,7 +19,7 @@ const UNRELATED_PATTERNS = [
 
 const ChatBotWidget = () => {
   const [open, setOpen] = useState(false);
-  const [cliMode, setCliMode] = useState(false);
+  const [cliMode, setCliMode] = useState(true); // Default to CLI mode
   const [processing, setProcessing] = useState(false);
   const [messages, setMessages] = useState([
     { from: "bot", text: "Hi! Ask me about Arnab's skills, projects, or tech." },
@@ -57,18 +57,26 @@ const ChatBotWidget = () => {
     }
 
     try {
+      const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+      if (!apiKey) {
+        throw new Error("API Key missing");
+      }
+
       const bodyPrompt = `You are Arnab's portfolio assistant. ONLY answer portfolio-related queries. Be concise (max 2 sentences, <200 characters). If question is unrelated, reply: 'I only answer portfolio-related questions.'\n\nContext:\n${PORTFOLIO_CONTEXT}\n\nUser Question: ${question}\nAnswer:`;
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`,
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ contents: [{ parts: [{ text: bodyPrompt }] }] })
         });
+      
       const data = await res.json();
+      
       if (!res.ok) {
-        console.error("Gemini API Error:", data);
-        throw new Error(data.error?.message || "API Request failed");
+        console.error("Gemini API Error details:", data);
+        throw new Error(data.error?.message || `API Request failed with status ${res.status}`);
       }
+      
       let botText = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, no response.";
       // Enforce concise length client-side as fallback
       botText = botText.replace(/\s+/g, ' ').trim();
@@ -78,8 +86,9 @@ const ChatBotWidget = () => {
         botText = "I only answer portfolio-related questions.";
       }
       setMessages(prev => [...prev, { from: "bot", text: botText }]);
-    } catch {
-      setMessages(prev => [...prev, { from: "bot", text: "Connection error. Try again." }]);
+    } catch (error) {
+      console.error("ChatBot Error:", error);
+      setMessages(prev => [...prev, { from: "bot", text: `Connection error: ${error.message || "Unknown error"}. Try again.` }]);
     } finally {
       setProcessing(false);
     }
