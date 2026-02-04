@@ -71,6 +71,36 @@ const CLIChatBot = ({ isOpen, onClose, onSendMessage, onClear, messages = [], is
       case 'clear':
         if (onClear) onClear();
         return null; 
+      case 'ls':
+        return "home/  about/  projects/  contact/";
+      case 'pwd':
+        return `/home/arnab/portfolio${location.pathname === '/' ? '' : location.pathname}`;
+      case 'whoami':
+        return "guest";
+      case 'cd':
+        if (!args[0] || args[0] === '~') {
+          navigate('/');
+          return "Changed directory to home"; 
+        }
+        if (args[0] === '..') {
+          navigate('/');
+          return "Changed directory to home";
+        }
+        
+        const path = args[0].replace(/\/$/, '');
+        const routeMap = {
+          'home': '/',
+          'about': '/about',
+          'projects': '/projects',
+          'contact': '/contact'
+        };
+        
+        if (routeMap[path]) {
+          navigate(routeMap[path]);
+          return `Changed directory to ${path}`;
+        } else {
+          return `cd: no such file or directory: ${path}`;
+        }
       case 'about':
         onSendMessage('Tell me about yourself');
         return null;
@@ -227,7 +257,7 @@ const CLIChatBot = ({ isOpen, onClose, onSendMessage, onClear, messages = [], is
             )}
 
             <div className="flex gap-2 items-center">
-              <span className={`${currentTheme.prompt}`}>user@portfolio:~$</span>
+              <span className={`${currentTheme.prompt}`}>user@portfolio:{location.pathname === '/' ? '~' : location.pathname}$</span>
               <input
                 ref={inputRef}
                 type="text"
