@@ -88,7 +88,28 @@ const ChatBotWidget = () => {
       setMessages(prev => [...prev, { from: "bot", text: botText }]);
     } catch (error) {
       console.error("ChatBot Error:", error);
-      setMessages(prev => [...prev, { from: "bot", text: `Connection error: ${error.message || "Unknown error"}. Try again.` }]);
+      
+      // FALLBACK MODE for demo/suspended key
+      console.warn("Falling back to local simulation mode due to API error.");
+      
+      let fallbackText = "I'm having trouble connecting to my AI brain right now. ";
+      const qLower = question.toLowerCase();
+      
+      if (qLower.includes('skill') || qLower.includes('tech') || qLower.includes('stack')) {
+        fallbackText = "My skills include Python, C++, Java, React, Node.js, Flutter, Unity, and AI/ML frames like TensorFlow/PyTorch.";
+      } else if (qLower.includes('project') || qLower.includes('work')) {
+        fallbackText = "I've worked on '100 Days of Python', AI/ML projects, a Coffee Machine app, and various Computer Vision tools.";
+      } else if (qLower.includes('contact') || qLower.includes('email') || qLower.includes('reach')) {
+        fallbackText = "You can reach me at arnabmandal261@gmail.com, or check my GitHub (Arnab-apk) & LinkedIn.";
+      } else if (qLower.includes('education') || qLower.includes('study') || qLower.includes('college')) {
+        fallbackText = "I'm a Computer Science Engineering student at Academy of Technology, West Bengal.";
+      } else if (qLower.includes('who') || qLower.includes('name') || qLower.includes('about')) {
+        fallbackText = "I am Arnab Mandal, a CS student passionate about AI Agents, Game Dev, and Full-Stack Web.";
+      } else {
+        fallbackText += "Since I'm in offline mode, please ask about 'skills', 'projects', 'contact', or 'about me'.";
+      }
+
+      setMessages(prev => [...prev, { from: "bot", text: `[OFFLINE MODE] ${fallbackText}` }]);
     } finally {
       setProcessing(false);
     }
