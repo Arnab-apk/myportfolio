@@ -26,7 +26,7 @@ const THEMES = {
   retro: { bg: 'bg-[#1a1a1a]', text: 'text-amber-500', prompt: 'text-amber-600' },
 };
 
-const CLIChatBot = ({ isOpen, onClose, onSendMessage, messages = [], isProcessing }) => {
+const CLIChatBot = ({ isOpen, onClose, onSendMessage, onClear, messages = [], isProcessing }) => {
   const [input, setInput] = useState('');
   const [history, setHistory] = useState([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
@@ -58,8 +58,7 @@ const CLIChatBot = ({ isOpen, onClose, onSendMessage, messages = [], isProcessin
       case 'help':
         return Object.entries(COMMANDS).map(([k, v]) => `${k.padEnd(10)} - ${v}`).join('\n');
       case 'clear':
-        // This needs to be handled by parent or by clearing local view if we separate them
-        // For now, we'll return a special flag or handle it locally if messages were local
+        if (onClear) onClear();
         return null; 
       case 'about':
         onSendMessage('Tell me about yourself');
@@ -91,7 +90,7 @@ const CLIChatBot = ({ isOpen, onClose, onSendMessage, messages = [], isProcessin
   const handleKeyDown = (e) => {
     if (e.ctrlKey && e.key === 'l') {
       e.preventDefault();
-      // handle clear
+      if (onClear) onClear();
     }
 
     if (e.key === 'ArrowUp') {
@@ -121,9 +120,7 @@ const CLIChatBot = ({ isOpen, onClose, onSendMessage, messages = [], isProcessin
       
       const response = handleCommand(trimmed);
       if (typeof response === 'string') {
-        // Add local system message
-        // Note: This relies on parent handling "echo" of user command if we want it shown
-        // We might need a local state for terminal-only messages if the parent doesn't support them
+        onSendMessage(trimmed, response);
       }
     }
   };
@@ -181,7 +178,7 @@ const CLIChatBot = ({ isOpen, onClose, onSendMessage, messages = [], isProcessin
               Welcome to the interactive CLI. Type 'help' for commands.
             </div>
 
-            {messages.map((msg, i) => (
+            {messages.filter(msg => !msg.text.startsWith("Hi! Ask me")).map((msg, i) => (
               <div key={i} className="mb-2">
                 {msg.from === 'user' ? (
                   <div className="flex gap-2">

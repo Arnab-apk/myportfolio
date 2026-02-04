@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
+import CLIChatBot from "./CLIChatBot";
+import { FaTerminal } from "react-icons/fa";
 
 // Static portfolio context (not sent if question is unrelated)
 const PORTFOLIO_CONTEXT = `Name: Arnab Mandal\nEducation: Computer Science Engineering student at Academy of Technology, West Bengal\nPublic Contacts: Email (arnabmandal261@gmail.com), GitHub (github.com/Arnab-apk), LinkedIn (linkedin.com/in/arnab-mandal-00200131a/)\nSkills: Python, C, C++, Java, JavaScript, Dart, Flutter, Unity 3D, React, Node.js, TensorFlow, PyTorch, OpenCV, NumPy, Pandas, scikit-learn, Git, Linux, Bash\nExpertise: AI/ML, AR/VR (Unity), Full-stack Web, Computer Vision, Data Science, Mobile Apps\nFocus: AI Agents & RAG, AR/Game Dev, Competitive Programming & DSA\nProjects: 100 Days of Python, ML in Python & R, Google x Kaggle Workshop, OpenCV CV projects, Coffee Machine (OOP), College Coding (C)`;
@@ -17,6 +19,8 @@ const UNRELATED_PATTERNS = [
 
 const ChatBotWidget = () => {
   const [open, setOpen] = useState(false);
+  const [cliMode, setCliMode] = useState(false);
+  const [processing, setProcessing] = useState(false);
   const [messages, setMessages] = useState([
     { from: "bot", text: "Hi! Ask me about Arnab's skills, projects, or tech." },
   ]);
@@ -24,19 +28,31 @@ const ChatBotWidget = () => {
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  useEffect(scrollToBottom, [messages]);
+  useEffect(scrollToBottom, [messages, cliMode]);
 
   const isUnrelated = (text) => UNRELATED_PATTERNS.some(r => r.test(text));
 
-  const handleSend = async () => {
-    const question = input.trim();
+  const handleSend = async (textOveride, localResponse = null) => {
+    const question = (typeof textOveride === 'string' ? textOveride : input).trim();
     if (!question) return;
+    
     setMessages(prev => [...prev, { from: "user", text: question }]);
-    setInput("");
+    if (typeof textOveride !== 'string') setInput("");
+    setProcessing(true);
+
+    if (localResponse) {
+      // Simulate a small delay for "processing" feel even for local commands
+      setTimeout(() => {
+        setMessages(prev => [...prev, { from: "bot", text: localResponse }]);
+        setProcessing(false);
+      }, 300);
+      return;
+    }
 
     // Fast local guard for unrelated queries
     if (isUnrelated(question)) {
       setMessages(prev => [...prev, { from: "bot", text: "I only answer portfolio-related questions: skills, projects, technologies, education, or professional contact." }]);
+      setProcessing(false);
       return;
     }
 
@@ -60,6 +76,8 @@ const ChatBotWidget = () => {
       setMessages(prev => [...prev, { from: "bot", text: botText }]);
     } catch {
       setMessages(prev => [...prev, { from: "bot", text: "Connection error. Try again." }]);
+    } finally {
+      setProcessing(false);
     }
   };
 
@@ -72,15 +90,36 @@ const ChatBotWidget = () => {
       >
         <span role="img" aria-label="Chat">💬</span>
       </button>
-      {open && (
+
+      {cliMode ? (
+        <CLIChatBot
+          isOpen={open} 
+          onClose={() => setOpen(false)} 
+          onSendMessage={handleSend}
+          onClear={() => setMessages([])}
+          messages={messages}
+          isProcessing={processing}
+        />
+      ) : (
+        open && (
         <div className="fixed bottom-24 right-6 w-80 max-w-[90vw] bg-white text-black rounded-2xl shadow-2xl z-[1200] flex flex-col overflow-hidden animate-fadeIn">
-          <div className="bg-gray-800 text-white px-4 py-2 font-bold">ChatBot</div>
+          <div className="bg-gray-800 text-white px-4 py-2 font-bold flex justify-between items-center">
+            <span>ChatBot</span>
+            <button 
+              onClick={() => setCliMode(true)}
+              className="text-xs bg-black/30 hover:bg-black/50 p-1 rounded flex items-center gap-1 transition-colors"
+              title="Switch to CLI Mode"
+            >
+              <FaTerminal /> CLI
+            </button>
+          </div>
           <div className="flex-1 p-3 overflow-y-auto" style={{ maxHeight: 320 }}>
             {messages.map((msg, i) => (
               <div key={i} className={`mb-2 flex ${msg.from === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`px-3 py-2 rounded-xl max-w-[80%] ${msg.from === 'user' ? 'bg-gray-800 text-white' : 'bg-gray-200'}`}>{msg.text}</div>
               </div>
             ))}
+            {processing && <div className="text-gray-400 text-xs ml-2">Typing...</div>}
             <div ref={messagesEndRef} />
           </div>
           <div className="flex border-t border-gray-200">
@@ -93,12 +132,13 @@ const ChatBotWidget = () => {
             />
             <button
               className="px-4 py-2 bg-gray-800 text-white hover:bg-gray-700 transition-all font-bold"
-              onClick={handleSend}
+              onClick={() => handleSend()}
             >
               Send
             </button>
           </div>
         </div>
+        )
       )}
       <style>{`
         .animate-fadeIn { animation: fadeIn 0.25s; }
