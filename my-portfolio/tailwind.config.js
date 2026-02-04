@@ -16,6 +16,20 @@ export default {
         'brand-dark-rich': '#0A0F1C', // Richer dark for cards
         'brand-card': '#0F1629', // Lighter card bg
         'brand-accent': '#38bdf8', // Light blue accent
+        
+        // VS Code Theme Colors
+        'vscode-bg': '#1e1e1e',
+        'vscode-sidebar': '#252526',
+        'vscode-activity': '#333333',
+        'vscode-status': '#007acc',
+        'vscode-title': '#3c3c3c',
+        'vscode-tab-active': '#1e1e1e',
+        'vscode-tab-inactive': '#2d2d2d',
+        'vscode-text': '#cccccc',
+        'vscode-keyword': '#569cd6',
+        'vscode-variable': '#9cdcfe',
+        'vscode-comment': '#6a9955',
+        'vscode-string': '#ce9178',
       },
       boxShadow: {
         soft: "0 10px 40px -10px rgba(0,0,0,0.5)",
